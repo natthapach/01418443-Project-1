@@ -12,13 +12,13 @@
     );
 
     $statement = $connection->prepare(
-        "select * 
+        'select e.* 
         from event as e 
         join organizer as o 
         on o.id = e.organizer_id 
         join account as a 
         on o.user_name = a.user_name 
-        where a.user_name=:username"
+        where a.user_name=:username'
     );
 
     $statement->execute([
