@@ -96,7 +96,10 @@
                                     echo "onClickViewProof('$attendant->pay_proof_path')"; ?>>
                         หลักฐานการโอนเงิน
                     </button>
-                    <button class="btn btn-success">
+                    <button class="btn btn-success"
+                        onclick=<?php
+                                    echo "onClickConfirm($event_id,$attendant->attendant_id)"; ?>
+                    >
                         ยืนยัน
                     </button>
                 <?php
