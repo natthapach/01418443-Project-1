@@ -9,6 +9,7 @@ $(function(){
         let eventPlace = $("#event-place").val();
         // let eventMap = $("#event-map").val();
         let eventStartDate = $("#event-start-date").val();
+        
         let eventEndDate = $("#event-end-date").val();
         let eventCloseDate = $("#event-close-date").val();
         let eventPrice = $("#event-price").val();
