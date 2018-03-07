@@ -33,3 +33,8 @@
 .background-light{
     background: #F5F5F6;
 }
+.log-out{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}

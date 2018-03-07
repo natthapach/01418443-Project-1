@@ -13,7 +13,6 @@
                     <b>
                         Kitty Event~~
                     </b>
-                    <button type="button" class="btn btn-danger log-out">Logout</button>
                 </div>
                 
             </div>
@@ -28,29 +27,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <!-- menu -->
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categories
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Medical</a></li>
-                              <li><a href="#">Computer</a></li>
-                              <li><a href="#">Music</a></li>
-                            </ul>
-                        </div>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="#">Check in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Buying</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Joined</a>
+                            <a class="nav-link" href="#">Create Event</a>
                         </li>
                         <li clss="nav-item">
-                            <a class="nav-link" href="#">Ticket-list</a>
-                        </li>
-                        <li clss="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="#">Log out</a>
                         </li>
                             
                         <!-- dropdown menu -->
@@ -70,52 +54,63 @@
             </nav>
     
             <!-- content start here -->
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">id</th>
-                                <th style="width:200px" scope="col">name</th>
-                                <th scope="col">date</th>
-                                <th scope="col">attendant</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td style="overflow:hidden;text-overflow:ellipsis; max-width:200px">Event 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;aaaaaaaaa</td>
-                                <td style="word-wrap:break-word">12 มิถุนายน 2561</td>
-                                <td>30/40</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Event 2</td>
-                                <td>12 มิถุนายน 2561</td>
-                                <td>30/40</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Event 3</td>
-                                <td>12 มิถุนายน 2561</td>
-                                <td>30/40</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Event 4</td>
-                                <td>12 มิถุนายน 2561</td>
-                                <td>30/40</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <form method="post" id="createEventForm">
+                <div class="form-group">
+                    <label for="event-name">Event Name:</label>
+                    <input type="text" class="form-control" id="event-name">
                 </div>
-            </div>
-    
+                <div class="form-group">
+                    <label for="event-info">Information about an event:</label>
+                    <textarea type="comment" class="form-control" rows=3 id="event-info"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="event-place">Where is event occured:</label>
+                    <textarea type="comment" class="form-control" rows=3 id="event-place"></textarea>
+                </div>
+                <!-- Dummy for Google Map -->
+                <div class="form-group">
+                    <label for="event-map">Google Map:</label>
+                    <input type="text" class="form-control" id="event-map">
+                </div>
+                <!--  -->
+                <div class="form-group">
+                    <label for="event-start-date">Start Event Date:</label>
+                    <input type="date" class="form-control" id="event-start-date">
+                </div>
+                <div class="form-group">
+                    <label for="event-end-date">End Event Date:</label>
+                    <input type="date" class="form-control" id="event-end-date">
+                </div>
+                <div class="form-group">
+                    <label for="event-price">Event Price(Baht):</label>
+                    <input type="text" class="form-control" id="event-price">
+                </div>
+                <div class="form-group">
+                    <label for="event-google-form">Google Form Link(สำหรับแบบประเมิน):</label>
+                    <input type="text" class="form-control" id="event-google-form">
+                </div>
+                <div class="form-group">
+                    <label for="event-max-attendent">Max Attendents:</label>
+                    <input type="text" class="form-control" id="event-max-attendent">
+                </div>
+                <div class="form-group">
+                    <label for="event-max-age">Max Age:</label>
+                    <input type="text" class="form-control" id="event-max-age" maxlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="event-min-age">Min Age:</label>
+                    <input type="text" class="form-control" id="event-min-age" maxlength="3">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- import my js file -->
         <!-- <script src="app.js"></script> -->
+        <script type="text/javascript" src="js/createEvent.js"></script>
+        
     </body>
     </html>
