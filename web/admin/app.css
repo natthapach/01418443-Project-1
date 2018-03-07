@@ -1,0 +1,35 @@
+.banner{
+    height: 100px;
+    font-size: 3em;
+}
+
+.primary{
+    background: #ef9a9a;
+}
+
+.primary-light{
+    background: #ffcccb;
+}
+
+.primary-dark{
+    background: #ba6b6c;
+}
+
+.secondary{
+    background: #ffcdd2;
+}
+
+.secondary-light{
+    background: #fff;
+}
+
+.secondary-dark{
+    background: #cb9ca1;
+}
+
+.background-dark{
+    background: #E1E2E1;
+}
+.background-light{
+    background: #F5F5F6;
+}
