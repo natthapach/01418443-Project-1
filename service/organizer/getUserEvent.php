@@ -1,15 +1,16 @@
 <?php
+    include("../connection.php");
     session_start();
     // fake user name
     $_SESSION["current_username"] = "organizer01";
 
     $username = $_SESSION["current_username"];
     
-    $connection = new PDO(
-        "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
-        "root",
-        ""
-    );
+    // $connection = new PDO(
+    //     "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
+    //     "root",
+    //     ""
+    // );
 
     $statement = $connection->prepare(
         'select e.*, COUNT(at.event_id) as attendants
