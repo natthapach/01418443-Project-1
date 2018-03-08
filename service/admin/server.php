@@ -83,7 +83,8 @@
     if (isset($_GET['logout'])){
         session_destroy();
         unset($_SESSION['username']);
-        header('Location: index.php');
+        header('Location: ../../web/admin/index.php');
+        
     }
 
 

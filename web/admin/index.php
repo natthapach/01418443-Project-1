@@ -1,4 +1,4 @@
-<?php include("server.php");?>
+<?php include("../../service/admin/server.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="style.css">
  
 </head>
@@ -61,7 +61,7 @@
         </div>
         
         <form method="post" action="index.php">
-                <?php include("errors.php"); ?>
+                <?php include("../../service/admin/errors.php"); ?>
     
                 <div class="input-group">
                     <label>Username</label>
