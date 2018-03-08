@@ -16,11 +16,16 @@ $(document).ready(function(e){
 
 function addEvent(event){
     tbody = $("tbody.event-list");
-    console.log(tbody.children());
     tr = tbody.append("<tr>adsa</tr>").children().last();
     tr.append("<th scope='row'>" + event.id + "</th>")
         .append("<td>" + event.name + "</td>")
         .append("<td>" + moment(event.event_start_date).format("D MMMM YYYY") + "</td>")
-        .append("<td>attendant</td>");
-    console.log(tbody.children());
+        .append("<td>" + event.attendants + "/" + event.max_attendents + "</td>");
+    tr.click(function(e){
+        onClickEvent(event.id);
+    });
+}
+
+function onClickEvent(id){
+    console.log(id);
 }

@@ -32,13 +32,14 @@
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categories
                             <span class="caret"></span></button>
                             <ul class="dropdown-menu">
+                               <li><a href="#">All event</a></li>
                               <li><a href="#">Medical</a></li>
                               <li><a href="#">Computer</a></li>
                               <li><a href="#">Music</a></li>
                             </ul>
                         </div>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Buying</a>
@@ -49,10 +50,6 @@
                         <li clss="nav-item">
                             <a class="nav-link" href="#">Ticket-list</a>
                         </li>
-                        <li clss="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
-                        </li>
-                            
    
                     </ul>
                 </div>
@@ -60,49 +57,14 @@
     
             <!-- content start here -->
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <h2>Event name</h2>
-                        <div class="card" style="width:100%; height:100%">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%;height:70%">
-                            <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">event info</p>
-                                <a href="eventDetail.html" class="btn btn-primary">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <h2>Event name</h2>
-                        <div class="card" style="width:100%; height:100% ;display:inline-block">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%;height:70%">
-                            <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">event info</p>
-                                <a href="eventDetail.html" class="btn btn-primary">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <h2>Event name</h2>
-                        <div class="card" style="width:100%; height:100%">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%;height:70%">
-                            <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">event info</p>
-                                <a href="eventDetail.html" class="btn btn-primary">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container" id="event-table">
             </div>
 
 
             
 
 
-
+<!-- 
             <div class="row">
                 <div class="col-12">
                     <table class="table table-hover">
@@ -117,7 +79,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td style="overflow:hidden;text-overflow:ellipsis; max-width:200px">Event 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;aaaaaaaaa</td>
+                                <td style="overflow:hidden;text-overflow:ellipsis; max-width:200px">Event 1</td>
                                 <td style="word-wrap:break-word">12 มิถุนายน 2561</td>
                                 <td>30/40</td>
                             </tr>
@@ -144,11 +106,11 @@
                 </div>
             </div>
     
-        </div>
+        </div> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- import my js file -->
-        <!-- <script src="app.js"></script> -->
+        <script src="js/home.js"></script>
     </body>
     </html>
