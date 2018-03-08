@@ -1,49 +1,46 @@
 <?php
+    include("../connection.php");
     session_start();
     // dummy username
-    $_SESSION["current_username"] = "organizer01";
+    $_SESSION["current_username"] = "user2";
     //
 
     $username = $_SESSION["current_username"];
-
-    // echo json_encode('ABC');
+    include("../connection.php");
 
     // if(isset($_POST["create-event-submit"])) {
-        // echo json_encode("ABC");
-        $dbuser = "root";
-        $dbpass = "";
-        $eventName = $_POST['eventName'];
-        $eventInfo = $_POST['eventInfo'];
-        $eventPlace = $_POST['eventPlace'];
-        // $eventMap = $_POST['eventMap'];
-        $eventMap = '-';
-        $eventStartDate = $_POST['eventStartDate'];
-        $eventEndDate = $_POST['eventEndDate'];
-        $eventCloseDate = $_POST['eventCloseDate'];
-        $eventPrice = $_POST['eventPrice'];
-        $eventForm = $_POST['eventForm'];
-        $eventMaxAttendent = $_POST['eventMaxAttendent'];
-        $eventMaxAge = $_POST['eventMaxAge'];
-        $eventMinAge = $_POST['eventMinAge'];
-        // echo json_encode($eventName);
-        $connection = new PDO("mysql:host=localhost;dbname=webtech1;charset=utf8mb4", $dbuser, $dbpass);
-        $connection->exec("
-            INSERT INTO event(name, information, place, map, event_start_date, event_finish_date, close_date, price, google_form, max_attendents, max_age, min_age)
-            VALUES (".
-            "'".$eventName."'".','.
-            "'".$eventInfo."'".','.
-            "'".$eventPlace."'".','.
-            "'".$eventMap."'".','.
-            "'".$eventStartDate."'".','.
-            "'".$eventEndDate."'".','.
-            "'".$eventCloseDate."'".','.
-            "'".$eventPlace."'".','.
-            "'".$eventForm."'".','.
-            "'".$eventMaxAttendent."'".','.
-            "'".$eventMaxAge."'".','.
-            "'".$eventMinAge."'"
-            .")
-        ");
+        try {
+            $dbuser = "root";
+            $dbpass = "";
+
+            // $connection = new PDO("mysql:host=localhost;dbname=webtech1", $dbuser, $dbpass);
+            // $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $eventOrgNO = "1";
+            $eventName = $_POST['eventName'];
+            $eventInfo = $_POST['eventInfo'];
+            $eventPlace = $_POST['eventPlace'];
+            $eventMap = $_POST['eventMap'];
+            $eventStartDate = $_POST['eventStartDate'];
+            $eventStartDate = date('Y-m-d H:i:s', strtotime($eventStartDate));
+            $eventEndDate = $_POST['eventEndDate'];
+            $eventEndDate = date('Y-m-d H:i:s', strtotime($eventEndDate));
+            $eventCloseDate = $_POST['eventCloseDate'];
+            $eventCloseDate = date('Y-m-d H:i:s', strtotime($eventCloseDate));
+            $eventPrice = $_POST['eventPrice'];
+            $eventForm = $_POST['eventForm'];
+            $eventMaxAttendent = $_POST['eventMaxAttendent'];
+            $eventCategoryId = 'Se';
+            $eventMaxAge = $_POST['eventMaxAge'];
+            $eventMinAge = $_POST['eventMinAge'];
+            
+            $statement = "INSERT INTO `event`(organizer_id, `name`, information, place, google_map_link, event_start_date, event_finish_date, price, close_date, google_form, max_attendents, category_id, max_age, min_age) ".
+            "VALUES('$eventOrgNO', '$eventName', '$eventInfo', '$eventPlace', '$eventMap', '$eventStartDate', '$eventEndDate', '$eventPrice', '$eventCloseDate', '$eventForm', '$eventMaxAttendent', '$eventCategoryId', '$eventMaxAge', '$eventMinAge')";
+
+            $connection->exec($statement);
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
         echo json_encode("Successful added new event.");
     // }
 ?>
