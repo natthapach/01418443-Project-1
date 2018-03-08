@@ -14,8 +14,11 @@ function onClickConfirm(event_id, attendant_id){
         },
         success:function(response){
             console.log("response", response);
-            if(response == 1){
-                
+            if(response > 0){
+                $("#paid-"+attendant_id).css("display", "none");
+                $("#confirm-"+attendant_id).css("display", "block");
+            }else{
+                console.log("confirm fail")
             }
         }
     });

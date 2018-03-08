@@ -74,12 +74,15 @@
             <?php
                 foreach($result as $attendant){
             ?>
-            <div class="card col-xs-12 col-sm-4">
-                <img class="card-image-top" 
-                    src=<?php
-                        echo '"../../service/profile/' . $attendant->profile . '"';
-                    ?>
-                    style="width:100%">
+            <div class="card col-xs-12 col-sm-4" style="margin: 10px">
+                <div style="margin: 10px">
+                    <img class="card-image-top" 
+                        src=<?php
+                            echo '"../../service/profile/' . $attendant->profile . '"';
+                        ?>
+                        style="width:100%">
+                </div>
+                
                 <div class="card-body">
                     <h4 class="card-title">
                         <?php
@@ -87,29 +90,54 @@
                         ?>
                     </h4>
                 
-                <?php
-                    if ($attendant->status_id == "P"){
-                ?>    
-                    <button 
-                        class="btn btn-primary"
-                        onclick=<?php
-                                    echo "onClickViewProof('$attendant->pay_proof_path')"; ?>>
-                        หลักฐานการโอนเงิน
-                    </button>
-                    <button class="btn btn-success"
-                        onclick=<?php
-                                    echo "onClickConfirm($event_id,$attendant->attendant_id)"; ?>
-                    >
-                        ยืนยัน
-                    </button>
-                <?php
-                    } elseif ($attendant->status_id == "C"){
-                        echo '<p>ยืนยันจ้า เย้ๆ</p>';
-                    } elseif ($attendant->status_id == "W"){
-                        echo '<p>รออีกนิดนะ อีกนิดนะ</p>';
-                    }
-                ?>
-
+                    <div>
+                        <div id=<?php 
+                                echo "paid-".$attendant->attendant_id;
+                                ?>
+                            style=<?php    
+                                        if ($attendant->status_id == "P"){
+                                            echo "display:block";
+                                        }else{
+                                            echo "display:none";
+                                        }
+                                    ?>>
+                            <button 
+                                class="btn btn-primary"
+                                onclick=<?php
+                                            echo "onClickViewProof('$attendant->pay_proof_path')"; ?>>
+                                หลักฐานการโอนเงิน
+                            </button>
+                            <button class="btn btn-success"
+                                onclick=<?php
+                                            echo "onClickConfirm($event_id,$attendant->attendant_id)"; ?>>
+                                ยืนยัน
+                            </button>
+                        </div>
+                        <div id=<?php
+                                echo "confirm-".$attendant->attendant_id;
+                                ?>
+                            style=<?php    
+                                        if ($attendant->status_id == "C"){
+                                            echo "display:block";
+                                        }else{
+                                            echo "display:none";
+                                        }
+                                    ?>>
+                            ยืนยันแล้ว
+                        </div>
+                        <div id=<?php
+                                echo "wait-".$attendant->attendant_id;
+                                ?>
+                            style=<?php    
+                                        if ($attendant->status_id == "W"){
+                                            echo "display:block";
+                                        }else{
+                                            echo "display:none";
+                                        }
+                                    ?>>
+                            รอการชำระเงิน
+                        </div>
+                    </div>
                 </div>
             </div>
             <?php
