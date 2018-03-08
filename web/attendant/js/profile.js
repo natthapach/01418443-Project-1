@@ -1,35 +1,45 @@
-var attendants;
-function showProfile(profile, order) {
-    $("#profile-table").append((`<table class="table">) <thead>
-    <tr class="table-success"> <td> `+ (profile.pictures.length > 0 ? `<img src="`+profile.pictures[0]+`" class="float-left" width="304px" height="236px">` : '')` +  </td>
+var attendant;
+var now = new Date();
+
+function showProfile(attendant) {
+    var birth = attendant.birth_date.split("-");
+    var old =parseInt(now.getFullYear()-birth[0]);
+    console.log(birth[0]);
+    console.log(old);
+    $("#profile-table").append(`<table class="table"> <thead>
+    <tr class="table-success"> <td> `+ (attendant.picture ? `<img src="../../service/profile/`+attendant.picture +`" class="float-left" width="250px" height="250px">` : '') +`  </td>
     <td style="width:100%">
-    <p><span class="bold">First name :&nbsp&nbsp</span>`+ profile.first_name+ `</p>
-    <p><span class="bold">Last name :&nbsp&nbsp</span>`+ profile.last_name+ `</p>
-    <p><span class="bold">Email :&nbsp&nbsp</span>` + profile.email + `</p>
-    <p><span class="bold">Gender :&nbsp&nbsp</span>`+ profile.gender+`</p>
-    <p><span class="bold">Age :&nbsp&nbsp</span>`+ 20 +`years old</p>
+    <button type="button" class="btn btn btn-dark" style="float : right"><a href="editProfile.html">Edit</a></button>
+    <p><span class="bold-font">First name :&nbsp&nbsp</span>`+ attendant.first_name+ `</p>
+    <p><span class="bold-font">Last name :&nbsp&nbsp</span>`+ attendant.last_name+ `</p>
+    <p><span class="bold-font">Email :&nbsp&nbsp</span>` + attendant.email + `</p>
+    <p><span class="bold-font">Gender :&nbsp&nbsp</span>`+ attendant.gender+`</p>
+    <p><span class="bold-font">Age :&nbsp&nbsp</span>`+ old +` years old</p>
 </td>
 </tr>
 </tbody>
-</table>`));
+</table>`);
+
 
 }
 function loadProfile(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            attendants = JSON.parse(this.responseText);
-            console.log(attendants);
+            console.log(this.responseText)
+            attendant = JSON.parse(this.responseText);
+            console.log(attendant);
+            showProfile(attendant);
 
-            for (i in attendants) {
-                if(attendants.id == user.id){
-                    showProfile(attendants[i], i)
-                }
+            // for (i in attendants) {
+            //     if(attendants.id == user.id){
+            //         showProfile(attendants[i], i)
+            //     }
                 
-            }
+            // }
         }
     };
-    xmlhttp.open("GET", "../../service/attendant/loadEvent.php", true);
+    xmlhttp.open("GET", "../../service/attendant/loadProfile.php", true);
     xmlhttp.send();
 }
 loadProfile();
