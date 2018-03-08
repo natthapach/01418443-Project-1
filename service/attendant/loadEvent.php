@@ -3,9 +3,13 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "webtech";
+$database = "webtech1";
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $conn = new PDO(
+        "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
+        "root",
+        ""
+    );
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
