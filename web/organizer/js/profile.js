@@ -1,0 +1,9 @@
+$(document).ready(function(e){
+    $.ajax({
+        url:"../../service/organizer/getUserProfile.php",
+        dataType:"json",
+        success:function(response){
+            console.log(response);
+        }
+    });
+});
