@@ -1,12 +1,12 @@
 var events;
 function showEvent(event, order) {
-    $("#event-table").append((order % 3 == 0 ? '<div class="row">' : '')+`
-    <div class="col-sm-4">
-    <h2>`+event.name+`</h2>
-    <div class="card" style="width:100%;">`+
+    $("#event-table").append(`
+    <div class="col-xs-12 col-sm-6">
+    
+    <div class="card event-card " style="width:100%;"> <h3>`+event.name+`</h3>`+
     (event.pictures.length > 0 ? `<img class="card-img-top" src="`+event.pictures[0]+`" alt="Card image" width="200px" height="150x">` : '') +
         `<div class="card-body">
-            <h4 class="card-title">`+event.place+`</h4>
+            <h5 class="card-title">`+event.place+`</h5>
             <p class="card-text">`+event.event_start_date+`</p>
             <a href="eventDetail.html" class="btn btn-primary">Buy ticket</a>
         </div>
@@ -20,13 +20,28 @@ function loadEvent(){
         if (this.readyState == 4 && this.status == 200) {
             events = JSON.parse(this.responseText);
             console.log(events);
-
+            
             for (i in events) {
                 showEvent(events[i], i)
             }
         }
     };
     xmlhttp.open("GET", "../../service/attendant/loadEvent.php", true);
+    xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
     xmlhttp.send();
 }
 loadEvent();
+
+// $(document).ready(function(e){
+//     $.ajax({
+//         url:"../../service/attendant/loadEvent.php",
+//         type:"get",
+//         dataType:"json",
+//         success:function(events){
+//             console.log(events)
+//             for (i in events) {
+//                 showEvent(events[i], i);
+//             }
+//         }
+//     })
+// });

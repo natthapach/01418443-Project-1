@@ -38,3 +38,16 @@
     bottom: 0px;
     right: 0px;
 }
+.edit-profile{
+    float : right;
+ 
+}
+.event-card{
+    padding: 5px 5px 5px 5px;
+    height: 250px;
+    width: 250px;
+    margin: 5px 5px 5px 5px;
+}
+.bold-font{
+    font-weight: bold;
+}
