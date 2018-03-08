@@ -60,7 +60,7 @@
             <h1>Login</h1>
         </div>
         
-        <form method="post" action="register.php">
+        <form method="post" action="index.php">
                 <?php include("errors.php"); ?>
     
                 <div class="input-group">
