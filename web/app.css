@@ -39,8 +39,9 @@
     right: 0px;
 }
 .edit-profile{
-    float : right;
- 
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 .event-card{
     padding: 5px 5px 5px 5px;
@@ -50,4 +51,12 @@
 }
 .bold-font{
     font-weight: bold;
+}
+.bold-red-font{
+    font-weight: bold;
+    color: #cc0000;
+}
+.event-detail{
+    background-color: #ffcccc;
+    
 }
