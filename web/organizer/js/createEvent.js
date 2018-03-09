@@ -31,7 +31,7 @@ $(document).ready(function (e) {
                 eventMaxAge: eventMaxAge,
                 eventMinAge: eventMinAge
             };
-            
+
             $.ajax({
                 url: '../../service/organizer/createEvent.php',
                 dataType: 'JSON',

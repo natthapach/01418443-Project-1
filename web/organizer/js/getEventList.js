@@ -14,6 +14,7 @@ $(document).ready(function () {
 });
 
 function addOption(options) {
+    console.log(options);
     select = $('#event-pre');
     select.append('<option>No Prerequisite</option>').children().last();
     options.forEach(function(item) {
