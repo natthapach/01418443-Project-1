@@ -8,13 +8,8 @@ function initMap() {
 
     var input = document.getElementById("event-map");
 
-    // map.controls[google.maps.ControlPosition.TOP_RIGHT].push(map);
-
     var autocomplete = new google.maps.places.Autocomplete(input);
-
-    // Bind the map's bounds (viewport) property to the autocomplete object,
-    // so that the autocomplete requests use the current map bounds for the
-    // bounds option in the request.
+    
     autocomplete.bindTo('bounds', map);
 
     var infowindow = new google.maps.InfoWindow();
@@ -30,15 +25,16 @@ function initMap() {
         marker.setVisible(false);
         var place = autocomplete.getPlace();
         if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
             window.alert("No details available for input: '" + place.name + "'");
             return;
         }
 
-        // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
+            let lat = place.geometry.location.lat();
+            let lng = place.geometry.location.lng();
+            // console.log(lat+" "+lng);
+            $("#event-map-geo").val(lat+" "+lng);
         } else {
             map.setCenter(place.geometry.location);
             map.setZoom(17);

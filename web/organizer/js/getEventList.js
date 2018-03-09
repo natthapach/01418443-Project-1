@@ -2,10 +2,8 @@ $(document).ready(function () {
     $.ajax({
         url: '../../service/organizer/getEventList.php',
         dataType: 'JSON',
-        success: function(response) {
-            // Get an array of Event List of currently logged-in user
-            // console.log(response);
-            addOption(response);
+        success: function(eventList) {
+            addOption(eventList);
         },
         error: function (error) {
             console.log(error);
@@ -14,7 +12,6 @@ $(document).ready(function () {
 });
 
 function addOption(options) {
-    console.log(options);
     select = $('#event-pre');
     select.append('<option>No Prerequisite</option>').children().last();
     options.forEach(function(item) {

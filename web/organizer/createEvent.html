@@ -78,13 +78,14 @@
                         <textarea type="comment" class="form-control" rows=3 id="event-info" name="event-info"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="event-place">Where does event occured:</label>
+                        <label for="event-place">Where does event occured(Indoor Location):</label>
                         <textarea type="comment" class="form-control" rows=3 id="event-place" name="event-place"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="event-map">Google Map(Location):</label>
                         <div id="map"></div>
                         <input type="text" class="form-control" id="event-map" name="event-map" placeholder="Start Search for places">
+                        <input type="hidden" class="form-control" id="event-map-geo">
                         <div id="infowindow-content">
                             <img src="" width="16" height="16" id="place-icon">
                             <span id="place-name" class="title"></span>
