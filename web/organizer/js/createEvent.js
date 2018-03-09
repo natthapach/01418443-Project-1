@@ -4,6 +4,8 @@ $(document).ready(function (e) {
             event.preventDefault();
 
             let eventName = $("#event-name").val();
+            let eventPre = $("#event-pre").val();
+            let eventCategory = $("#event-category").val();
             let eventInfo = $("#event-info").val();
             let eventPlace = $("#event-place").val();
             let eventMap = $("#event-map-geo").val();
@@ -16,10 +18,17 @@ $(document).ready(function (e) {
             let eventMaxAge = $("#event-max-age").val();
             let eventMinAge = $("#event-min-age").val();
 
-            if (eventName == "" || eventInfo == "" || eventPlace == "" || eventMap == "" || eventStartDate == "" || eventCloseDate == "" || eventPrice == "" ||
-                eventForm == "" || eventMaxAttendent == "" || eventMaxAge == "" || eventMinAge == "") {
+            if (eventName == "" || eventPre=="" || eventCategory=="" ||eventInfo == "" || eventPlace == "" || eventMap == "" || 
+                eventStartDate == "" || eventCloseDate == "" || eventPrice == "" || eventForm == "" || eventMaxAttendent == "" || 
+                eventMaxAge == "" || eventMinAge == "") {
                     alert("Please fill all the empty fields.");
             } else {
+                // If no pre event, then $eventPreId=0
+                if($eventPre=="No Prerequisite") {
+                    $eventPreId = 0;
+                } else {
+                    
+                }
                 let data = {
                     eventName: eventName,
                     eventInfo: eventInfo,

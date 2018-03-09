@@ -15,7 +15,7 @@
 
             // $connection = new PDO("mysql:host=localhost;dbname=webtech1", $dbuser, $dbpass);
             // $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+            // Insert event into table `event`
             $eventOrgNO = "1";
             $eventName = $_POST['eventName'];
             $eventInfo = $_POST['eventInfo'];
@@ -38,6 +38,10 @@
             "VALUES('$eventOrgNO', '$eventName', '$eventInfo', '$eventPlace', '$eventMap', '$eventStartDate', '$eventEndDate', '$eventPrice', '$eventCloseDate', '$eventForm', '$eventMaxAttendent', '$eventCategoryId', '$eventMaxAge', '$eventMinAge')";
 
             $connection->exec($statement);
+
+            
+
+            $statement = "INSERT INTO pre_condition_event VALUES('', '')";
         } catch(PDOException $e) {
             echo $e->getMessage();
         }

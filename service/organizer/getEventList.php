@@ -8,9 +8,6 @@
     include("../connection.php");
 
     try {
-        $dbuser = 'root';
-        $dbpass = '';
-
         $statement = $connection->prepare("SELECT id FROM organizer WHERE user_name=:username");
         $statement->execute([
             ":username"=>$username
