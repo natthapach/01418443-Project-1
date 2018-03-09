@@ -1,7 +1,5 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Service\\":"service/"
-        }
+    "require": {
+        "endroid/qrcode": "^2.3"
     }
 }
