@@ -16,13 +16,18 @@ function showEvent(event, order) {
     </div>
     `+(order % 3 == 0 ? '</div>' : ''));
 }
+
+
+
+
+
 function loadEvent(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             events = JSON.parse(this.responseText);
             console.log(events);
-            
+            showCategories(events);
             for (i in events) {
                 showEvent(events[i], i)
             }
