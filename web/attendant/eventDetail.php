@@ -65,9 +65,7 @@
         </nav>
 
         <!-- content start here -->
-        <?php echo $_GET["event"]; ?><br>
-
-
+        
 
         <?php
             session_start();
@@ -81,7 +79,7 @@
                     
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-            $sql = "Select * from event where event_id='".$_GET["event"]."'";
+            
             $stmt = $conn->prepare("Select * from event where id='".$_GET["event"]."'");
             $stmt->execute();
             $event = $stmt->fetch(PDO::FETCH_OBJ);
@@ -101,78 +99,117 @@
             if ($organizer !== false) {
                 $event->organizer = $organizer;
             }
-            var_dump($event);
-            for ($x = 0; $x < count($event->pictures); $x++) {
-                echo "<div class='mySlides w3-display-container w3-center'>
-                <img src='../../service/pictures/".$event->pictures[$x]->path."' style='width:100%'>
-            </div>";
+
+            $stmt = $conn->prepare("SELECT category.name FROM category INNER JOIN event ON category.id=event.category_id");
+            $stmt->execute();
+            $category = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($category !== false) {
+                $event->category = $category;
             }
+
+            $stmt = $conn->prepare("SELECT profile FROM account WHERE user_name='".$event->organizer->user_name."';");
+            $stmt->execute();
+            $organizer_profile = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($organizer_profile !== false) {
+                $event->organizer_profile = $organizer_profile;
+            }
+           
+            
+            var_dump($event);
+              
         ?>
-        <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-            <h2 class='w3-wide'>
-                <?php echo $event->name ?>
-            </h2>
-            <p class='w3-opacity'><i>We love music</i></p>
-            <p class='w3-justify'>We have created a fictional band website.</p>
-            <div class='w3-row w3-padding-32'>
-                <div class='w3-third'>
-                    <p>Name</p>
-                    <img src='/w3images/bandmember.jpg' class='w3-round w3-margin-bottom' alt='Random Name' style='width:60%'>
-                </div>
-                <div class='w3-third'>
-                    <p>Name</p>
-                    <img src='/w3images/bandmember.jpg' class='w3-round w3-margin-bottom' alt='Random Name' style='width:60%'>
-                </div>
-                <div class='w3-third'>
-                    <p>Name</p>
-                    <img src='/w3images/bandmember.jpg' class='w3-round' alt='Random Name' style='width:60%'>
-                </div>
-            </div>
-        </div>
-        <div class='w3-black ' id='tour'>
+
+        
+        <div class='event-detail' id='tour'>
             <div class='w3-container w3-content w3-padding-64' style='max-width:800px'>
-                <h2 class='w3-wide w3-center'>EVENT DATE</h2>
+                <h2 class='w3-wide w3-center'> <?php echo $event->name ?></h2>
                 <p class='w3-opacity w3-center'><i>Remember to book your tickets!</i></p><br>
                 <div class='w3-one w3-margin-bottom'>
-                    <img src='/w3images/paris.jpg' style='width:100%' class='w3-hover-opacity'>
+                    <?php for ($x = 0; $x < count($event->pictures); $x++) {
+                        echo "<div class='mySlides w3-display-container w3-center'>
+                        <img src='../../service/pictures/".$event->pictures[$x]->path."' style='width:100%'>
+                        </div>";
+                    }?>
                     <div class='w3-container w3-white'>
                         <p><b><?php echo $event->name ?></b></p>
-                        <p class='w3-opacity'>
-                            <?php echo $event->event_start_date ?>
-                        </p>
-                        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                        <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
+                        <p><?php echo $event->information ?></p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
                     </div>
                 </div>
             </div>
-        </div>
+                    
             <!-- Ticket Modal -->
-        <div id='ticketModal' class='w3-modal'>
-            <div class='w3-modal-content w3-animate-top w3-card-4'>
-                <header class='w3-container w3-teal w3-center w3-padding-32'>
-                    <span onclick="document.getElementById('ticketModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
-                    <h2 class='w3-wide'><i class='fa fa-suitcase w3-margin-right'></i>Tickets</h2>
-                </header>
-                <div class='w3-container'>
-                    <p><label><i class='fa fa-shopping-cart'></i> Tickets, $15 per person</label></p>
-                    <p><label><i class='fa fa-user'></i> Send To</label></p>
-                    <button class='w3-button w3-block w3-teal w3-padding-16 w3-section w3-right' id="buy-ticket" onclick="buyTicket()">PAY<i class='fa fa-check'></i></button>
-                    <button class='w3-button w3-red w3-section' onclick="document.getElementById('ticketModal').style.display='none'">Close <i class='fa fa-remove'></i></button>
+            <div id='ticketModal' class='w3-modal'>
+                <div class='w3-modal-content w3-animate-top w3-card-4'>
+                    <header class='w3-container w3-teal w3-center w3-padding-32'>
+                        <span onclick="document.getElementById('ticketModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
+                        <h2 class='w3-wide'><i class='fa fa-suitcase w3-margin-right'></i>Tickets</h2>
+                    </header>
+                    <div class='w3-container'>
+                        <p><label><i class='fa fa-shopping-cart'></i> Tickets,<?php echo $event->price ?> per person</label></p>
+                        <button class='w3-button w3-block w3-teal w3-padding-16 w3-section w3-right' id="buy-ticket" onclick="buyTicket()">Buy ticket<i class='fa fa-check'></i></button>
+                        <button class='w3-button w3-red w3-section' onclick="document.getElementById('ticketModal').style.display='none'">Close <i class='fa fa-remove'></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="resultModal" class='w3-modal'>
-            <div class='w3-modal-content w3-animate-top w3-card-4'>
-                <header class='w3-container w3-teal w3-center w3-padding-32'>
-                    <span onclick="document.getElementById('resultModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
-                    <h2 class='w3-wide'><i class='fa fa-suitcase w3-margin-right'></i>WOW</h2>
-                </header>
+            <div id="resultModal" class='w3-modal'>
+                <div class='w3-modal-content w3-animate-top w3-card-4'>
+                    <header class='w3-container w3-teal w3-center w3-padding-32'>
+                        <span onclick="document.getElementById('resultModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
+                        <h2 class='w3-wide'><i class='fa fa-suitcase w3-margin-right'></i>Confirm booking the ticket</h2>
+                    </header>
                 <div class='w3-container'>
+                    <p>You have book the ticket already!</p>
                     <button class='w3-button w3-red w3-section' onclick="document.getElementById('resultModal').style.display='none'">Close <i class='fa fa-remove'></i></button>
                 </div>
             </div>
-        
         </div>
+
+
+
+        <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+           
+            <p class='w3-justify'><span class='w3-justify bold-font'> Event's Name : </span><?php echo $event->name?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Category : </span><?php echo $event->category->name?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Starting Date : </span><?php echo $event->event_start_date?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Ending Date : </span><?php echo $event->event_finish_date?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Price : </span><?php echo $event->price?> baht</p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Number of attendants : </span><?php echo $event->max_attendents?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
+
+               
+        </div>
+        <!-- The Contact Section -->
+        <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='band'>
+            <h2 class='w3-wide w3-center'>CONTACT</h2>
+            <div class='w3-row w3-padding-32'>
+                <div class="w3-col m6 w3-padding-large w3-hide-small">
+                    <img src="../../service/profile/<?php echo $event->organizer_profile->profile ?>" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:80%;" float:"right">
+                </div>
+                
+                    <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-user' style='width:30px'></i> Organizer's Name : </span><?php echo $event->organizer->name?></p><br>
+                    <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
+                    <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
+                    <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
+                    
+
+                
+            </div>
+        </div>
+    
+    <!-- Comment -->
+        <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
+            <h2 class='w3-wide w3-center'>COMMENT</h2>
+            <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
+           
+        </div>
+        
+    </div>  
+
+        
         <script>
             // Automatic Slideshow - change image every 3 seconds
             var myIndex = 0;
@@ -230,22 +267,6 @@
 
         </script>
 
-
-
-        <!-- The Contact Section -->
-        <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
-            <h2 class='w3-wide w3-center'>CONTACT</h2>
-            <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
-            <div class='w3-row w3-padding-32'>
-                <div class='w3-col m6 w3-large w3-margin-bottom'>
-                    <i class='fa fa-map-marker' style='width:30px'></i> Chicago, US<br>
-                    <i class='fa fa-phone' style='width:30px'></i> Phone: +00 151515<br>
-                    <i class='fa fa-envelope' style='width:30px'> </i> Email: mail@mail.com<br>
-                    <i class='fa fa-facebook-official w3-hover-opacity' style='width:30px'> </i><br>
-                    <i class='fa fa-twitter w3-hover-opacity' style='width:30px'></i>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

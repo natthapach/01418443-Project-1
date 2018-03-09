@@ -3,8 +3,8 @@ function showEvent(event, order) {
     $("#event-table").append(`
     <div class="col-xs-12 col-sm-6">
     
-    <div class="card event-card " style="width:100%;"> <h3>`+event.name+`</h3>`+
-    (event.pictures.length > 0 ? `<img class="card-img-top" src="`+event.pictures[0]+`" alt="Card image" width="200px" height="150x">` : '') +
+    <div class="card event-card " style="width:100%"> <h3>`+event.name+`</h3>`+
+    //(event.pictures.length > 0 ? `<img class="card-img-top" src='../../service/pictures/`+event.pictures[0]+`'alt="Card image" width="100%" height="150px">` : '') +'>'
         `<div class="card-body">
             <h5 class="card-title">`+event.place+`</h5>
             <p class="card-text">`+event.event_start_date+`</p>

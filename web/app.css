@@ -52,3 +52,11 @@
 .bold-font{
     font-weight: bold;
 }
+.bold-red-font{
+    font-weight: bold;
+    color: #cc0000;
+}
+.event-detail{
+    background-color: #ffcccc;
+    
+}
