@@ -18,6 +18,7 @@
 
             </div>
             <nav class="row navbar navbar-expand-lg navbar-light primary">
+
                 <!-- web name -->
                 <a class="navbar-brand" href="#">Kitty</a>
                 <!-- hamberger icon menu (3 line icon, show when small screen) -->
@@ -43,7 +44,7 @@
                             <a class="nav-link" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="buying.html">Buying</a>
+                            <a class="nav-link" href="#">Buying</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="joined.html">Joined</a>
@@ -58,26 +59,50 @@
 
             <!-- content start here -->
 
-            <div class="container" >
+            <div class="container">
                 <div class="row" id="event-table">
-
                 </div>
             </div>
 
             <div class="row">
                       <table class="table"  style="text-align:center;">
+
                          <thead>
+
                            <tr>
                              <th>Event Name</th>
                              <th>Place</th>
                              <th>Date</th>
                              <th>Price</th>
-                             <!-- <th>haha</th> -->
                              <th>Purchase status</th>
                            </tr>
                          </thead>
-                         <tbody class="tbody">
 
+                         <tbody class="tbody">
+                      
+                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <form method="post" action="../../service/attendant/cancelEvent.php">
+      <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Cancel Event</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+      </div>
+      <div class="modal-body">
+        ต้องการยกเลิกการจองหรออออออ
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" name="eventid" value="<?php
+             session_start();
+            $_SESSION["eventid"] = $_GET['eventid'];?>">
+        <button type="button" class="btn btn-primary" id="confirm">Confirm</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
                 </div>
               </div>
             </div>
