@@ -1,4 +1,26 @@
 $(document).ready(function (e) {
+    let n = 0;
+
+    $("#picture-input").change(function(){
+        console.log("onFileChange")
+        previewPicture(this);
+    });
+    function previewPicture(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+  
+          reader.onload = function(e) {
+              let d = $('#pictures-display').append("<div style='display=inline-block'></div>").children().last();
+              let preview = d.append("<img class='picture-preview' height='250px'>").children().last();
+              preview.attr('src', e.target.result);
+            //   $(".btnDeleteFile").show();
+          }
+  
+          reader.readAsDataURL(input.files[0]);
+  
+        }
+      }
+
     $(function () {
         $("#createEventForm").submit(function (event) {
             event.preventDefault();
@@ -17,6 +39,16 @@ $(document).ready(function (e) {
             let eventMaxAge = $("#event-max-age").val();
             let eventMinAge = $("#event-min-age").val();
 
+            
+            let pictures = [];
+            $(".picture-preview").each(function(){
+                pictures.push($(this).attr("src"));
+            })
+
+            console.log(pictures);
+        
+            let picture = $("#preview").attr("src");
+
             let data = {
                 eventName: eventName,
                 eventInfo: eventInfo,
@@ -29,7 +61,9 @@ $(document).ready(function (e) {
                 eventForm: eventForm,
                 eventMaxAttendent: eventMaxAttendent,
                 eventMaxAge: eventMaxAge,
-                eventMinAge: eventMinAge
+                eventMinAge: eventMinAge,
+                picture: picture,
+                pictures: pictures
             };
             
             $.ajax({
@@ -38,6 +72,7 @@ $(document).ready(function (e) {
                 type: 'POST',
                 data: data,
                 success: function (response) {
+                    console.log(response);
                     alert('"' + eventName + '"' + ' event created. ' + response);
                 },
                 error: function (error) {
