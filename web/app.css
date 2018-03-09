@@ -39,8 +39,9 @@
     right: 0px;
 }
 .edit-profile{
-    float : right;
- 
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 .event-card{
     padding: 5px 5px 5px 5px;

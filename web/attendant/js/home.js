@@ -8,7 +8,9 @@ function showEvent(event, order) {
         `<div class="card-body">
             <h5 class="card-title">`+event.place+`</h5>
             <p class="card-text">`+event.event_start_date+`</p>
-            <a href="eventDetail.html" class="btn btn-primary">Buy ticket</a>
+            <form action="eventDetail.php?event=`+event.id+`" method="post">
+            <label class="btn btn-primary" for="submit-btn`+event.id+`">Buy ticket</label><input hidden type="submit" name="submit-btn`+event.id+`" id="submit-btn`+event.id+`" class="btn btn-primary">
+            </form>
         </div>
     </div>
     </div>
