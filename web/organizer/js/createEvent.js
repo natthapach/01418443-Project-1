@@ -10,7 +10,8 @@ $(document).ready(function (e) {
           var reader = new FileReader();
   
           reader.onload = function(e) {
-              let preview = $('#pictures-display').append("<img>").children().last();
+              let d = $('#pictures-display').append("<div style='display=inline-block'></div>").children().last();
+              let preview = d.append("<img class='picture-preview' height='250px'>").children().last();
               preview.attr('src', e.target.result);
             //   $(".btnDeleteFile").show();
           }
@@ -37,6 +38,15 @@ $(document).ready(function (e) {
             let eventMaxAttendent = $("#event-max-attendent").val();
             let eventMaxAge = $("#event-max-age").val();
             let eventMinAge = $("#event-min-age").val();
+
+            
+            let pictures = [];
+            $(".picture-preview").each(function(){
+                pictures.push($(this).attr("src"));
+            })
+
+            console.log(pictures);
+        
             let picture = $("#preview").attr("src");
 
             let data = {
@@ -52,7 +62,8 @@ $(document).ready(function (e) {
                 eventMaxAttendent: eventMaxAttendent,
                 eventMaxAge: eventMaxAge,
                 eventMinAge: eventMinAge,
-                picture: picture
+                picture: picture,
+                pictures: pictures
             };
             
             $.ajax({

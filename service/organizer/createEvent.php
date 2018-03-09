@@ -46,9 +46,12 @@
         // echo json_encode($_POST);
         // echo json_encode($_FILES);
         // echo json_encode("Successful added new event.");
-        $picture = $_POST["picture"];
+        // $picture = $_POST["picture"];
         $uploader = new PictureUploader("../picture/");
-        $result = $uploader->uploadByBase64($picture, "test.jpg");
+        // $result = $uploader->uploadByBase64($picture, "test.jpg");
+        for($i=0; $i<sizeof($_POST["pictures"]); $i++){
+            $result = $uploader->uploadByBase64($_POST["pictures"][$i], "test-$i.jpg");
+        }
         echo json_encode($result);
         
     // }
