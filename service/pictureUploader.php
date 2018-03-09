@@ -22,7 +22,7 @@
             $target = $this->path.$filename;
             
             if(file_put_contents($target, $data)){
-                return array("result"=>0, "resultText"=>$target);
+                return array("result"=>0, "fullPath"=>$target, "filename"=>$filename);
             }else{
                 return array("result"=>1, "resultText"=>"upload fail");
             }

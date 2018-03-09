@@ -43,14 +43,15 @@
             echo $e->getMessage();
         }
 
-        // echo json_encode($_POST);
-        // echo json_encode($_FILES);
-        // echo json_encode("Successful added new event.");
-        // $picture = $_POST["picture"];
+        $event_id = $connection->lastInsertId();
         $uploader = new PictureUploader("../picture/");
-        // $result = $uploader->uploadByBase64($picture, "test.jpg");
         for($i=0; $i<sizeof($_POST["pictures"]); $i++){
-            $result = $uploader->uploadByBase64($_POST["pictures"][$i], "test-$i.jpg");
+            $result = $uploader->uploadByBase64($_POST["pictures"][$i], "$event_id-$i.jpg");
+            if($result["result"] == 0){
+                $filename = $result["filename"];
+                $statement = "INSERT INTO `picture` (`event_id`, `picture_number`, `path`) VALUES ('$event_id', '$i', '$filename')";
+                $connection->exec($statement);
+            }
         }
         echo json_encode($result);
         
