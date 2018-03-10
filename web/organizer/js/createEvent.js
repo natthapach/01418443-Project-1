@@ -46,8 +46,8 @@ $(document).ready(function (e) {
                     alert("Please fill all the empty fields.");
             } else {
                 // If no pre event, then $eventPreId=0
-                if($eventPre=="No Prerequisite") {
-                    $eventPreId = 0;
+                if(eventPre=="No Prerequisite") {
+                    eventPreId = 0;
                 } else { }
             
                 let pictures = [];
