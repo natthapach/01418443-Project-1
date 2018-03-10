@@ -44,7 +44,7 @@
         }
 
         $event_id = $connection->lastInsertId();
-        $uploader = new PictureUploader("../picture/");
+        $uploader = new PictureUploader("../pictures/");
         for($i=0; $i<sizeof($_POST["pictures"]); $i++){
             $result = $uploader->uploadByBase64($_POST["pictures"][$i], "$event_id-$i.jpg");
             if($result["result"] == 0){
