@@ -20,8 +20,6 @@ try {
     $stmt->execute();
     $attendant = $stmt->fetch(PDO::FETCH_OBJ);
 
-   
-
     $stmt = $conn->prepare("SELECT profile FROM account WHERE user_name='".$attendant->user_name."';");
     $stmt->execute();
     $picture = $stmt->fetch(PDO::FETCH_OBJ);

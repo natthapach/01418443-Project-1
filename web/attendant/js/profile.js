@@ -42,4 +42,5 @@ function loadProfile(){
     xmlhttp.open("GET", "../../service/attendant/loadProfile.php", true);
     xmlhttp.send();
 }
+
 loadProfile();

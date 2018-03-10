@@ -26,15 +26,14 @@ try {
             $event->pictures = $pictures;
         }
     }
-    foreach ($events as $event){
-        $stmt = $conn->prepare("SELECT category.name FROM category INNER JOIN event ON category.id=event.category_id");
-        $stmt->execute();
-        $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $event->categories = array();
-        if (categories !== false) {
-            $event->categories = $categories;
-        }
+    $stmt = $conn->prepare("SELECT * FROM category");
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $events['categories'] = array();
+    if ($categories !== false) {
+        $events['categories'] = $categories;
     }
+    
     echo json_encode($events);
 }
 catch(PDOException $e) {
