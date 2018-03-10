@@ -28,18 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `account` (
   `user_name` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `role_id` varchar(2) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role_id` varchar(2) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`user_name`, `password`, `role_id`) VALUES
-('admin0', '9999', 'Ad'),
-('user1', '1234', 'A'),
-('user2', '1234', 'O');
+INSERT INTO `account` (`user_name`, `password`, `role_id`, `status`) VALUES
+('admin0', '9999', 'Ad', 'Active'),
+('user1', '1234', 'A', 'Active'),
+('user2', '1234', 'O','Active');
 
 -- --------------------------------------------------------
 

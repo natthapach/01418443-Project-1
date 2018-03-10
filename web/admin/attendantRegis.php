@@ -60,22 +60,69 @@
             <h1>Register</h1>
         </div>
         
-        <form method="post" action="register.php">
+        <form method="post" action="attendantRegis.php">
+             <?php include("../../service/admin/errors.php"); ?>
+
                 <div class="input-group">
-                    <label>Register for</label>
-                    <input type="radio" name="position" value="O" >Organizer
-                    <input type="radio" name="position" value="A" checked/>Attendant
+                    <label>Username</label>
+                    <input type="text" name="username" value="<?php echo $username; ?>">
+                </div>
+            
+            
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password_1">
+                </div>
+            
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="password_2">
                 </div>
 
                 <div class="input-group">
-                    <button type="submit" name="next" class="btn">Next</button>
+                    <label>E-mail</label>
+                    <input type="email" name="email" value="<?php echo $email; ?>">
                 </div>
 
-                <p>
-                    Already a member? <a href="index.php">Sign in</a>
-                </p>
-        </form>
-     
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" name="name"value="<?php echo $name; ?>">
+                </div>
+
+                <div class="input-group">
+                    <label>Surname</label>
+                    <input type="text" name="surname"<?php echo $username; ?> >
+                </div>
+
+                <div class="input-group">
+                    <label>Birthday</label>
+                    <input type="date" name="birth">
+                </div>
+
+                <div class="input-group">
+                    <label>Address</label>
+                    <input type="text" name="address"<?php echo $address; ?>>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone"<?php echo $phone; ?>>
+                </div>
+
+                <div class="input-group">
+                    <label>Gender</label>
+                    <input type="radio" name="gender" value="male" >Male
+                    <input type="radio" name="gender" value="A" checked/>Female
+                </div>
+
+
+
+                <div class="input-group">
+                    <button type="submit" name="registerAttendant" class="btn">Register</button>
+                </div>
+
+            </form>
+        
     </div>
 
 
