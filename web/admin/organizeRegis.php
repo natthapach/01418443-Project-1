@@ -60,22 +60,62 @@
             <h1>Register</h1>
         </div>
         
-        <form method="post" action="register.php">
+        <form method="post" action="organizeRegis.php">
+            <?php include("../../service/admin/errors.php"); ?>
+
                 <div class="input-group">
-                    <label>Register for</label>
-                    <input type="radio" name="position" value="O" >Organizer
-                    <input type="radio" name="position" value="A" checked/>Attendant
+                    <label>Username</label>
+                    <input type="text" name="username" value="<?php echo $username; ?>">
+                </div>
+            
+            
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password_1">
+                </div>
+            
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="password_2">
                 </div>
 
                 <div class="input-group">
-                    <button type="submit" name="next" class="btn">Next</button>
+                    <label>E-mail</label>
+                    <input type="email" name="email" value="<?php echo $email; ?>">
                 </div>
 
+                <div class="input-group">
+                    <label>Company's Name</label>
+                    <input type="text" name="name"value="<?php echo $name; ?>">
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone"<?php echo $phone; ?>>
+                </div>
+
+                <div class="input-group">
+                    <label>Website</label>
+                    <input type="text" name="web"<?php echo $web; ?>>
+                </div>
+
+                <div class="input-group">
+                    <label>Facebook</label>
+                    <input type="text" name="facebook"<?php echo $facebook; ?>>
+                </div>
+
+
+                <div class="input-group">
+                    <button type="submit" name="registerOrganize" class="btn">Register</button>
+                </div>
+
+
+    
                 <p>
                     Already a member? <a href="index.php">Sign in</a>
                 </p>
-        </form>
-     
+            </form>
+        
     </div>
 
 

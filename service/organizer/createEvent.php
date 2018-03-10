@@ -1,5 +1,6 @@
 <?php
     include("../connection.php");
+    include("../pictureUploader.php");
     session_start();
     // dummy username
     $_SESSION["current_username"] = "user2";
@@ -41,6 +42,18 @@
         } catch(PDOException $e) {
             echo $e->getMessage();
         }
-        echo json_encode("Successful added new event.");
+
+        $event_id = $connection->lastInsertId();
+        $uploader = new PictureUploader("../picture/");
+        for($i=0; $i<sizeof($_POST["pictures"]); $i++){
+            $result = $uploader->uploadByBase64($_POST["pictures"][$i], "$event_id-$i.jpg");
+            if($result["result"] == 0){
+                $filename = $result["filename"];
+                $statement = "INSERT INTO `picture` (`event_id`, `picture_number`, `path`) VALUES ('$event_id', '$i', '$filename')";
+                $connection->exec($statement);
+            }
+        }
+        echo json_encode($result);
+        
     // }
 ?>
