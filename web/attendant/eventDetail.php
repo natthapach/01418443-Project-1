@@ -115,7 +115,7 @@
             }
            
             
-            var_dump($event);
+            //svar_dump($event);
               
         ?>
 
@@ -127,7 +127,7 @@
                 <div class='w3-one w3-margin-bottom'>
                     <?php for ($x = 0; $x < count($event->pictures); $x++) {
                         echo "<div class='mySlides w3-display-container w3-center'>
-                        <img src='../../service/pictures/".$event->pictures[$x]->path."' style='width:100%'>
+                        <img src='../../service/pictures/".$event->pictures[$x]->path."' style='width:100% ;height:50%'>
                         </div>";
                     }?>
                     <div class='w3-container w3-white'>
@@ -168,7 +168,7 @@
 
 
 
-        <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+        <div class='event-detail-info w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
            
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's Name : </span><?php echo $event->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Category : </span><?php echo $event->category->name?></p><br>
@@ -183,7 +183,7 @@
                
         </div>
         <!-- The Contact Section -->
-        <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='band'>
+        <div class='event-detail-contact w3-container w3-content w3-padding-64' style='max-width:800px' id='band'>
             <h2 class='w3-wide w3-center'>CONTACT</h2>
             <div class='w3-row w3-padding-32'>
                 <div class="w3-col m6 w3-padding-large w3-hide-small">
