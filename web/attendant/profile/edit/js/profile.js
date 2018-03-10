@@ -7,13 +7,12 @@ function showProfile(attendant) {
     console.log(birth[0]);
     console.log(old);
     $("#profile-table").append(`<table class="table"> <thead>
-    <tr class="table-success"> <td> `+ (attendant.picture ? `<img src="../../service/profile/`+attendant.picture +`" class="float-left" width="250px" height="250px">` : '') +`  </td>
+    <tr class="table-success"> <td> `+ (attendant.picture ? `<img src="../../../../service/profile/`+attendant.picture +`" class="float-left" width="250px" height="250px">` : '') +`  </td>
     <td style="width:100%">
     <button type="button" class="btn btn btn-dark" style="float : right"><a href="editProfile.html">Edit</a></button>
     <p><span class="bold-font">First name :&nbsp&nbsp</span>`+ attendant.first_name+ `</p>
     <p><span class="bold-font">Last name :&nbsp&nbsp</span>`+ attendant.last_name+ `</p>
     <p><span class="bold-font">Email :&nbsp&nbsp</span>` + attendant.email + `</p>
-    <p><span class="bold-font">Tel :&nbsp&nbsp</span>`+ attendant.phone+ `</p>
     <p><span class="bold-font">Gender :&nbsp&nbsp</span>`+ attendant.gender+`</p>
     <p><span class="bold-font">Age :&nbsp&nbsp</span>`+ old +` years old</p>
 </td>
@@ -40,7 +39,7 @@ function loadProfile(){
             // }
         }
     };
-    xmlhttp.open("GET", "../../service/attendant/loadProfile.php", true);
+    xmlhttp.open("GET", "../../../../service/attendant/loadProfile.php", true);
     xmlhttp.send();
 }
 

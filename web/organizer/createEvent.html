@@ -6,42 +6,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../app.css">
-</head>
+    <link rel="stylesheet" href="../googleMap.css" </head>
 
-<body class="background-dark">
-    <div class="container background-light">
-        <div class="row banner primary-dark">
-            <div class="col-12">
-                <b>
-                    Kitty Event~~
-                </b>
+    <body class="background-dark">
+        <div class="container background-light">
+            <div class="row banner primary-dark">
+                <div class="col-12">
+                    <b>
+                        Kitty Event~~
+                    </b>
+                </div>
+
             </div>
+            <nav class="row navbar navbar-expand-lg navbar-light primary">
+                <!-- web name -->
+                <a class="navbar-brand" href="#">Kitty</a>
+                <!-- hamberger icon menu (3 line icon, show when small screen) -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        </div>
-        <nav class="row navbar navbar-expand-lg navbar-light primary">
-            <!-- web name -->
-            <a class="navbar-brand" href="#">Kitty</a>
-            <!-- hamberger icon menu (3 line icon, show when small screen) -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- menu -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Check in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Create Event</a>
+                        </li>
+                        <li clss="nav-item">
+                            <a class="nav-link" href="#">Log out</a>
+                        </li>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- menu -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Check in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Create Event</a>
-                    </li>
-                    <li clss="nav-item">
-                        <a class="nav-link" href="#">Log out</a>
-                    </li>
-
-                    <!-- dropdown menu -->
-                    <!-- <li class="nav-item dropdown">
+                        <!-- dropdown menu -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropdown
                             </a>
@@ -52,95 +52,106 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li> -->
-                </ul>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- content start here -->
+            <div>
+                <hr>
+                <h3>New Event Creation</h3>
+                <hr>
             </div>
-        </nav>
-
-        <!-- content start here -->
-        <div>
-            <hr>
-            <h3>New Event Creation</h3>
-            <hr>
-        </div>
-        <div id="form-body">
-            <form method="post" id="createEventForm">
-                <div class="form-group">
-                    <label for="event-name">Event Name:</label>
-                    <input type="text" class="form-control" id="event-name" name="event-name">
-                </div>
-                <div class="form-group">
-                    <label for="event-pre">Event Prerequisite:</label>
-                    <select class="form-control" id="event-pre">
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="event-info">Information about an event:</label>
-                    <textarea type="comment" class="form-control" rows=3 id="event-info" name="event-info"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="event-place">Where does event occured:</label>
-                    <textarea type="comment" class="form-control" rows=3 id="event-place" name="event-place"></textarea>
-                </div>
-                <!-- Dummy for Google Map -->
-                <div class="form-group">
-                    <label for="event-map">Google Map:</label>
-                    <input type="text" class="form-control" id="event-map" name="event-map">
-                </div>
-                <!--  -->
-                <div class="form-group">
-                    <label for="event-start-date">Start Event Date:</label>
-                    <input type="datetime-local" class="form-control" id="event-start-date" name="event-start-date">
-                </div>
-                <div class="form-group">
-                    <label for="event-end-date">End Event Date:</label>
-                    <input type="datetime-local" class="form-control" id="event-end-date" name="event-end-date">
-                </div>
-                <div class="form-group">
-                    <label for="event-close-date">Event Register Close Date:</label>
-                    <input type="datetime-local" class="form-control" id="event-close-date" name="event-close-date">
-                </div>
-                <div class="form-group">
-                    <label for="event-price">Event Price(Baht):</label>
-                    <input type="number" class="form-control" id="event-price" name="event-price">
-                </div>
-                <div class="form-group">
-                    <label for="event-google-form">Google Form Link(สำหรับแบบประเมิน):</label>
-                    <input type="text" class="form-control" id="event-google-form" name="event-google-form">
-                </div>
-                <div class="form-group">
-                    <label for="event-max-attendent">Max Attendents:</label>
-                    <input type="number" class="form-control" id="event-max-attendent" name="event-max-attendent">
-                </div>
-                <div class="form-group">
-                    <label for="event-max-age">Max Age:</label>
-                    <input type="number" class="form-control" id="event-max-age" maxlength="3" name="event-max-age">
-                </div>
-                <div class="form-group">
-                    <label for="event-min-age">Min Age:</label>
-                    <input type="number" class="form-control" id="event-min-age" maxlength="3" name="event-min-age">
-                </div>
-                <div id="pictures-input" class="form-group">
-                    <div class="col-12" id="pictures-display" style="overflow-x:scroll;max-height:300px;white-space:nowrap;">
-                        
+            <div id="form-body">
+                <form method="post" id="createEventForm">
+                    <div class="form-group">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" class="form-control" id="event-name" name="event-name">
                     </div>
-                    <input id="picture-input" type="file" accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-default" id="create-event-submit" name="create-event-submit">Submit</button>
-                
-            </form>
+                    <div class="form-group">
+                        <label for="event-pre">Event Prerequisite:</label>
+                        <select class="form-control" id="event-pre"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-category">Event Category:</label>
+                        <select class="form-control" id="event-category"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-info">Information about an event:</label>
+                        <textarea type="comment" class="form-control" rows=3 id="event-info" name="event-info"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-place">Where does event occured(Indoor Location):</label>
+                        <textarea type="comment" class="form-control" rows=3 id="event-place" name="event-place"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-map">Google Map(Location):</label>
+                        <div id="map"></div>
+                        <input type="text" class="form-control" id="event-map" name="event-map" placeholder="Start Search for places">
+                        <input type="hidden" class="form-control" id="event-map-geo">
+                        <div id="infowindow-content">
+                            <img src="" width="16" height="16" id="place-icon">
+                            <span id="place-name" class="title"></span>
+                            <br>
+                            <span id="place-address"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-start-date">Start Event Date:</label>
+                        <input type="datetime-local" class="form-control" id="event-start-date" name="event-start-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-end-date">End Event Date:</label>
+                        <input type="datetime-local" class="form-control" id="event-end-date" name="event-end-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-close-date">Event Register Close Date:</label>
+                        <input type="datetime-local" class="form-control" id="event-close-date" name="event-close-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-price">Event Price(Baht):</label>
+                        <input type="number" class="form-control" id="event-price" name="event-price">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-google-form">Google Form Link(สำหรับแบบประเมิน):</label>
+                        <input type="text" class="form-control" id="event-google-form" name="event-google-form">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-max-attendent">Max Attendents:</label>
+                        <input type="number" class="form-control" id="event-max-attendent" name="event-max-attendent">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-max-age">Max Age:</label>
+                        <input type="number" class="form-control" id="event-max-age" maxlength="3" name="event-max-age">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-min-age">Min Age:</label>
+                        <input type="number" class="form-control" id="event-min-age" maxlength="3" name="event-min-age">
+                    </div>
+                    <div id="pictures-input" class="form-group">
+                        <div class="col-12" id="pictures-display" style="overflow-x:scroll;max-height:300px;white-space:nowrap;">
+                            
+                        </div>
+                        <input id="picture-input" type="file" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="create-event-submit" name="create-event-submit">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <!-- import my js file -->
-    <!-- <script src="app.js"></script> -->
-    <script type="text/javascript" src="js/createEvent.js"></script>
-    <script type="text/javascript" src="js/getEventList.js"></script>
-
-</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <!-- import my js file -->
+        <!-- <script src="app.js"></script> -->
+        <script type="text/javascript" src="js/enterButtonEvent.js"></script>
+        <script type="text/javascript" src="js/createEvent.js"></script>
+        <script type="text/javascript" src="js/getEventList.js"></script>
+        <script type="text/javascript" src="js/getEventCategory.js"></script>
+        <script type="text/javascript" src="js/autoComplete.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfdc8WProuGLQ9XDI3FarNXrmxB3ARjA&libraries=places&callback=initMap"></script>
+    </body>
 
 </html>

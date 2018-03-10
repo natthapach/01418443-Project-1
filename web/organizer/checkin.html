@@ -1,0 +1,181 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="../app.css">
+
+        <style>
+            .qrPreviewVideo{
+                height: 100%;
+                width: 100%;
+            }
+            /* snackbar: alert sending msg*/
+            /* The snackbar - position it at the bottom and in the middle of the screen */
+            #snackbar {
+                visibility: hidden; /* Hidden by default. Visible on click */
+                min-width: 250px; /* Set a default minimum width */
+                margin-left: -125px; /* Divide value of min-width by 2 */
+                background-color: #333; /* Black background color */
+                color: black; /* text color */
+                text-align: center; /* Centered text */
+                border-radius: 2px; /* Rounded borders */
+                padding: 16px; /* Padding */
+                position: fixed; /* Sit on top of the screen */
+                z-index: 1; /* Add a z-index if needed */
+                left: 50%; /* Center the snackbar */
+                bottom: 50%; /* 30px from the bottom */
+            }
+
+            /* Show the snackbar when clicking on a button (class added with JavaScript) */
+            #snackbar.show {
+                visibility: visible; /* Show the snackbar */
+
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+            However, delay the fade out process for 2.5 seconds */
+                -webkit-animation: fadein 0.5s, fadeout 0.5s 0.5s;
+                animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            }
+
+            /* Animations to fade the snackbar in and out */
+            @-webkit-keyframes fadein {
+                from {opacity: 0;} 
+                to {opacity: 1;}
+            }
+
+            @keyframes fadein {
+                from {opacity: 0;}
+                to {opacity: 1;}
+            }
+
+            @-webkit-keyframes fadeout {
+                from {opacity: 1;} 
+                to {opacity: 0;}
+            }
+
+            @keyframes fadeout {
+                from {opacity: 1;}
+                to {opacity: 0;}
+            }
+        </style>
+    </head>
+    <body class="background-dark">
+        <div class="container background-light" style="padding-bottom: 15px">
+            <div class="row banner primary-dark">
+                <div class="col-12">
+                    <b>
+                        Kitty Event~~
+                    </b>
+                    <button type="button" class="btn btn-danger log-out">Logout</button>
+                </div>
+                
+            </div>
+            <nav class="row navbar navbar-expand-lg navbar-light primary">
+                <!-- web name -->
+                <a class="navbar-brand" href="#">Kitty</a>
+                <!-- hamberger icon menu (3 line icon, show when small screen) -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- menu -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <!-- dropdown menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+    
+            <!-- content start here -->
+            
+            <div class="row">
+                <div class="col-12">
+                    <div style="height: 300px;margin:auto" id="scanner" >
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col-xs-0 col-sm-3 col-lg-4">
+                    &nbsp;
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                
+                    <div class="input-group mb-3">
+                        <input type="text" name="code" id="code-input" class="form-control" placeholder="or fill your code : xx-xx">
+                        <div class="input-group-append">
+                            <button onClick="onClickCheckIn()" class="input-group-text">Check in</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-0 col-sm-3 col-lg-4">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-0 col-sm-3">
+                    &nbsp;
+                </div>
+                <div class="col-xs-0 col-sm-6 border">
+                    <div class="row" style="padding:10px">
+                        <div class="col-xs-12 col-sm-2">
+                            <img width="100%" id="attendant-profile">
+                        </div>
+                        <div class="col-xs-12 col-sm-10">
+                            <h3 id="attendant-name"></h3>
+                            <h4 id="event-name"></h4>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-0 col-sm-3">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div id="snackbar"></div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/qrscanner/jsqrscanner.nocache.js"></script>
+        <!-- import my js file -->
+        <script src="js/checkin.js"></script>
+        <script type="text/javascript">
+          
+            //this function will be called when JsQRScanner is ready to use
+            function JsQRScannerReady()
+            {
+                //create a new scanner passing to it a callback function that will be invoked when
+                //the scanner succesfully scan a QR code
+                var jbScanner = new JsQRScanner(onQRCodeScanned);
+                //reduce the size of analyzed images to increase performance on mobile devices
+                jbScanner.setSnapImageMaxSize(300);
+                var scannerParentElement = document.getElementById("scanner");
+                if(scannerParentElement)
+                {
+                    //append the jbScanner to an existing DOM element
+                    jbScanner.appendTo(scannerParentElement);
+                }        
+            }
+          </script>
+    </body>
+    </html>
