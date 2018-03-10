@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css?family=Itim|Oswald');
 .banner{
     height: 100px;
     font-size: 3em;
@@ -62,7 +64,23 @@
 }
 .event-detail-info{
     background-color: #ccffcc;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Itim', cursive;
+    font-size: 20px;
+    
 }
 .event-detail-contact{
     background-color: #ccccff;
+}
+.btn-save{
+    background-color: #ff99ff;
+    border-radius: 10px;
+    margin-top: 7px; 
+    margin-right: 20px;
+    
+}
+.btn-cancel{
+    background-color: #b3ccff;
+    border-radius: 10px; 
+    
 }
