@@ -26,7 +26,14 @@ try {
             $event->pictures = $pictures;
         }
     }
-
+    $stmt = $conn->prepare("SELECT * FROM category");
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $events['categories'] = array();
+    if ($categories !== false) {
+        $events['categories'] = $categories;
+    }
+    
     echo json_encode($events);
 }
 catch(PDOException $e) {

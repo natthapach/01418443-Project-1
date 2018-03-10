@@ -13,6 +13,7 @@ function showProfile(attendant) {
     <p><span class="bold-font">First name :&nbsp&nbsp</span>`+ attendant.first_name+ `</p>
     <p><span class="bold-font">Last name :&nbsp&nbsp</span>`+ attendant.last_name+ `</p>
     <p><span class="bold-font">Email :&nbsp&nbsp</span>` + attendant.email + `</p>
+    <p><span class="bold-font">Tel :&nbsp&nbsp</span>`+ attendant.phone+ `</p>
     <p><span class="bold-font">Gender :&nbsp&nbsp</span>`+ attendant.gender+`</p>
     <p><span class="bold-font">Age :&nbsp&nbsp</span>`+ old +` years old</p>
 </td>
@@ -42,4 +43,5 @@ function loadProfile(){
     xmlhttp.open("GET", "../../service/attendant/loadProfile.php", true);
     xmlhttp.send();
 }
+
 loadProfile();

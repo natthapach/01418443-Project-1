@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="style.css">
  
 </head>
@@ -61,46 +61,21 @@
         </div>
         
         <form method="post" action="register.php">
-                <?php include("../../service/admin/errors.php"); ?>
-    
-                <div class="input-group">
-                    <label>Username</label>
-                    <input type="text" name="username" value="<?php echo $username; ?>">
-                </div>
-            
-            <!-- <div class="input-group">
-                <label>E-mail</label>
-                <input type="text" name="email">
-            </div> -->
-            
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="text" name="password_1">
-                </div>
-            
-                <div class="input-group">
-                    <label>Confirm Password</label>
-                    <input type="text" name="password_2">
-                </div>
-    
                 <div class="input-group">
                     <label>Register for</label>
-                    <input type="radio" name="for" value="O" >Organizer
-                    <input type="radio" name="for" value="A" checked/>Attendant
+                    <input type="radio" name="position" value="O" >Organizer
+                    <input type="radio" name="position" value="A" checked/>Attendant
                 </div>
-
 
                 <div class="input-group">
-                    <button type="submit" name="register" class="btn">Register</button>
+                    <button type="submit" name="next" class="btn">Next</button>
                 </div>
 
-
-    
                 <p>
                     Already a member? <a href="index.php">Sign in</a>
                 </p>
-            </form>
-        
+        </form>
+     
     </div>
 
 
