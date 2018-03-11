@@ -1,5 +1,5 @@
 <?php
-include("loadEventID.php");
+include("loadAttendID.php");
     $stmt = $connection->prepare("SELECT * FROM `event`
 			JOIN attendences
 			on event.id=attendences.event_id

@@ -9,7 +9,6 @@ $.ajax({
 function createTable(res){
 $str = '';
 $eventid = '';
-// echo $eventid;
 console.log($eventid);
 for (i = 0; i<res.length;i++){
   $dateandtime = res[i]['event_start_date'].split(" ");
@@ -20,8 +19,6 @@ for (i = 0; i<res.length;i++){
     $status='ยังไม่ชำระเงิน<br><button type="button" class="btn btn-primary"onclick="MonetTransfer('+
     res[i]["id"]+')">แจ้งโอนเงิน</button> <button type="button" class="btn btn-danger" class="control" id="cancelEvent"'+
     ' onclick="CancelEvent('+res[i]["id"]+')">Cancel </button> ';
-    // <button type="button" class="btn btn-danger" onclick="CancelEvent('+
-    // res[i]["id"]+')" >Cancel</button>';
   }else if (res[i]['status_id']=='P'){
     $status='รอดำเนินการ';
   }else if (res[i]['status_id']=='C'){
