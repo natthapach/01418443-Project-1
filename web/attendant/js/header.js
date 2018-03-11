@@ -22,18 +22,28 @@ function loadEvent(){
     xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
     xmlhttp.send();
 }
-loadEvent();
+console.log($('.search-content').children())
+$('.search-bar').on('click', function () {
+    $('.search-bar').addClass('open');
+    $('.search-content').addClass('show');
+});
+$('body').on('click', function (e) {
+    let search_bar = document.getElementById('search-bar')
+    let search_content = document.getElementById('search-content')
+    if (e.target != $('input') && !jQuery.contains(search_content, e.target) && e.target != search_content) {
+        $('.search-bar').removeClass('open');
+        $('.search-content').removeClass('show');
+    }
+});
+console.log($('#search-submit'))
+$('#search-submit').on('click', function() {
+    let keyword = $('#search-keyword').val();
+    let location = $('#search-location').val();
+    let organizer = $('#search-organizer').val();
+    let from = $('#search-from').val();
+    let to = $('#search-to').val();
+    console.log(location, organizer, from, to)
+    window.location.href = "home.html?key="+keyword+"&loc="+location+"&org="+organizer+"&from="+from+"&to="+to;
+})
 
-// $(document).ready(function(e){
-//     $.ajax({
-//         url:"../../service/attendant/loadEvent.php",
-//         type:"get",
-//         dataType:"json",
-//         success:function(events){
-//             console.log(events)
-//             for (i in events) {
-//                 showEvent(events[i], i);
-//             }
-//         }
-//     })
-// });
+loadEvent();

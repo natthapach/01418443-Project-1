@@ -15,11 +15,59 @@
 
 <body class="background-dark">
     <div class="container background-light">
-        <div id="header">
+        <div class="row banner primary-dark">
+            <div class="col-12">
+                <b>
+                            Kitty Event~~
+                        </b>
+                <button type="button" class="btn btn-danger log-out">Logout</button>
+            </div>
 
         </div>
+        <nav class="row navbar navbar-expand-lg navbar-light primary">
+            <!-- web name -->
+            <a class="navbar-brand" href="#">Kitty</a>
+            <!-- hamberger icon menu (3 line icon, show when small screen) -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <!-- menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                                Category
+                                </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="home.html">All event</a>
+                            <a class="dropdown-item" href="#">Medical</a>
+                            <a class="dropdown-item" href="#">Computer</a>
+                            <a class="dropdown-item" href="#">Music</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buying</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Joined</a>
+                    </li>
+                    <li clss="nav-item">
+                        <a class="nav-link" href="#">Ticket-list</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
         <!-- content start here -->
         
+
         <?php
             session_start();
             $_SESSION["current_user"] = "user2";
@@ -86,7 +134,7 @@
                     <div class='w3-container w3-white'>
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
-                        <p><?php echo $event->place ?></p>
+                        <p><?php echo $event->information ?></p>
                         <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
                     </div>
                 </div>
@@ -132,7 +180,30 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
-
+            
+            <div id="map" style="width:100%;height:400px"></div>
+            <?php
+                $lat = split(" ", $event->google_map_link)[0];
+                $lng = split(" ", $event->google_map_link)[1];
+                // echo "lat".$lat;
+                // echo "lng".$lng;
+            ?>
+            <script>
+            function initMap() {
+                var position = {lat: <?php echo $lat;?>, lng: <?php echo $lng;?>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                                                zoom: 15,
+                                                center: position
+                                            });
+                var marker = new google.maps.Marker({
+                                                        position: position,
+                                                        map: map
+                                                    });
+            }
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfdc8WProuGLQ9XDI3FarNXrmxB3ARjA&callback=initMap">
+            </script>
                
         </div>
         <!-- The Contact Section -->
@@ -161,7 +232,6 @@
         </div>
         <?php
             include("comment.php");
-
         ?>
     </div>  
 
@@ -229,17 +299,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <!-- import my js file -->
-    <script src="js/home.js"></script>
+    <script src="js/eventDetail.js"></script>
     <script src="js/comment.js"></script>
     <script>
         <?php
             echo "start('" . $event_id . "')";
         ?>
-    </script>
-       <script>
-        $(function () {
-            $("#header").load("header.html");
-        });
     </script>
 </body>
 </html>
