@@ -213,20 +213,22 @@
                 <div class="w3-col m6 w3-padding-large w3-hide-small">
                     <img src="../../service/profile/<?php echo $event->organizer_profile->profile ?>" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:80%;" float:"right">
                 </div>
-                
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-user' style='width:30px'></i> Organizer's Name : </span><?php echo $event->organizer->name?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
                     
-
-                
             </div>
         </div>
     <!-- Attendant -->
     <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
             <h2>Attendants</h2>
-            <button class="btn" id="attendants-btn">VIEW ATTENDANTS</button>
+            <a href=<?php echo '"event-attendants.php?event_id='.$_GET['event'].'"';?>>
+                <button class="btn" ้ id="attendants-btn">
+                    VIEW ATTENDANTS
+                </button>
+            </a>
+            
     </div>
 
     <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
