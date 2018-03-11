@@ -10,11 +10,11 @@ function showEvent(event, order) {
     var from = ($_GET['from'] == '' || $_GET['from'] == undefined ? '' : sqldate2jsdate($_GET['from']))
     var to = ($_GET['to'] == '' || $_GET['to'] == undefined ? '' : sqldate2jsdate($_GET['to']))
     let date = sqldate2jsdate(event.event_start_date)
-
+    // console.log(event.place.includes(loc));
     if ((category=='' || category==event.category_id || category == undefined) &&
     (key == undefined || key=='' || event.name.includes(key)) &&
     (org == undefined || org=='' || event.organizer.includes(org)) &&
-    // (loc == undefined || loc=='' || event.name.includes(loc)) &&
+    (loc == undefined || loc=='' || event.place.includes(loc)) &&
     (compare_date3(from, to, date))
     ) {
         isEventNotFound = true;
@@ -64,13 +64,11 @@ function loadEvent(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
             events = JSON.parse(this.responseText);
             isEventNotFound = false; 
             for (i in events) {
                 showEvent(events[i], i)
             }
-            console.log(isEventNotFound)
             if (!isEventNotFound) {
                 $("#event-table").append("<h3 style='margin-bottom: 50px'>--Event not found.--</h3>   ");
             }

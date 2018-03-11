@@ -86,7 +86,7 @@
                     <div class='w3-container w3-white'>
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
-                        <p><?php echo $event->information ?></p>
+                        <p><?php echo $event->place ?></p>
                         <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
                     </div>
                 </div>
