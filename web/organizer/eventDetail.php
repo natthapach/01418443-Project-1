@@ -66,7 +66,7 @@
         </nav>
 
         <!-- content start here -->
-        
+
 
         <?php
             session_start();
@@ -77,15 +77,14 @@
                 "root",
                 ""
             );
-                    
+
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-            
+
+
             $stmt = $conn->prepare("Select * from event where id='".$_GET["event"]."'");
             $stmt->execute();
             $event = $stmt->fetch(PDO::FETCH_OBJ);
 
-    
             $stmt = $conn->prepare("SELECT path FROM picture WHERE event_id=".$event->id);
             $stmt->execute();
             $pictures = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -93,34 +92,31 @@
             if ($pictures !== false) {
                 $event->pictures = $pictures;
             }
-
             $stmt = $conn->prepare("SELECT * FROM organizer WHERE id=".$event->organizer_id);
             $stmt->execute();
             $organizer = $stmt->fetch(PDO::FETCH_OBJ);
             if ($organizer !== false) {
                 $event->organizer = $organizer;
             }
-
             $stmt = $conn->prepare("SELECT category.name FROM category INNER JOIN event ON category.id=event.category_id");
             $stmt->execute();
             $category = $stmt->fetch(PDO::FETCH_OBJ);
             if ($category !== false) {
                 $event->category = $category;
             }
-
             $stmt = $conn->prepare("SELECT profile FROM account WHERE user_name='".$event->organizer->user_name."';");
             $stmt->execute();
             $organizer_profile = $stmt->fetch(PDO::FETCH_OBJ);
             if ($organizer_profile !== false) {
                 $event->organizer_profile = $organizer_profile;
             }
-           
-            
+
+
             //svar_dump($event);
-              
+
         ?>
 
-        
+
         <div class='event-detail' id='tour'>
             <div class='w3-container w3-content w3-padding-64' style='max-width:800px'>
                 <h2 class='w3-wide w3-center'> <?php echo $event->name ?></h2>
@@ -135,11 +131,11 @@
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->information ?></p>
-                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
+                        <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button> -->
                     </div>
                 </div>
             </div>
-                    
+
             <!-- Ticket Modal -->
             <div id='ticketModal' class='w3-modal'>
                 <div class='w3-modal-content w3-animate-top w3-card-4'>
@@ -170,7 +166,7 @@
 
 
         <div class='event-detail-info w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-           
+
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's Name : </span><?php echo $event->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Category : </span><?php echo $event->category->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Starting Date : </span><?php echo $event->event_start_date?></p><br>
@@ -180,7 +176,7 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
-            
+
             <div id="map" style="width:100%;height:400px"></div>
             <?php
                 $lat = split(" ", $event->google_map_link)[0];
@@ -204,7 +200,7 @@
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfdc8WProuGLQ9XDI3FarNXrmxB3ARjA&callback=initMap">
             </script>
-               
+
         </div>
         <!-- The Contact Section -->
         <div class='event-detail-contact w3-container w3-content w3-padding-64' style='max-width:800px' id='band'>
@@ -213,29 +209,40 @@
                 <div class="w3-col m6 w3-padding-large w3-hide-small">
                     <img src="../../service/profile/<?php echo $event->organizer_profile->profile ?>" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:80%;" float:"right">
                 </div>
-                
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-user' style='width:30px'></i> Organizer's Name : </span><?php echo $event->organizer->name?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
-                    
 
-                
             </div>
         </div>
-    
+    <!-- Attendant -->
+    <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
+            <h2>Attendants</h2>
+            <a href=<?php echo '"event-attendants.php?event_id='.$_GET['event'].'"';?>>
+                <button class="btn" ้ id="attendants-btn">
+                    VIEW ATTENDANTS
+                </button>
+            </a>
+
+    </div>
+
+    <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
+            <h2>Google Form</h2>
+            <button class="btn" id="google-form-btn">SEND GOOGLE FORM</button>
+    </div>
     <!-- Comment -->
         <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
             <h2 class='w3-wide w3-center'>COMMENT</h2>
             <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
-                    
+
         </div>
         <?php
             include("comment.php");
         ?>
-    </div>  
+    </div>
 
-        
+
         <script>
             // Automatic Slideshow - change image every 3 seconds
             var myIndex = 0;
@@ -251,7 +258,6 @@
                 x[myIndex - 1].style.display = 'block';
                 setTimeout(carousel, 3000);
             }
-
             // Used to toggle the menu on small screens when clicking on the menu button
             function myFunction() {
                 var x = document.getElementById('navDemo');
@@ -261,7 +267,6 @@
                     x.className = x.className.replace(' w3-show', '');
                 }
             }
-
             // When the user clicks anywhere outside of the modal, close it
             var modal = document.getElementById('ticketModal');
             var resultModal = document.getElementById('resultModal');
@@ -270,10 +275,10 @@
                     modal.style.display = 'none';
                 } else if (event.target == resultModal) {
                     resultModal.style.display = 'none';
-                
+
                 }
             }
-            
+
             function buyTicket() {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
@@ -288,7 +293,6 @@
                 // xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
                 xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
             }
- 
 
         </script>
 
