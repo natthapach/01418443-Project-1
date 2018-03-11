@@ -13,7 +13,8 @@ function onQRCodeScanned(scannedText)
 function onClickCheckIn(){
     if(scanFlag==1){
         let code = $("#code-input").val();
-        checkin(code);
+        if(code != "")
+            checkin(code);
     }
     
 }
@@ -23,9 +24,11 @@ function checkin(code){
     if(token.length!=2){
         alertCodeError();
     }
+    console.log("check in..");
     $.ajax({
         url:"../../service/organizer/checkin.php",
         type:"post",
+        dataType:"json",
         data:{
             attendant_id:token[0],
             event_id:token[1]
@@ -42,6 +45,10 @@ function checkin(code){
             }else{
                 snackbar.text("Check in Complete");
                 snackbar.css("background-color", "#8E9BFF");
+
+                $("#attendant-name").text(response.attendant_fn + " " + response.attendant_ln)
+                $("#event-name").text(response.attendant_fn + " " + response.event_name);
+                $("#attendant-profile").attr("src", "../../service/profile/" + response.profile);
             }
             
             snackbar.addClass("show");
@@ -49,6 +56,7 @@ function checkin(code){
                 snackbar.removeClass("show");
                 scanFlag = 1;
             }, 1500);
+            
         }
     })
 }
