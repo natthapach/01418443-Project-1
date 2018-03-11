@@ -29,7 +29,7 @@ try {
         $stmt = $conn->prepare("SELECT name FROM organizer WHERE id=".$event->organizer_id); 
         $stmt->execute();
         $organizer = $stmt->fetch(PDO::FETCH_OBJ);
-        $event->organizer = $organizer;
+        $event->organizer = $organizer->name;
     }
     echo json_encode($events);
 }

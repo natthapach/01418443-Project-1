@@ -7,8 +7,8 @@ function showEvent(event, order) {
     let key = $_GET['key']
     let loc = $_GET['loc']
     let org = $_GET['org']
-    var from = ($_GET['from'] == '' ? '' : sqldate2jsdate($_GET['from']))
-    var to = ($_GET['to'] == '' ? '' : sqldate2jsdate($_GET['to']))
+    var from = ($_GET['from'] == '' || $_GET['from'] == undefined ? '' : sqldate2jsdate($_GET['from']))
+    var to = ($_GET['to'] == '' || $_GET['to'] == undefined ? '' : sqldate2jsdate($_GET['to']))
     let date = sqldate2jsdate(event.event_start_date)
 
     if ((category=='' || category==event.category_id || category == undefined) &&
