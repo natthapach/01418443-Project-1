@@ -2,10 +2,8 @@ $(document).ready(function () {
     $.ajax({
         url: '../../service/organizer/getEventList.php',
         dataType: 'JSON',
-        success: function(response) {
-            // Get an array of Event List of currently logged-in user
-            // console.log(response);
-            addOption(response);
+        success: function(eventList) {
+            addOption(eventList);
         },
         error: function (error) {
             console.log(error);
