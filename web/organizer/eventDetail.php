@@ -15,53 +15,49 @@
 
 <body class="background-dark">
     <div class="container background-light">
-        <div class="row banner primary-dark">
-            <div class="col-12">
-                <b>
-                            Kitty Event~~
-                        </b>
-                <button type="button" class="btn btn-danger log-out">Logout</button>
-            </div>
-
+        <div class="banner">
+    
         </div>
         <nav class="row navbar navbar-expand-lg navbar-light primary">
             <!-- web name -->
-            <a class="navbar-brand" href="#">Kitty</a>
+            <a class="navbar-brand" href="home.html">Event Push</a>
             <!-- hamberger icon menu (3 line icon, show when small screen) -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <!-- menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                                Category
-                                </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="home.html">All event</a>
-                            <a class="dropdown-item" href="#">Medical</a>
-                            <a class="dropdown-item" href="#">Computer</a>
-                            <a class="dropdown-item" href="#">Music</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="checkin.html">Check in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile.html">Profile</a>
+                        <a class="nav-link" href="createEvent.html">Create Event</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Buying</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Joined</a>
-                    </li>
-                    <li clss="nav-item">
-                        <a class="nav-link" href="#">Ticket-list</a>
-                    </li>
+                    <!-- <li clss="nav-item">
+                        <a class="nav-link" href="#">Log out</a>
+                    </li> -->
 
+                    <!-- dropdown menu -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li> -->
                 </ul>
+                <div class="nav-item">
+                <a style="color:black" class="nav-link" href="profile.html">Profile</a>
+                </div>
+                
+                <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
             </div>
         </nav>
 
@@ -214,11 +210,6 @@
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> 8bab1851c4141a7dd1fc26c939eef9664cd9cb6f
             </div>
         </div>
     <!-- Attendant -->
@@ -229,11 +220,7 @@
                     VIEW ATTENDANTS
                 </button>
             </a>
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 8bab1851c4141a7dd1fc26c939eef9664cd9cb6f
     </div>
 
     <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
