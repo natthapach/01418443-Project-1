@@ -135,7 +135,7 @@
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->information ?></p>
-                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
+                        <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button> -->
                     </div>
                 </div>
             </div>
@@ -223,7 +223,16 @@
                 
             </div>
         </div>
-    
+    <!-- Attendant -->
+    <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
+            <h2>Attendants</h2>
+            <button class="btn" id="attendants-btn">VIEW ATTENDANTS</button>
+    </div>
+
+    <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
+            <h2>Google Form</h2>
+            <button class="btn" id="google-form-btn">SEND GOOGLE FORM</button>
+    </div>
     <!-- Comment -->
         <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
             <h2 class='w3-wide w3-center'>COMMENT</h2>
