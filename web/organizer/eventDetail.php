@@ -183,8 +183,9 @@
             
             <div id="map" style="width:100%;height:400px"></div>
             <?php
-                $lat = split(" ", $event->google_map_link)[0];
-                $lng = split(" ", $event->google_map_link)[1];
+                // echo $event->google_map_link;
+                $lat = preg_split("/ /", $event->google_map_link)[0];
+                $lng = preg_split("/ /", $event->google_map_link)[1];
                 // echo "lat".$lat;
                 // echo "lng".$lng;
             ?>
