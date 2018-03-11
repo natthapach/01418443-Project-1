@@ -213,7 +213,11 @@
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 8bab1851c4141a7dd1fc26c939eef9664cd9cb6f
             </div>
         </div>
     <!-- Attendant -->
@@ -224,7 +228,11 @@
                     VIEW ATTENDANTS
                 </button>
             </a>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 8bab1851c4141a7dd1fc26c939eef9664cd9cb6f
     </div>
 
     <div class='w3-container w3-content w3-padding-64' style='text-align:center;max-width:800px'>
