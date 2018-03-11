@@ -46,7 +46,7 @@
     right: 0px;
 }
 .event-card{
-    padding: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
     height: 250px;
     width: 250px;
     margin: 5px 5px 5px 5px;
@@ -99,4 +99,12 @@
 .buy-btn:hover {
     background-color: #ff6699;
     color: white;
+}
+
+.search-bar {
+    width: 300px;
+    background-color: white;
+}
+.search-bar::after {
+    content: '';
 }
