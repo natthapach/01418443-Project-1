@@ -7,7 +7,10 @@ function showProfile(attendant) {
     console.log(birth[0]);
     console.log(old);
     $("#profile-table").append(`<form action="../../service/attendant/editProfile.php" method="POST" enctype="multipart/form-data"><table class="table"> <tbody>
-    <tr class="table-success"> <td> <label for="picture"><img id="shownImage" src="../../service/profile/`+attendant.picture +`" class="float-left" width="250px" height="250px"><input name="picture" id="picture" type="file" hidden value="../../service/profile/`+attendant.picture +`" onchange="changeImage()"></label>  </td>
+
+    <tr class="table-success"> <td> 
+    
+    <label for="picture" class="pointer"><img id="shownImage" src="../../service/profile/`+attendant.picture +`" class="float-left " width="250px" height="250px"><input name="picture" id="picture"  type="file" hidden value="../../service/profile/`+attendant.picture +`" onchange="changeImage()"></label>  </td>
     <td style="width:100%">
     <p><label for="first-name"><span class="bold-font">First name :&nbsp&nbsp   </span><input name="first-name" id="first-name" type="text" required value="`+ attendant.first_name+ `"></p>
     <p><label for="last-name"><span class="bold-font">Last name :&nbsp&nbsp&nbsp&nbsp</span><input name="last-name" id="last-name" type="text" required value="`+ attendant.last_name+ `"></p>

@@ -246,10 +246,9 @@
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
-                    console.log('test');
                 } else if (event.target == resultModal) {
                     resultModal.style.display = 'none';
-                    console.log('test2');
+                
                 }
             }
             
