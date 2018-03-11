@@ -68,10 +68,10 @@
         </nav>
 
         <!-- content start here -->
-        <div class="row">
-            <div class="col-12" id="comment-container">
+        <div class="row" id="comment-container">
+            <!-- <div class="col-12" >
                 
-            </div>
+            </div> -->
         </div>
         
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
