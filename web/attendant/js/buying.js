@@ -16,7 +16,7 @@ for (i = 0; i<res.length;i++){
   $time = $dateandtime[1].split(":");
   $time = $time[0]+':'+$time[1];
   if (res[i]['status_id']=='W'){
-    $status='ยังไม่ชำระเงิน<br><button type="button" class="btn btn-primary"onclick="MonetTransfer('+
+    $status='ยังไม่ชำระเงิน<br><button type="button" class="btn btn-primary"onclick="MoneyTransfer('+
     res[i]["id"]+')">แจ้งโอนเงิน</button> <button type="button" class="btn btn-danger" class="control" id="cancelEvent"'+
     ' onclick="CancelEvent('+res[i]["id"]+')">Cancel</button> ';
   }else if (res[i]['status_id']=='P'){
@@ -44,7 +44,13 @@ window.location.href = "../../service/attendant/cancelEvent.php?eventid=" + java
 })
 }
 
-function MonetTransfer(eventid) {
+function MoneyTransfer(eventid) {
   var javascriptVariable = eventid;
   window.location.href = "MoneyTransfer.php?eventid=" + javascriptVariable;
+}
+
+function CancelEvent(eventid){
+  $eventid = eventid;
+//   var javascriptVariable = eventid;
+// window.location.href = "../../service/attendant/cancelEvent.php?eventid=" + javascriptVariable;
 }

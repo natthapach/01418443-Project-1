@@ -12,8 +12,7 @@
 			]);
 			$result = $statement->fetch();
 			$attendantID = $result[0];
-			echo $eventid;
-			echo $attendantID;
+
      $sql = "UPDATE attendences SET status_id = 'R' WHERE attendant_id = '$attendantID' AND event_id='$eventid' ";
 
      // Prepare statement

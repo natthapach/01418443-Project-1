@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -45,7 +44,7 @@
 
       </div>
       <div class="modal-body">
-        ต้องการยกเลิกการจองหรออออออ
+        ต้องการยกเลิกการจองหรือไม่
       </div>
       <div class="modal-footer">
         <input type="hidden" name="eventid" value="<?php
