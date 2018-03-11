@@ -11,18 +11,11 @@
           <div id="header">
 
           </div>
-          <!-- content start here -->
-          <div class="container" id="profile-table">
-
-
-          </div>
 
             <!-- content start here -->
 
-            <div class="container">
-                <div class="row" id="event-table">
-                </div>
-            </div>
+            <!-- <div class="container event-detail" > -->
+              <div class="container" >
 
             <div class="row">
               <!-- <h3 style="align:center;">Buying Event</h3> -->
@@ -42,7 +35,7 @@
 
                          <tbody class="tbody">
 
-                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
        <form method="post" action="../../service/attendant/cancelEvent.php">
@@ -72,7 +65,7 @@
 
           </tbody>
           </table>
-
+    </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

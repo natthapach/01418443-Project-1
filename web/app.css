@@ -1,18 +1,20 @@
 
 @import url('https://fonts.googleapis.com/css?family=Itim|Oswald');
 .banner{
-    height: 350px;
+    height: 180px;
     font-size: 3em;
-    background-image: url("ban.jpg");
-    background-size: auto;
+    background-image: url("banner.jpg");
+    background-repeat: no-repeat;
+    background-size:  cover;
 }
-/* #header{
-  margin: 0 -40% 0 -40%;
-} */
- .jumbotron{
-   /* margin-top:100px%; */
-    background-image: url(service/slip/2-2.jpg);
- }
+nav{
+  font-family: 'Itim';
+  font-size: 20px;
+  /* width: 150px; */
+}
+nav-item{
+  width: 200px;
+}
 .primary{
     background: #ef9a9a;
 }
@@ -71,7 +73,7 @@
 .event-detail{
     background-color: #ffcccc;
     width:100%;
-    
+
 }
 .event-detail-info{
     background-color: #ccffcc;
@@ -99,8 +101,8 @@
     cursor: pointer;
 }
 .buy-btn {
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid #ff6699;
 }
 
@@ -126,6 +128,11 @@
 }
 .form-group{
   margin: 0% auto;
-}.divtable{
+}
+.divtable{
   width: 100%;
+}#nameimg{
+  font-size: 20px;
+  padding: 10px;
+  color: white;
 }

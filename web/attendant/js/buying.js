@@ -18,7 +18,7 @@ for (i = 0; i<res.length;i++){
   if (res[i]['status_id']=='W'){
     $status='ยังไม่ชำระเงิน<br><button type="button" class="btn btn-primary"onclick="MonetTransfer('+
     res[i]["id"]+')">แจ้งโอนเงิน</button> <button type="button" class="btn btn-danger" class="control" id="cancelEvent"'+
-    ' onclick="CancelEvent('+res[i]["id"]+')">Cancel </button> ';
+    ' onclick="CancelEvent('+res[i]["id"]+')">Cancel</button> ';
   }else if (res[i]['status_id']=='P'){
     $status='รอดำเนินการ';
   }else if (res[i]['status_id']=='C'){
@@ -34,7 +34,7 @@ for (i = 0; i<res.length;i++){
 }
 $(".tbody").html($str);
 
-$(document).on("click", cancelEvent , function() {
+$('#cancelEvent').on("click", function() {
  $("#myModal").modal();
 });
 
@@ -47,10 +47,4 @@ window.location.href = "../../service/attendant/cancelEvent.php?eventid=" + java
 function MonetTransfer(eventid) {
   var javascriptVariable = eventid;
   window.location.href = "MoneyTransfer.php?eventid=" + javascriptVariable;
-}
-
-function CancelEvent(eventid) {
-  $eventid = eventid;
-    // var javascriptVariable = eventid;
-  // window.location.href = "../../service/attendant/cancelEvent.php?eventid=" + javascriptVariable;
 }

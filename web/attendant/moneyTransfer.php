@@ -14,9 +14,7 @@
   <!-- content start here -->
   <div class="container" id="profile-table">
 
-
   </div>
-
             <!-- content start here -->
 
             <div class="container" >
@@ -25,14 +23,10 @@
                 </div>
             </div>
 
-
-
         <!-- content start here -->
         <div class="row">
-            <!-- <h1> Event ที่คุณซื้อ</h1> -->
             <div style="margin:0% auto;width:400px;text-align:center;">
                 <h1 class="table-head">แจ้งโอนเงิน</h1>
-              <!-- <h3>แจ้งโอนเงิน</h3><br> -->
              <form enctype="multipart/form-data" class="form-horizontal" action="../../service/attendant/insertSlip.php" method="POST">
                <div class="form-group ">
                  <input type="hidden" name="eventid" value="<?php
@@ -46,13 +40,13 @@
                <div class="form-group ">
                    <label  class="control-label col-sm-3" for="Date">Time:</label>
                    <div class="col-sm-5">
-                   <input type="time" class="form-control" id="time" name="price">
+                   <input type="time" class="form-control" id="time" name="time">
                     </div>
                </div>
                <div class="form-group">
                    <label  class="control-label col-sm-3" for="Date">Price:</label>
                    <div class="col-sm-5">
-                   <input type="number" class="form-control" id="price" name="price">
+                   <input type="number" class="form-control" id="amount" name="amount">
                     </div>
                </div>
                <div class="form-group">

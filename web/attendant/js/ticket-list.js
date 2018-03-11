@@ -6,24 +6,20 @@ $.ajax({
     }
 });
 function createTable(res){
-<<<<<<< HEAD
   $strcoming = '';
   $strjoined = '';
   // $str += '<h3>Coming up</h1><thead><tr><th>Event Name</th><th>Place</th><th>Date and Time</th><th>QR Code</th></tr></thead>';
-=======
+
   $str = '';
->>>>>>> Organizer(Bird)
   for (i = 0; i<res.length;i++){
     $dateandtime = res[i]['event_start_date'].split(" ");
     $date = $dateandtime[0];
     $time = $dateandtime[1].split(":");
     $time = $time[0]+':'+$time[1];
-<<<<<<< HEAD
-console.log(res[i]['is_checkin']);
     if(res[i]['is_checkin']=='0'){
       $strcoming+= '<tr><td>'+res[i]['name']+'</td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
       $time +'</td><td>'+
-      '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'!'+res[i]['attentded_code']+
+      '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'--'+res[i]['attentded_code']+
       '" width="50" height="50" data-target="#myModal">'+
       '<div id="myModal" class="modal"><span class="close">&times;</span>'+
       '<div id="nameimg"></div><img class="modal-content" id="img01"><div id="caption"></div></div>'+'</td></tr>';
@@ -31,21 +27,11 @@ console.log(res[i]['is_checkin']);
     if (res[i]['is_checkin']=='1'){
       $strjoined+= '<tr><td>'+res[i]['name']+'</td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
       $time +'</td><td>'+
-      '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'!'+res[i]['attentded_code']+
+      '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'--'+res[i]['attentded_code']+
       '" width="50" height="50" data-target="#myModal">'+
       '<div id="myModal" class="modal"><span class="close">&times;</span>'+
       '<div id="nameimg"></div><img class="modal-content" id="img01"><div id="caption"></div></div>'+'</td></tr>';
     }
-
-
-=======
-    $str+= '<tr><td>'+res[i]['name']+'</td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
-    $time +'</td><td>'+
-    '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+
-    '" width="50" height="50" data-target="#myModal">'+
-    '<div id="myModal" class="modal"><span class="close">&times;</span>'+
-    '<img class="modal-content" id="img01"><div id="caption"></div></div>'+'</td></tr>';
->>>>>>> Organizer(Bird)
   }
   $(".tbody-coming").html($strcoming);
   $(".tbody-joined").html($strjoined);
@@ -56,13 +42,16 @@ console.log(res[i]['is_checkin']);
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   var img = document.getElementById('myImg');
   var modalImg = document.getElementById("img01");
+  var nameText = document.getElementById('nameimg');
   var captionText = document.getElementById("caption");
 
         $(document).ready(function () {
             $('img').on('click', function () {
+              var str = this.alt.split('--');
               modal.style.display = "block";
               modalImg.src = this.src;
-              captionText.innerHTML = this.alt;
+              nameText.innerHTML = str[0];
+              captionText.innerHTML = str[1];
             });
         });
 
