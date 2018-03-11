@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Itim|Oswald');
+@import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css');
 .banner{
     height: 100px;
     font-size: 3em;
@@ -104,11 +105,23 @@
 }
 
 .search-bar {
-    width: 300px;
-    background-color: white;
+    height: 40px;
+    display: inline-block;
 }
-.search-bar::after {
-    content: "";
+#search-bar-content {
+    height: 40px;
+}
+
+.search-bar:hover > #search-bar-content {
+    display: inline;
+}
+
+.search-content {
+    width: 400px;
+    padding: 10px;
+}
+.search-content > div {
+    margin: 10px;
 }
 .table-head{
   margin: 0% AUTO;

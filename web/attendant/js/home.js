@@ -1,9 +1,23 @@
 var events;
+var isEventNotFound = false; 
 var $_GET = location.search.substr(1).split("&").reduce((o,i)=>(u=decodeURIComponent,[k,v]=i.split("="),o[u(k)]=v&&u(v),o),{});
 console.log($_GET)
 function showEvent(event, order) {
     let category = $_GET['category']
-    if (category=='' || category==event.category_id || category == undefined)
+    let key = $_GET['key']
+    let loc = $_GET['loc']
+    let org = $_GET['org']
+    var from = ($_GET['from'] == '' ? '' : sqldate2jsdate($_GET['from']))
+    var to = ($_GET['to'] == '' ? '' : sqldate2jsdate($_GET['to']))
+    let date = sqldate2jsdate(event.event_start_date)
+
+    if ((category=='' || category==event.category_id || category == undefined) &&
+    (key == undefined || key=='' || event.name.includes(key)) &&
+    (org == undefined || org=='' || event.organizer.includes(org)) &&
+    // (loc == undefined || loc=='' || event.name.includes(loc)) &&
+    (compare_date3(from, to, date))
+    ) {
+        isEventNotFound = true;
         $("#event-table").append(`
         <div class="col-xs-12 col-sm-6" >
         
@@ -19,16 +33,46 @@ function showEvent(event, order) {
         </div>
         </div>
         `+(order % 3 == 0 ? '</div>' : ''));
+    }
+   
 }
+function sqldate2jsdate(sqlDate) {
+    var sqlDateArr1 = sqlDate.split("-");
+    var sYear = sqlDateArr1[0];
+    var sMonth = (Number(sqlDateArr1[1]) - 1).toString();
+    var sqlDateArr2 = sqlDateArr1[2].split(" ");
+    var sDay = sqlDateArr2[0];
+    return new Date(sYear,sMonth,sDay);    
+}
+function compare_date2(date1, date2) {
+    if (date1 == '') return 0;
+    if (date2 == '') return 0;
+    if (date1 > date2) return 1;
+    if (date1 < date2) return -1;
+    return 0;
+}
+
+function compare_date3(from, to, date) {
+    if (compare_date2(from, date) != 1 && compare_date2(to, date) != -1) {
+        return true;
+    }
+    return false;
+}
+
 
 function loadEvent(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
             events = JSON.parse(this.responseText);
+            isEventNotFound = false; 
             for (i in events) {
-                if (i != 'categories')
                 showEvent(events[i], i)
+            }
+            console.log(isEventNotFound)
+            if (!isEventNotFound) {
+                $("#event-table").append("<h3 style='margin-bottom: 50px'>--Event not found.--</h3>   ");
             }
         }
     };
@@ -37,17 +81,3 @@ function loadEvent(){
     xmlhttp.send();
 }
 loadEvent();
-
-// $(document).ready(function(e){
-//     $.ajax({
-//         url:"../../service/attendant/loadEvent.php",
-//         type:"get",
-//         dataType:"json",
-//         success:function(events){
-//             console.log(events)
-//             for (i in events) {
-//                 showEvent(events[i], i);
-//             }
-//         }
-//     })
-// });

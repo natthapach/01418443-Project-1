@@ -41,12 +41,16 @@
                 <a class="nav-link" href="ticket-list.html">Ticket-list</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle search-bar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle search-bar" href="#" id="search-bar" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                            Search
+                            <i class="fas fa-search"></i> Search <span id="search-bar-content">  <input type="text" id="search-keyword"></span>
                             </a>
-                <div class="dropdown-menu" id="categories" aria-labelledby="navbarDropdown">
-                    
+                <div class="dropdown-menu search-content" id="search-content" aria-labelledby="navbarDropdown">
+                    <div class="row"><div class="col-3">location: </div><div class="col-9"><input id="search-location"></div></div>
+                    <div class="row"><div class="col-3">organizer: </div><div class="col-9"><input id="search-organizer"></div></div>
+                    <div class="row"><div class="col-3">from: </div><div class="col-9"><input type="date" id="search-from"></div></div>
+                    <div class="row"><div class="col-3">to: </div><div class="col-9"><input type="date" id="search-to"></div></div>
+                    <div class="row"><div class="col-3"><input class="btn btn-primary" type="submit" id="search-submit"></div></div>
                 </div>
             </li>
         </ul>

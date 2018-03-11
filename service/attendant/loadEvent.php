@@ -25,15 +25,12 @@ try {
         if ($pictures !== FALSE) {
             $event->pictures = $pictures;
         }
+
+        $stmt = $conn->prepare("SELECT name FROM organizer WHERE id=".$event->organizer_id); 
+        $stmt->execute();
+        $organizer = $stmt->fetch(PDO::FETCH_OBJ);
+        $event->organizer = $organizer;
     }
-    $stmt = $conn->prepare("SELECT * FROM category");
-    $stmt->execute();
-    $categories = $stmt->fetchAll(PDO::FETCH_OBJ);
-    $events['categories'] = array();
-    if ($categories !== false) {
-        $events['categories'] = $categories;
-    }
-    
     echo json_encode($events);
 }
 catch(PDOException $e) {
