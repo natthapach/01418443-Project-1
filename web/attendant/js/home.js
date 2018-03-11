@@ -11,10 +11,11 @@ function showEvent(event, order) {
     var to = ($_GET['to'] == '' || $_GET['to'] == undefined ? '' : sqldate2jsdate($_GET['to']))
     let date = sqldate2jsdate(event.event_start_date)
     // console.log(event.place.includes(loc));
+    console.log(event.name.toLowerCase());
     if ((category=='' || category==event.category_id || category == undefined) &&
-    (key == undefined || key=='' || event.name.includes(key)) &&
-    (org == undefined || org=='' || event.organizer.includes(org)) &&
-    (loc == undefined || loc=='' || event.place.includes(loc)) &&
+    (key == undefined || key=='' || event.name.toLowerCase().includes(key.toLowerCase())) &&
+    (org == undefined || org=='' || event.organizer.toLowerCase().includes(org.toLowerCase())) &&
+    (loc == undefined || loc=='' || event.place.toLowerCase().includes(loc.toLowerCase())) &&
     (compare_date3(from, to, date))
     ) {
         isEventNotFound = true;
