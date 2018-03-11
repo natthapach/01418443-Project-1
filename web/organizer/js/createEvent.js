@@ -2,7 +2,7 @@ $(document).ready(function (e) {
     let n = 0;
 
     $("#picture-input").change(function () {
-        console.log("onFileChange")
+        // console.log("onFileChange")
         previewPicture(this);
     });
     function previewPicture(input) {
@@ -50,7 +50,7 @@ $(document).ready(function (e) {
                     pictures.push($(this).attr("src"));
                 });
 
-                console.log(pictures);
+                // console.log(pictures);
 
                 let data = {
                     eventName: eventName,

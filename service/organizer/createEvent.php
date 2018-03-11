@@ -12,11 +12,6 @@
     // return : $orgID
     include("getOrganizerID.php");
 
-    // checkExistEvent.php
-    // take parameter: $_POST['eventName'], $orgID
-    // return: $result
-    include("checkExistEvent.php");
-
     // getEventIdByName.php
     // take parameter: $_POST['eventPre']
     // return: $eventPreId
@@ -27,7 +22,12 @@
     // return: $eventCategoryId
     include("getCategoryId.php");
 
-    if(!$result) {
+    // checkExistEvent.php
+    // take parameter: $_POST['eventName'], $orgID
+    // return: $result
+    include("checkExistEvent.php");
+
+    if( ! $result) {
         $result=null;
     // if(isset($_POST["create-event-submit"])) {
         try {
@@ -60,8 +60,8 @@
                 
             if($eventPre!="No Prerequisite"){
                 $event_id_this = $event_id;
-                echo $event_id_this." ";
-                echo $eventPreId;
+                // echo $event_id_this." ";
+                // echo $eventPreId;
                 $statement = "INSERT INTO pre_condition_event VALUES('$event_id_this', '$eventPreId')";
                 $connection->exec($statement);
             }
