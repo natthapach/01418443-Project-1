@@ -5,7 +5,7 @@
     
 
     $statement = $connection->prepare(
-        'SELECT *
+        'SELECT *, DATE_FORMAT(ad.pay_date, "%d %M %Y %T") as "pay_date"
         FROM attendences as ad
         JOIN attendants as at
         ON ad.attendant_id = at.id
@@ -70,17 +70,36 @@
         </nav>
 
         <!-- content start here -->
+        <style>
+            .img-container {
+                background-color: red;
+                width: 100%;
+                padding-top: 100%; /* 1:1 Aspect Ratio */
+                position: relative; /* If you want text inside of it */
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size:cover;
+            }
+            .card-image-top {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                width:100%;
+                height:100%;
+            }
+        </style>
         <div class="row">
             <?php
                 foreach($result as $attendant){
             ?>
             <div class="card col-xs-12 col-sm-4" style="margin: 10px">
-                <div style="margin: 10px">
-                    <img class="card-image-top" 
-                        src=<?php
-                            echo '"../../service/profile/' . $attendant->profile . '"';
+                <div class="img-container"
+                    style=<?php
+                            echo "background-image:url('../../service/profile/$attendant->profile');";
                         ?>
-                        style="width:100%">
+                >
                 </div>
                 
                 <div class="card-body">
@@ -137,6 +156,19 @@
                                     ?>>
                             รอการชำระเงิน
                         </div>
+                    </div>
+                    <hr>
+                    <div>
+                        วันที่โอน : <span id="pay-date">
+                                        <?php
+                                            echo $attendant->pay_date;
+                                        ?>
+                                </span> <br>
+                        จำนวนเงิน : <span id="pay-amount">
+                                        <?php
+                                            echo $attendant->amount;
+                                        ?>
+                                </span>
                     </div>
                 </div>
             </div>
