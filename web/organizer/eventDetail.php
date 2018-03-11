@@ -190,15 +190,15 @@
             ?>
             <script>
             function initMap() {
-                var uluru = {lat: <?php echo $lat;?>, lng: <?php echo $lng;?>};
+                var position = {lat: <?php echo $lat;?>, lng: <?php echo $lng;?>};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: uluru
-                });
+                                                zoom: 15,
+                                                center: position
+                                            });
                 var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-                });
+                                                        position: position,
+                                                        map: map
+                                                    });
             }
             </script>
             <script async defer
