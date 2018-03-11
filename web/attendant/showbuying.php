@@ -8,14 +8,54 @@
     </head>
     <body class="background-dark">
         <div class="container background-light">
-          <div id="header">
+            <div class="row banner primary-dark">
+                <div class="col-12">
+                    <b>
+                        Kitty Event~~
+                    </b>
+                    <button type="button" class="btn btn-danger log-out">Logout</button>
+                </div>
 
-          </div>
-          <!-- content start here -->
-          <div class="container" id="profile-table">
+            </div>
+            <nav class="row navbar navbar-expand-lg navbar-light primary">
 
+                <!-- web name -->
+                <a class="navbar-brand" href="#">Kitty</a>
+                <!-- hamberger icon menu (3 line icon, show when small screen) -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-          </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="home.html">All event</a>
+                                <a class="dropdown-item" href="#">Medical</a>
+                                <a class="dropdown-item" href="#">Computer</a>
+                                <a class="dropdown-item" href="#">Music</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Buying</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="joined.html">Joined</a>
+                        </li>
+                        <li clss="nav-item">
+                            <a class="nav-link" href="ticket-list.html">Ticket-list</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
 
             <!-- content start here -->
 
@@ -68,10 +108,10 @@
                 </div>
               </div>
             </div>
+                         </tbody>
+                       </table>
 
 
-          </tbody>
-          </table>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
