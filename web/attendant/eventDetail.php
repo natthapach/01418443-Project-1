@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/comment.css">
 </head>
 
 <body class="background-dark">
@@ -204,9 +205,12 @@
         <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
             <h2 class='w3-wide w3-center'>COMMENT</h2>
             <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
-           
+                    
         </div>
-        
+        <?php
+            include("comment.php");
+
+        ?>
     </div>  
 
         
@@ -275,5 +279,11 @@
         crossorigin="anonymous"></script>
     <!-- import my js file -->
     <script src="js/home.js"></script>
+    <script src="js/comment.js"></script>
+    <script>
+        <?php
+            echo "start('" . $event_id . "')";
+        ?>
+    </script>
 </body>
 </html>
