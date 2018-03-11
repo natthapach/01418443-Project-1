@@ -1,7 +1,6 @@
 <?php
     include("../connection.php");
     $event_id = $_GET["event_id"];
-
     $statement = $connection->prepare(
         "SELECT *
         FROM comment

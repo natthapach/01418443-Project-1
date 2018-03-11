@@ -1,25 +1,25 @@
 $(document).ready(function (e) {
     let n = 0;
 
-    $("#picture-input").change(function(){
-        console.log("onFileChange")
+    $("#picture-input").change(function () {
+        // console.log("onFileChange")
         previewPicture(this);
     });
     function previewPicture(input) {
         if (input.files && input.files[0]) {
-          var reader = new FileReader();
-  
-          reader.onload = function(e) {
-              let d = $('#pictures-display').append("<div style='display=inline-block'></div>").children().last();
-              let preview = d.append("<img class='picture-preview' height='250px'>").children().last();
-              preview.attr('src', e.target.result);
-            //   $(".btnDeleteFile").show();
-          }
-  
-          reader.readAsDataURL(input.files[0]);
-  
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                let d = $('#pictures-display').append("<div style='display=inline-block'></div>").children().last();
+                let preview = d.append("<img class='picture-preview' height='250px'>").children().last();
+                preview.attr('src', e.target.result);
+                //   $(".btnDeleteFile").show();
+            }
+
+            reader.readAsDataURL(input.files[0]);
+
         }
-      }
+    }
 
     $(function () {
         $("#createEventForm").submit(function (event) {
@@ -40,27 +40,22 @@ $(document).ready(function (e) {
             let eventMaxAge = $("#event-max-age").val();
             let eventMinAge = $("#event-min-age").val();
 
-            if (eventName == "" || eventPre=="" || eventCategory=="" ||eventInfo == "" || eventPlace == "" || eventMap == "" || 
-                eventStartDate == "" || eventCloseDate == "" || eventPrice == "" || eventForm == "" || eventMaxAttendent == "" || 
+            if (eventName == "" || eventPre == "" || eventCategory == "" || eventInfo == "" || eventPlace == "" || eventMap == "" ||
+                eventStartDate == "" || eventCloseDate == "" || eventPrice == "" || eventForm == "" || eventMaxAttendent == "" ||
                 eventMaxAge == "" || eventMinAge == "") {
-                    alert("Please fill all the empty fields.");
+                alert("Please fill all the empty fields.");
             } else {
-                // If no pre event, then $eventPreId=0
-                if(eventPre=="No Prerequisite") {
-                    eventPreId = 0;
-                } else { }
-            
                 let pictures = [];
-                $(".picture-preview").each(function(){
+                $(".picture-preview").each(function () {
                     pictures.push($(this).attr("src"));
                 });
 
-                console.log(pictures);
-
-                let picture = $("#preview").attr("src");
+                // console.log(pictures);
 
                 let data = {
                     eventName: eventName,
+                    eventPre: eventPre,
+                    eventCategory: eventCategory,
                     eventInfo: eventInfo,
                     eventPlace: eventPlace,
                     eventMap: eventMap,
@@ -72,22 +67,25 @@ $(document).ready(function (e) {
                     eventMaxAttendent: eventMaxAttendent,
                     eventMaxAge: eventMaxAge,
                     eventMinAge: eventMinAge,
-                    picture: picture,
                     pictures: pictures
                 };
-            
+
                 $.ajax({
                     url: '../../service/organizer/createEvent.php',
                     dataType: 'JSON',
                     type: 'POST',
                     data: data,
                     success: function (response) {
-		                        console.log(response);
-		                        alert('"' + eventName + '"' + ' event created. ' + response);
-		                    },
+                        console.log(response);
+                        if (response === "exist") {
+                            alert("Event already exists.");
+                        } else {
+                            alert('"' + eventName + '"' + ' event created. ');
+                        }
+                    },
                     error: function (error) {
-		                        console.log(error);
-		                    }
+                        console.log(error);
+                    }
                 });
             }
         });
