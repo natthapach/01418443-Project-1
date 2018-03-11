@@ -30,6 +30,7 @@ function checkin(code){
             attendant_id:token[0],
             event_id:token[1]
         },
+        dataType:"json",
         success:function(response){
             console.log(response);
             // var x = document.getElementById("snackbar");
@@ -42,6 +43,10 @@ function checkin(code){
             }else{
                 snackbar.text("Check in Complete");
                 snackbar.css("background-color", "#8E9BFF");
+
+                $("#attendant-name").text(response.attendant_fn + " " + response.attendant_ln)
+                $("#event-name").text(response.event_name);
+                $("#attendant-profile").attr("src", "../../service/profile/" + response.profile);
             }
             
             snackbar.addClass("show");
