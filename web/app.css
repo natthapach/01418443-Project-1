@@ -4,7 +4,9 @@
     height: 100px;
     font-size: 3em;
 }
-
+ .jumbotron{
+    background-image: url(service/slip/2-2.jpg);
+ }
 .primary{
     background: #ef9a9a;
 }
@@ -60,14 +62,14 @@
 }
 .event-detail{
     background-color: #ffcccc;
-    
+
 }
 .event-detail-info{
     background-color: #ccffcc;
     font-family: 'Oswald', sans-serif;
     font-family: 'Itim', cursive;
     font-size: 20px;
-    
+
 }
 .event-detail-contact{
     background-color: #ccccff;
@@ -75,12 +77,25 @@
 .btn-save{
     background-color: #ff99ff;
     border-radius: 10px;
-    margin-top: 7px; 
+    margin-top: 7px;
     margin-right: 20px;
-    
+
 }
 .btn-cancel{
     background-color: #b3ccff;
-    border-radius: 10px; 
-    
+    border-radius: 10px;
+
+}
+.table-head{
+  margin: 0% AUTO;
+  padding: 10px;
+  font-family: 'Itim'
+}
+.form-horizontal{
+  width: 500px;
+}
+.form-group{
+  margin: 0% auto;
+}.divtable{
+  width: 100%;
 }
