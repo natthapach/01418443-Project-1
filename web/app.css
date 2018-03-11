@@ -48,10 +48,11 @@
     right: 0px;
 }
 .event-card{
-    padding: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
     height: 250px;
     width: 250px;
     margin: 5px 5px 5px 5px;
+    background-color:#e6ccff;
 }
 .bold-font{
     font-weight: bold;
@@ -60,9 +61,11 @@
     font-weight: bold;
     color: #cc0000;
 }
+
 .event-detail{
     background-color: #ffcccc;
-
+    width:100%;
+    
 }
 .event-detail-info{
     background-color: #ccffcc;
@@ -85,6 +88,27 @@
     background-color: #b3ccff;
     border-radius: 10px;
 
+}
+.pointer {
+    cursor: pointer;
+}
+.buy-btn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #ff6699;
+}
+
+.buy-btn:hover {
+    background-color: #ff6699;
+    color: white;
+}
+
+.search-bar {
+    width: 300px;
+    background-color: white;
+}
+.search-bar::after {
+    content: "";
 }
 .table-head{
   margin: 0% AUTO;

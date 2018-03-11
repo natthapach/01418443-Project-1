@@ -5,15 +5,15 @@ function showEvent(event, order) {
     let category = $_GET['category']
     if (category=='' || category==event.category_id || category == undefined)
         $("#event-table").append(`
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6" >
         
-        <div class="card event-card" style="width:100%; height: 80%;"> <h3>`+event.name+`</h3>`+
+        <div class="card event-card" style="width:100%; height: 80%"> <h3>`+event.name+`</h3>`+
         (event.pictures.length > 0 ? `<img class="card-img-top" src='../../service/pictures/`+event.pictures[0].path+`'alt="Card image" width="100%" height="200px">` : '') +
             `<div class="card-body">
                 <h5 class="card-title">`+event.place+`</h5>
                 <p class="card-text">`+event.event_start_date+`</p>
                 <form action="eventDetail.php?event=`+event.id+`" method="post">
-                <label class="btn btn-primary" for="submit-btn`+event.id+`">Buy ticket</label><input hidden type="submit" name="submit-btn`+event.id+`" id="submit-btn`+event.id+`" class="btn btn-primary">
+                <label class="btn buy-btn buy-btn:hover" for="submit-btn`+event.id+`">Buy ticket</label><input hidden type="submit" name="submit-btn`+event.id+`" id="submit-btn`+event.id+`" class="btn buy-btn buy-btn:hover">
                 </form>
             </div>
         </div>
