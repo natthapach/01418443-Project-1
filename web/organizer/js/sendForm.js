@@ -1,3 +1,8 @@
+// Tutorial
+// https://codepen.io/rheajt/pen/prGjdV/?editors=1010
+// https://www.youtube.com/watch?v=2Vx00MAmhbs
+// https://script.google.com/a/ku.th/d/1GSSRTfrNuZoXabGlY_wZ159NkUnCS9Jdm1XVkZeZO2iWxRlzr5Ytx-ID/edit?usp=sharing
+
 $(document).ready(function (e) {
     $(function () {
         $(document).on("click", '#google-form-btn', function (event) {
