@@ -306,5 +306,6 @@
             echo "start('" . $event_id . "')";
         ?>
     </script>
+    <script src="js/sendForm.js"></script>
 </body>
 </html>
