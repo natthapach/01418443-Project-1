@@ -175,7 +175,7 @@ footer{
   width: 100%;
   font-size: 20px;
 }
-.cannot-buy {
+#cannot-buy {
     display:block;
     border-radius: 20px;
     border: 2px solid #ff0066;
