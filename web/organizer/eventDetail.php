@@ -310,6 +310,7 @@
     <!-- import my js file -->
     <script src="js/eventDetail.js"></script>
     <script src="js/comment.js"></script>
+    <script src="js/logout.js"></script>
     <script>
         <?php
             echo "start('" . $event_id . "')";
