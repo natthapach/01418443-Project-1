@@ -31,10 +31,10 @@
               <ul class="navbar-nav mr-auto">
                   <!-- menu -->
                   <li class="nav-item">
-                      <a class="nav-link" href="checkin.html">Check in</a>
+                      <a class="nav-link" href="User List">User List</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="createEvent.html">Create Event</a>
+                      <a class="nav-link" href="eventList.php">Event List</a>
                   </li>
 
               </ul>
