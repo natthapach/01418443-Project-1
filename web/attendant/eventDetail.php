@@ -162,7 +162,7 @@
                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
                             }else{
 
-                                echo "<h3 id='cannot-buy'>You have already get this ticket.</h3>";
+                                echo "<h3 class='cannot-buy'>You have already get this ticket.</h3>";
                             }
                         }
 
