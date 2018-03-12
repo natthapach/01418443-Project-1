@@ -87,7 +87,7 @@
             else{
                 $gender = $_POST['gender'];
                 $password = password_hash($password_1, PASSWORD_BCRYPT); //encrypt passqword before save in 
-                $birth = = $_POST['birth'];
+                $birth =  $_POST['birth'];
 
         
                 $query = "INSERT INTO account (user_name, password, role_id, status)  VALUES('$username', '$password', 'A','Active')";
@@ -100,7 +100,7 @@
                 $statement->execute();
                 $_SESSION['success'] = "You are now logged in";
                 $_SESSION["current_username"] = $username;
-                header("Location: ../../web/attendant/home.php ");
+                header("Location: ../../web/attendant/home.html ");
                 }
 
             }
@@ -213,7 +213,7 @@
                             header("Location: ../../web/admin/eventList.php ");
                         }
                         if($row['role_id'] =='A'){
-                            header("Location: ../../web/attendant/home.php ");
+                            header("Location: ../../web/attendant/home.html ");
                         }
                         // header("Location: profile.php"); //direct to profile
                     }else{
