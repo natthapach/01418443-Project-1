@@ -8,6 +8,8 @@
     <title>Event List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../app.css">
     <script src="main.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/footable.js"></script>
@@ -33,21 +35,6 @@ tr:nth-child(even) {
 }
 </style>
 </head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>User List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../app.css">
-
-</head>
-<body>
 <body class="background-dark">
     <div class="container background-light">
       <div class="banner">
@@ -119,17 +106,18 @@ tr:nth-child(even) {
                         <?php endforeach; ?>
                 </table>
 
-    </div>
-    <footer class="primary-light">
-<h3> contact us </h3>
 
-<a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
-<a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
-<a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
-      <div class="footer-copyright primary">
-          <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
-      </div>
-  </footer>
+                    <footer class="primary-light">
+                   <h3> contact us </h3>
+                   <a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+                   <a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+                   <a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+                       <div class="footer-copyright primary">
+                           <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+                       </div>
+            </footer>
+            </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
@@ -142,9 +130,15 @@ tr:nth-child(even) {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-    </script>
-</body>
-</html>
+                </script>
 
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- import my js file -->
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>

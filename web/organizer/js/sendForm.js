@@ -47,6 +47,7 @@ $(document).ready(function (e) {
     });
 });
 
+<<<<<<< HEAD
 // function sendEmail(data){
 //      // POST to Google App Scripts
 //      $.ajax({
@@ -67,6 +68,13 @@ function sendEmail(data) {
     $.ajax({
         url: "../../service/organizer/sendEmail.php",
         dataType: "JSON",
+=======
+function sendEmail(data){
+     // POST to Google App Scripts
+     $.ajax({
+        url: "../../service/organizer/sendEmail.php",
+        dataType: "JSONP",
+>>>>>>> 1d42022ee355998bcbac6adae0ca4c3f05a1dd0f
         type: "POST",
         data: data,
         success: function(e) {

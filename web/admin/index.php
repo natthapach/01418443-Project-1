@@ -12,8 +12,13 @@
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="style.css">
 
+</head><html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
 </head>
-
 <body class="background-dark">
     <div class="container background-light">
       <div class="banner">
@@ -25,8 +30,8 @@
           <!-- hamberger icon menu (3 line icon, show when small screen) -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
@@ -47,10 +52,27 @@
           </div>
       </nav>
 
+                     <a class="nav-link dropdown-toggle search-bar" href="#" id="search-bar" role="button" data-toggle="dropdown" aria-haspopup="true"
+                         aria-expanded="false">
+                                 <!-- Search -->
+                                 <i class="fas fa-search"></i> Search <span id="search-bar-content">  <input type="text" id="search-keyword"></span>
+                      </a>
+                     <div class="dropdown-menu search-content" id="search-content" aria-labelledby="navbarDropdown">
+                         <div class="row"><div class="col-3">location: </div><div class="col-9"><input id="search-location"></div></div>
+                         <div class="row"><div class="col-3">organizer: </div><div class="col-9"><input id="search-organizer"></div></div>
+                         <div class="row"><div class="col-3">from: </div><div class="col-9"><input type="date" id="search-from"></div></div>
+                         <div class="row"><div class="col-3">to: </div><div class="col-9"><input type="date" id="search-to"></div></div>
+                         <div class="row"><div class="col-3"><input class="btn btn-primary" type="submit" id="search-submit"></div></div>
+                     </div>
+                 </li>
+              </ul>
+          </div>
+      </nav>
+
 
         <div class="header">
             <h1>Login</h1>
-        </div>
+         </div>
 
         <form method="post" action="index.php">
             <?php include("../../service/admin/errors.php"); ?>
@@ -88,10 +110,22 @@
     </div>
 
 
+
+     <footer class="primary-light">
+                   <h3> contact us </h3>
+                   <a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+                   <a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+                   <a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+                       <div class="footer-copyright primary">
+                           <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+                       </div>
+            </footer>
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
+    <!-- import my js file -->
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>
