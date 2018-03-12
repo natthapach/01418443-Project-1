@@ -198,15 +198,18 @@
                 $query = "SELECT * FROM account WHERE user_name = '$username'";
                 $results = mysqli_query($db, $query);
                 $row = mysqli_fetch_array($results);
+
+                $statement = $db->prepare($query);
+                $statement->execute();
                 
                 if ($row['user_name'] == $username and password_verify($password, $row['password'])) {
                     if($row['status']== 'Active'){
                         $_SESSION["current_username"] = $username;
                         $_SESSION['success'] = "You are now logged in";
-                        if($row['role_id']) =='O'{
-                            header("Location: ../organize/home.html ")
+                        if($row['role_id'] =='O'){
+                            header("Location: ../../organize/home.html ");
                         }
-                        header("Location: profile.php"); //direct to profile
+                        // header("Location: profile.php"); //direct to profile
                     }else{
                         array_push($errors,"Your account has been disabled, please contact admin.");
                     } 
