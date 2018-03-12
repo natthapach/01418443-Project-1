@@ -125,8 +125,8 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
-            //  var_dump($event);
 
+            //  var_dump($event);
 
         ?>
 
