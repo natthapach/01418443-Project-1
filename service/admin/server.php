@@ -207,7 +207,7 @@
                         $_SESSION["current_username"] = $username;
                         $_SESSION['success'] = "You are now logged in";
                         if($row['role_id'] =='O'){
-                            header("Location: ../../organize/home.html ");
+                            header("Location: ../../organizer/home.html ");
                         }
                         // header("Location: profile.php"); //direct to profile
                     }else{
