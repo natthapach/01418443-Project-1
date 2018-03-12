@@ -100,7 +100,7 @@
                 $statement->execute();
                 $_SESSION['success'] = "You are now logged in";
                 $_SESSION["current_username"] = $username;
-                header("Location: ../../organizer/home.html "); ///direct to organizer home
+                header("Location: ../../web/organizer/home.html "); ///direct to organizer home
                 }
 
             }
@@ -207,7 +207,7 @@
                         $_SESSION["current_username"] = $username;
                         $_SESSION['success'] = "You are now logged in";
                         if($row['role_id'] =='O'){
-                            header("Location: ../../organizer/home.html ");
+                            header("Location: ../../web/organizer/home.html ");
                         }
                         // header("Location: profile.php"); //direct to profile
                     }else{
