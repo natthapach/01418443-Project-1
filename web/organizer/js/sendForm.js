@@ -47,18 +47,42 @@ $(document).ready(function (e) {
     });
 });
 
+<<<<<<< HEAD
+// function sendEmail(data){
+//      // POST to Google App Scripts
+//      $.ajax({
+//         url: "https://script.google.com/macros/s/AKfycbwetsM68Ca1L30lwBmDtq6iqzQXQ4UivqiGR4uyNQNu0WaR82Y/exec",
+//         dataType: "JSONP",
+//         type: "POST",
+//         data: data,
+//         success: function (e) {
+//             console.log("Success: " + e);
+//         },
+//         error: function (e) {
+//             console.log("Error: " + e);
+//         }
+//     });
+// }
+
+function sendEmail(data) {
+    $.ajax({
+        url: "../../service/organizer/sendEmail.php",
+        dataType: "JSON",
+=======
 function sendEmail(data){
      // POST to Google App Scripts
      $.ajax({
         url: "../../service/organizer/sendEmail.php",
         dataType: "JSONP",
+>>>>>>> 1d42022ee355998bcbac6adae0ca4c3f05a1dd0f
         type: "POST",
         data: data,
-        success: function (e) {
-            console.log("Success: " + e);
+        success: function(e) {
+            console.log("Success email sent.")
         },
-        error: function (e) {
-            console.log("Error: " + e);
+        error: function(e) {
+            console.log("Error, email not sent.")
+            console.log(e);
         }
     });
 }

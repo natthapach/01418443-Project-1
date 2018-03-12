@@ -19,7 +19,7 @@
 
         </div>
         <!-- content start here -->
-        
+
         <?php
             session_start();
             $_SESSION["current_user"] = "user2";
@@ -29,15 +29,15 @@
                 "root",
                 ""
             );
-                    
+
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-            
+
+
             $stmt = $conn->prepare("Select * from event where id='".$_GET["event"]."'");
             $stmt->execute();
             $event = $stmt->fetch(PDO::FETCH_OBJ);
 
-    
+
             $stmt = $conn->prepare("SELECT path FROM picture WHERE event_id=".$event->id);
             $stmt->execute();
             $pictures = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -111,8 +111,8 @@
             //     left join attendences as at
             //     ON at.event_id = e.id
             //     where a.user_name=:username
-            //     GROUP BY e.d            
-            
+            //     GROUP BY e.d
+
             // ");
 
             // $stmt->execute();
@@ -125,11 +125,16 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
+<<<<<<< HEAD
             //  va`r_dump($event);
               
+=======
+             var_dump($event);
+
+>>>>>>> 33ef6b1a2fdf9b79e705b9f1694d15046f4344e2
         ?>
 
-        
+
         <div class='event-detail' id='tour'>
             <div class='w3-container w3-content w3-padding-64' style='max-width:800px'>
                 <h2 class='w3-wide w3-center'> <?php echo $event->name ?></h2>
@@ -144,7 +149,7 @@
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->place ?></p>
-                        <?php 
+                        <?php
                         $now_year = date("Y");
                         $birth = explode(" ",$event->birth->birth_date);
                         $year = explode("-", $birth[0]);
@@ -157,19 +162,19 @@
                             if ($event->status->status_id != "W"){
                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
                             }else{
-                                
+
                                 echo "<h3 id='cannot-buy'>You have already get this ticket.</h3>";
                             }
-                        } 
-                        
-                    
+                        }
+
+
 
                         ?>
                         <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Get Ticket</button> -->
                     </div>
                 </div>
             </div>
-                    
+
             <!-- Ticket Modal -->
               <div id='ticketModal' class='w3-modal'>
                 <div class='w3-modal-content w3-animate-top w3-card-4'>
@@ -215,10 +220,10 @@
                 // var_dump($event->google_map_link);
                 $lat = preg_split("/ /", $event->google_map_link)[0];
                 $lng = preg_split("/ /", $event->google_map_link)[1];
-                
+
             ?>
-        
-               
+
+
         </div>
         <!-- The Contact Section -->
         <div class='event-detail-contact w3-container w3-content w3-padding-64' style='max-width:800px' id='band'>
@@ -227,30 +232,39 @@
                 <div class="w3-col m6 w3-padding-large w3-hide-small">
                     <img src="../../service/profile/<?php echo $event->organizer_profile->profile ?>" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:80%;" float:"right">
                 </div>
-                
+
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-user' style='width:30px'></i> Organizer's Name : </span><?php echo $event->organizer->name?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-phone' style='width:30px'></i> Tel : </span><?php echo $event->organizer->phone?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-envelope' style='width:30px'></i> Email : </span><?php echo $event->organizer->email?></p><br>
                     <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-facebook-official' style='width:30px'></i> Facebook : </span><?php echo $event->organizer->facebook?></p>
-                    
 
-                
+
+
             </div>
         </div>
-    
+
     <!-- Comment -->
         <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
             <h2 class='w3-wide w3-center'>COMMENT</h2>
             <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
-                    
+
         </div>
         <?php
             include("comment.php");
 
         ?>
-    </div>  
+    </div>
+    <footer class="primary-light">
+<h3> contact us </h3>
 
-        
+<a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+<a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+<a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+      <div class="footer-copyright primary">
+          <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+      </div>
+  </footer>
+
         <script>
             // Automatic Slideshow - change image every 3 seconds
             var myIndex = 0;
@@ -285,10 +299,10 @@
                     modal.style.display = 'none';
                 } else if (event.target == resultModal) {
                     resultModal.style.display = 'none';
-                
+
                 }
             }
-            
+
             function buyTicket() {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
@@ -296,7 +310,7 @@
                         console.log(this.responseText)
                         document.getElementById('ticketModal').style.display='none';
                         document.getElementById('resultModal').style.display='block';
-                        
+
                     }
                 };
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);
@@ -318,13 +332,13 @@
                                                     });
             }
 
-      
+
         </script>
 
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfdc8WProuGLQ9XDI3FarNXrmxB3ARjA&callback=initMap">
     </script>
-         
+
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
