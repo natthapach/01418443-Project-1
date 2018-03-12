@@ -31,10 +31,10 @@
               <ul class="navbar-nav mr-auto">
                   <!-- menu -->
                   <li class="nav-item">
-                      <a class="nav-link" href="checkin.html">Check in</a>
+                      <a class="nav-link" href="User List">User List</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="createEvent.html">Create Event</a>
+                      <a class="nav-link" href="eventList.php">Event List</a>
                   </li>
 
               </ul>
@@ -49,12 +49,13 @@
 
 
         <div class="row">
-            <div><p>User List</p>
+            <div><h1>User List</h1>
             </div>
             <div>
                 <p></p>
                 Find: <input type="text" id="input">
-            </div
+                </div>
+            
                 <div class="user-table">
                     <table class="table table-hover">
                         <thead>
@@ -86,7 +87,6 @@
                                 <td><?= $user->status;?></td>
                                 <td>
                                     <form method="post" action="../../service/admin/deleteUser.php">
-                                        <input type="submit" name="action" value="View"/>
                                         <input type="submit" name="action" value="Changestatus"/>
                                         <input type="hidden" name="id" value="<?= $user->user_name;?>"/>
                                         <input type="hidden" name="status" value="<?= $user->status;?>"/>
@@ -120,7 +120,7 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-    </script>
+                </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
