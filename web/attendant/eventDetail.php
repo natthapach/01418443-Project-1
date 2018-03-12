@@ -66,9 +66,42 @@
             if ($organizer_profile !== false) {
                 $event->organizer_profile = $organizer_profile;
             }
-           
+            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id WHERE attendants.user_name='".$_SESSION['current_user']."' AND attendences.event_id=".$_GET['event']);
+            $stmt->execute();
+            $status = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($status !== false) {
+                $event->status = $status;
+            }
+
+            $stmt = $conn->prepare("SELECT birth_date FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
+            $stmt->execute();
+            $birth = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($birth !== false) {
+                $event->birth = $birth;
+            }
+
+            // $stmt = $conn->prepare("SELECT e.*, count(at.event_id) as attendants
+            //     from event as e
+            //     join organizer as o
+            //     ON o.id = e.organizer_id
+            //     left join attendences as at
+            //     ON at.event_id = e.id
+            //     where a.user_name=:username
+            //     GROUP BY e.d            
             
-            //svar_dump($event);
+            // ");
+
+            // $stmt->execute();
+            // $count_attendant = $stmt->fetchAll(PDO::FETCH_OBJ);
+            // // if ($count_attendant !== false) {
+            // //     $event->count_attendant = $count_attendant;
+            // // }
+            // $event->count_attendants = array();
+            // if ($count_attendants !== false) {
+            //     $event->count_attendants = $count_attendants;
+            // }
+
+             var_dump($event);
               
         ?>
 
@@ -87,13 +120,32 @@
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->place ?></p>
-                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
+                        <?php 
+                        $now_year = date("Y");
+                        $birth = explode(" ",$event->birth->birth_date);
+                        $year = explode("-", $birth[0]);
+                        $old = $now_year - $year[0];
+                        if ( $old > $event->max_age || $old < $event->min_age){
+                            echo "<h3 id='cannot-buy'>อายุคุณไม่อยู่ในเกณฑ์ของ event นี้</h3>";
+                        }else{
+                            if ($status === false){
+                                echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                            }else{
+                                
+                                echo "<button class='w3-button w3-black w3-margin-bottom ' disabled >You have get ticket already.</button>";
+                            }
+                        } 
+                        
+                    
+
+                        ?>
+                        <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Get Ticket</button> -->
                     </div>
                 </div>
             </div>
                     
             <!-- Ticket Modal -->
-            <div id='ticketModal' class='w3-modal'>
+              <div id='ticketModal' class='w3-modal'>
                 <div class='w3-modal-content w3-animate-top w3-card-4'>
                     <header class='w3-container w3-teal w3-center w3-padding-32'>
                         <span onclick="document.getElementById('ticketModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
@@ -122,7 +174,6 @@
 
 
         <div class='event-detail-info w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-           
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's Name : </span><?php echo $event->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Category : </span><?php echo $event->category->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Starting Date : </span><?php echo $event->event_start_date?></p><br>
@@ -132,7 +183,8 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
-
+            
+        
                
         </div>
         <!-- The Contact Section -->
@@ -211,6 +263,7 @@
                         console.log(this.responseText)
                         document.getElementById('ticketModal').style.display='none';
                         document.getElementById('resultModal').style.display='block';
+                        
                     }
                 };
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);
@@ -218,9 +271,12 @@
                 // xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
                 xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
             }
- 
 
+      
+
+      
         </script>
+         
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

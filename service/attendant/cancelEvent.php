@@ -2,7 +2,7 @@
 	include("../connection.php");
 		session_start();
 			$_SESSION["current_username"] = 'user1';
-	$username = $_SESSION["current_username"];
+			$username = $_SESSION["current_username"];
 			// set the PDO error mode to exception
 			$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$eventid =$_GET['eventid'];
