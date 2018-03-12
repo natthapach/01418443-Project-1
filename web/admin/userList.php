@@ -31,7 +31,7 @@
               <ul class="navbar-nav mr-auto">
                   <!-- menu -->
                   <li class="nav-item">
-                      <a class="nav-link" href="User List">User List</a>
+                      <a class="nav-link" href="userList.php">User List</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="eventList.php">Event List</a>
