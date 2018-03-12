@@ -126,7 +126,7 @@ tr:nth-child(even) {
                 <div class="input-group">
                     <label>Gender</label>
                     <input type="radio" name="gender" value="male" >Male
-                    <input type="radio" name="gender" value="A" checked/>Female
+                    <input type="radio" name="gender" value="female" checked/>Female
                 </div>
 
 
