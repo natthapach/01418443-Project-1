@@ -9,8 +9,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="style.css">
+    </script>
  
 </head>
 
@@ -61,7 +62,7 @@
         </div>
         
         <form method="post" action="attendantRegis.php">
-             <?php include("../../service/admin/errors.php"); ?>
+            <?php include("../../service/admin/errors.php"); ?>
 
                 <div class="input-group">
                     <label>Username</label>
@@ -91,22 +92,24 @@
 
                 <div class="input-group">
                     <label>Surname</label>
-                    <input type="text" name="surname"<?php echo $username; ?> >
+                    <input type="text" name="surname" value="<?php echo $username; ?>">
                 </div>
 
                 <div class="input-group">
                     <label>Birthday</label>
-                    <input type="date" name="birth">
+                    <input type="date" name="birth" value=" <?php echo $birth; ?>">
+
+  
                 </div>
 
                 <div class="input-group">
                     <label>Address</label>
-                    <input type="text" name="address"<?php echo $address; ?>>
+                    <input type="text" name="address" value="<?php echo $address; ?>">
                 </div>
 
                 <div class="input-group">
                     <label>Phone</label>
-                    <input type="text" name="phone"<?php echo $phone; ?>>
+                    <input type="text" name="phone" valu="<?php echo $phone; ?>">
                 </div>
 
                 <div class="input-group">
