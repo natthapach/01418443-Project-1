@@ -54,7 +54,8 @@
             <div>
                 <p></p>
                 Find: <input type="text" id="input">
-            </div
+                </div>
+            
                 <div class="user-table">
                     <table class="table table-hover">
                         <thead>
@@ -86,7 +87,6 @@
                                 <td><?= $user->status;?></td>
                                 <td>
                                     <form method="post" action="../../service/admin/deleteUser.php">
-                                        <input type="submit" name="action" value="View"/>
                                         <input type="submit" name="action" value="Changestatus"/>
                                         <input type="hidden" name="id" value="<?= $user->user_name;?>"/>
                                         <input type="hidden" name="status" value="<?= $user->status;?>"/>
@@ -120,7 +120,7 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-    </script>
+                </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
