@@ -11,18 +11,6 @@
   <div id="header">
 
   </div>
-  <!-- content start here -->
-  <div class="container" id="profile-table">
-
-  </div>
-            <!-- content start here -->
-
-            <div class="container" >
-                <div class="row" id="event-table">
-
-                </div>
-            </div>
-
         <!-- content start here -->
         <div class="row">
             <div style="margin:0% auto;width:400px;text-align:center;">
@@ -62,6 +50,16 @@
  </div>
               </form>
             </div>
+            <footer class="primary-light">
+                   <h3> contact us </h3>
+
+                   <a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+                   <a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+                   <a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+                       <div class="footer-copyright primary">
+                           <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+                       </div>
+            </footer>
 </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
