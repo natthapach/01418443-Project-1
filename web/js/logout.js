@@ -12,4 +12,17 @@ $(document).ready(function(e){
             }
         })
     })
+    $("#log-out").click(function(){
+        console.log("click logout")
+        $.ajax({
+            url:"../../service/admin/server.php",
+            type:"get",
+            data:{
+                "logout":"ok"
+            },
+            success:function(response){
+                window.location.href = "../../web/admin";
+            }
+        })
+    })
 });
