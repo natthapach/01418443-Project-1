@@ -125,13 +125,8 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
-<<<<<<< HEAD
-            //  va`r_dump($event);
-              
-=======
              var_dump($event);
 
->>>>>>> 33ef6b1a2fdf9b79e705b9f1694d15046f4344e2
         ?>
 
 
@@ -359,5 +354,6 @@
             $("#header").load("header.html");
         });
     </script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>
