@@ -148,26 +148,11 @@ tr:nth-child(even) {
           </footer>
     </div>
 
-     <footer class="primary-light">
-                   <h3> contact us </h3>
-                   <a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
-                   <a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
-                   <a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
-                       <div class="footer-copyright primary">
-                           <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
-                       </div>
-            </footer>
-
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-
-
-=======
     <!-- import my js file -->
     <!-- <script src="app.js"></script> -->
->>>>>>> 1d42022ee355998bcbac6adae0ca4c3f05a1dd0f
+
 </body>
 </html>
