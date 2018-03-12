@@ -22,7 +22,7 @@
 
         <?php
             session_start();
-            $_SESSION["current_user"] = "user2";
+            // $_SESSION["current_user"] = "user2";
             $username = $_SESSION["current_user"];
             $conn = new PDO(
                 "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",

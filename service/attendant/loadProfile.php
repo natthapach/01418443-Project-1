@@ -1,7 +1,7 @@
 <?php
 session_start();
 // $_SESSION["current_user"] = "user2";
-$username = $_SESSION["current_user"];
+$username = $_SESSION["current_username"];
 
 $servername = "localhost";
 $username = "root";
@@ -16,7 +16,7 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM attendants where user_name='".$_SESSION['current_user']."';");
+    $stmt = $conn->prepare("SELECT * FROM attendants where user_name='".$_SESSION["current_username"]."';");
     $stmt->execute();
     $attendant = $stmt->fetch(PDO::FETCH_OBJ);
 
