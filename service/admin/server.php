@@ -100,7 +100,7 @@
                 $statement->execute();
                 $_SESSION['success'] = "You are now logged in";
                 $_SESSION["current_username"] = $username;
-                header("Location: ../../web/organizer/home.html "); ///direct to organizer home
+                header("Location: ../../web/attendant/home.php ");
                 }
 
             }
@@ -177,7 +177,7 @@
 
                     $_SESSION['success'] = "You are now logged in";
                     $_SESSION["current_username"] = $username;
-                    header("Location: profile.php"); //direct to profile
+                    header("Location: ../../web/organizer/home.html "); ///direct to organizer home
                     }
         
                 }
@@ -208,6 +208,12 @@
                         $_SESSION['success'] = "You are now logged in";
                         if($row['role_id'] =='O'){
                             header("Location: ../../web/organizer/home.html ");
+                        }
+                        if($row['role_id'] =='Ad'){
+                            header("Location: ../../web/admin/eventList.php ");
+                        }
+                        if($row['role_id'] =='A'){
+                            header("Location: ../../web/attendant/home.php ");
                         }
                         // header("Location: profile.php"); //direct to profile
                     }else{
