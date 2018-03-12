@@ -8,7 +8,6 @@ $.ajax({
 function createTable(res){
   $strcoming = '';
   $strjoined = '';
-  // $str += '<h3>Coming up</h1><thead><tr><th>Event Name</th><th>Place</th><th>Date and Time</th><th>QR Code</th></tr></thead>';
 
   $str = '';
   for (i = 0; i<res.length;i++){

@@ -2,7 +2,7 @@
     include("../../service/connection.php");
 
     $event_id = $_GET["event_id"];
-    
+
 
     $statement = $connection->prepare(
         'SELECT *, DATE_FORMAT(ad.pay_date, "%d %M %Y %T") as "pay_date"
@@ -31,44 +31,48 @@
 </head>
 <body class="background-dark">
     <div class="container background-light">
-        <div class="row banner primary-dark">
-            <div class="col-12">
-                <b>
-                    Kitty Event~~
-                </b>
-            </div>
-            
-        </div>
-        <nav class="row navbar navbar-expand-lg navbar-light primary">
-            <!-- web name -->
-            <a class="navbar-brand" href="#">Kitty</a>
-            <!-- hamberger icon menu (3 line icon, show when small screen) -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- menu -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <!-- dropdown menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+      <div class="container background-light">
+          <div class="banner">
 
+          </div>
+          <nav class="row navbar navbar-expand-lg navbar-light primary">
+              <!-- web name -->
+              <a class="navbar-brand" href="#">EVENT PUSH</a>
+              <!-- hamberger icon menu (3 line icon, show when small screen) -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                      <!-- menu -->
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Check in</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Create Event</a>
+                      </li>
+                      <!-- <li clss="nav-item">
+                          <a class="nav-link" href="#">Log out</a>
+                      </li> -->
+
+                      <!-- dropdown menu -->
+                      <!-- <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                      </li> -->
+                  </ul>
+                  <button type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
+              </div>
+          </nav>
         <!-- content start here -->
         <style>
             .img-container {
@@ -101,26 +105,26 @@
                         ?>
                 >
                 </div>
-                
+
                 <div class="card-body">
                     <h4 class="card-title">
                         <?php
                             echo $attendant->first_name . " " . $attendant->last_name;
                         ?>
                     </h4>
-                
+
                     <div>
-                        <div id=<?php 
+                        <div id=<?php
                                 echo "paid-".$attendant->attendant_id;
                                 ?>
-                            style=<?php    
+                            style=<?php
                                         if ($attendant->status_id == "P"){
                                             echo "display:block";
                                         }else{
                                             echo "display:none";
                                         }
                                     ?>>
-                            <button 
+                            <button
                                 class="btn btn-primary"
                                 onclick=<?php
                                             echo "onClickViewProof('$attendant->pay_proof_path')"; ?>>
@@ -135,7 +139,7 @@
                         <div id=<?php
                                 echo "confirm-".$attendant->attendant_id;
                                 ?>
-                            style=<?php    
+                            style=<?php
                                         if ($attendant->status_id == "C"){
                                             echo "display:block";
                                         }else{
@@ -147,7 +151,7 @@
                         <div id=<?php
                                 echo "wait-".$attendant->attendant_id;
                                 ?>
-                            style=<?php    
+                            style=<?php
                                         if ($attendant->status_id == "W"){
                                             echo "display:block";
                                         }else{
@@ -175,7 +179,7 @@
             <?php
                 }
             ?>
-            
+
         </div>
 
     </div>
@@ -186,6 +190,6 @@
     <script src="js/event-attendants.js"></script>
 </body>
 </html>
-    
+
 </body>
 </html>
