@@ -66,8 +66,7 @@
             if ($organizer_profile !== false) {
                 $event->organizer_profile = $organizer_profile;
             }
-
-            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id");
+            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id WHERE attendants.user_name='".$_SESSION['current_user']."' AND attendences.event_id=".$_GET['event']);
             $stmt->execute();
             $status = $stmt->fetch(PDO::FETCH_OBJ);
             if ($status !== false) {
@@ -95,8 +94,10 @@
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->place ?></p>
-                        <?php echo $event->status->status_id;
+                        <?php 
                         $is_w = $event->status->status_id;
+                        $max = $event->max_attendants;
+                        
                         if ($is_w != "W"){
                             echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
                         }else{

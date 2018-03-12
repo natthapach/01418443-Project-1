@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["current_user"] = "user1";
+$_SESSION["current_user"] = "user2";
 $username = $_SESSION["current_user"];
 
 $servername = "localhost";

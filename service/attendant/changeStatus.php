@@ -18,7 +18,7 @@ try {
     $stmt = $conn->prepare("SELECT id FROM attendants WHERE user_name='".$_POST["user"]."'"); 
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_OBJ);
-    $stmt = $conn->prepare("UPDATE attendences SET status_id='W' where attendant_id=".$result->id." and event_id=".$_POST['event'].";"); 
+    $stmt = $conn->prepare("INSERT INTO attendences(attendant_id, event_id, status_id) VALUES (".$result->id.' ,' .$_POST["event"]." , 'W')");
     if ($stmt->execute()){
         echo "true";
     } else {
