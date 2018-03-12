@@ -10,34 +10,34 @@
 4. start page at ```{project-path}/web/admin/```
 
 ## Project Structure
-This project separate code structure into two sides - service side and web side - and divide into three subsystem includes admin subsystem, organizer subsystem and attendant subsystem
-* service
+This project separate code structure into two sides (service side and web side) and divide into three subsystem includes admin subsystem, organizer subsystem and attendant subsystem
+* service  
     this folder contain *php file* for receive request from web-side and connect to database
-    * admin
+    * admin  
         this folder contain *php file* for recieve request from admin-subsystem such as "login service", "register service" etc.
-    * organizer
+    * organizer  
         this folder contain *php file* for recieve request from organizer-subsysten such as "create event service", "checkin service" etc.
-    * attendant
+    * attendant  
         this folder contain *php file* for recieve request from attendant-subsystem such as "show event", "join event", "buy event" etc.
-    * pictures
+    * pictures  
         this folder contain pictures of each event
-    * slip
+    * slip  
         this folder contain slip's picture
-    * profile
+    * profile  
         this folder contain user's profile picture
-* web
+* web  
     this folder contain *web page file*
-    * admin
+    * admin  
         this folder contain web page for admin-subsystem (html or php)
-    * attendant
+    * attendant  
         this folder contain web page for attendant-subsytem (html or php)
-        * js
+        * js  
             this folder contain javascript file for control behavior and send/recieve data (to service-side) for attendant-web
-        * css
+        * css  
             this folder contain cascade style sheet file for model webpage
-    * organizer
+    * organizer  
         this folder contain web page for organizer-subsytem (html or php)
-        * js
+        * js  
             this folder contain javascript file for control behavior and send/receive data (to service-side) for attendant-web
-        * css
+        * css  
             this folder contain cascade style sheet file for model webpage
