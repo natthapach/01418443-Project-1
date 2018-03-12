@@ -18,7 +18,7 @@
 
     if(isset($_POST["next"])){
         $for = $_POST['position'];
-        if($for =='O'){
+        if($for =='Organizer'){
             header("Location: ../../web/admin/organizeRegis.php");
         }
         else{
