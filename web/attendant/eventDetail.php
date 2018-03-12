@@ -210,7 +210,7 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Starting Date : </span><?php echo $event->event_start_date?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Ending Date : </span><?php echo $event->event_finish_date?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Price : </span><?php echo $event->price?> baht</p><br>
-            <p class='w3-justify'><span class='w3-justify bold-font'> Number of attendants : </span><?php echo $event->max_attendents?></p><br>
+            <p class='w3-justify'><span class='w3-justify bold-font'> Number of attendants : </span><?php echo $event->max_attendents?> persons</p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
