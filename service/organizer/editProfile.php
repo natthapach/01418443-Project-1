@@ -1,9 +1,9 @@
 <?php
+    include("../connection.php");
     session_start();
-    // $_SESSION['currentUser'] = 'user2';
 
     //connectDB
-    $username = $_SESSION["current_user"];
+    $username = $_SESSION["current_username"];
     $conn = new PDO(
         "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
         "root",
@@ -12,7 +12,9 @@
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //update first name, last name, email
-    $stmt = $conn->prepare("UPDATE attendants SET first_name='".$_POST['first-name']."',last_name='".$_POST['last-name']."',phone='".$_POST['tel']."',email='".$_POST['email']."' where user_name='".$_SESSION['currentUser']."'");
+    $sql = "UPDATE organizer SET name='".$_POST['name']."',website='".$_POST['website']."',phone='".$_POST['tel']."',facebook='".$_POST["facebook"]."',email='".$_POST['email']."' where user_name='".$_SESSION["current_username"]."'";
+    // echo $sql;
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
 
     var_dump($_POST);
@@ -20,7 +22,7 @@
 
     $target_dir = "../profile/";
     $imageFileType = strtolower(pathinfo($_FILES["picture"]["name"],PATHINFO_EXTENSION));
-    $file_name = $_SESSION['currentUser'].'-profile.'.$imageFileType;
+    $file_name = $_SESSION["current_username"].'-profile.'.$imageFileType;
     $target_file = $target_dir . $file_name;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     echo $target_file;
@@ -33,7 +35,9 @@
                 echo "The file ". basename( $_FILES["picture"]["name"]). " has been uploaded.";
                 
                 //update profile image's file name
-                $stmt = $conn->prepare("UPDATE account SET profile='".$file_name."' where user_name='".$_SESSION['currentUser']."'");
+                $query_profile = "UPDATE account SET profile='".$file_name."' where user_name='".$_SESSION["current_username"]."'";
+                echo "<br><br><br>", $query_profile;
+                $stmt = $conn->prepare($query_profile);
                 $stmt->execute();
                 
 
@@ -44,5 +48,5 @@
             echo "File is not an image.";
         }
     }
-    header('location:../../web/attendant/profile.html');
+    // header('location:../../web/organizer/profile.html');
 ?>
