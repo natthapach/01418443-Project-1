@@ -49,7 +49,7 @@
 
 
         <div class="row">
-            <div><p>User List</p>
+            <div><h1>User List</h1>
             </div>
             <div>
                 <p></p>
