@@ -2,7 +2,7 @@
     session_start();
     include('../connection.php');
 
-    $_SESSION["current_username"] = "organizer01";
+    // $_SESSION["current_username"] = "organizer01";
     $username = $_SESSION["current_username"];
 
     try {

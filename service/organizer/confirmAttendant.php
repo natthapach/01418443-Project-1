@@ -2,7 +2,7 @@
     include("../connection.php");
     session_start();
     // fake user name
-    $_SESSION["current_username"] = "organizer01";
+    // $_SESSION["current_username"] = "organizer01";
 
     include("../connection.php");
     $event_id = $_POST["event_id"];
