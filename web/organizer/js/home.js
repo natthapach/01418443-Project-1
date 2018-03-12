@@ -28,4 +28,5 @@ function addEvent(event){
 
 function onClickEvent(id){
     console.log(id);
+    window.location.href = "eventDetail.php?event="+id;
 }
