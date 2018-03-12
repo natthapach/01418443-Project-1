@@ -35,6 +35,6 @@
     if(sizeof($result) > 0){
         echo json_encode($result[0]);
     }else{
-        echo "error";
+        echo "error " . $username;
     }
 ?>
