@@ -11,18 +11,6 @@
   <div id="header">
 
   </div>
-  <!-- content start here -->
-  <div class="container" id="profile-table">
-
-  </div>
-            <!-- content start here -->
-
-            <div class="container" >
-                <div class="row" id="event-table">
-
-                </div>
-            </div>
-
         <!-- content start here -->
         <div class="row">
             <div style="margin:0% auto;width:400px;text-align:center;">
