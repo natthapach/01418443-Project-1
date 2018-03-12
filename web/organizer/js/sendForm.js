@@ -7,7 +7,7 @@ $(document).ready(function (e) {
     $(function () {
         $(document).on("click", '#google-form-btn', function (event) {
             event.preventDefault();
-            alert("button press eiei");
+            // alert("button press eiei");
             console.log(event_id);
 
 
@@ -23,12 +23,24 @@ $(document).ready(function (e) {
             $.ajax({
                 url:"../../service/organizer/getFormBundle.php",
                 type:"get",
+                dataType:"json",
                 data:{
                     event_id:event_id
                 },
-                success:function(data){
-                    console.log("bundle", data);
-                    sendEmail(data);
+                success:function(bundle){
+                    console.log("bundle", bundle);
+                    for(let i=0; i<bundle.email.length; i++){
+                        let data = {
+                            "attendant":bundle.attendant[i],
+                            "organizer":bundle.organizerName,
+                            "eventName":bundle.eventName,
+                            "formLink":bundle.formLink,
+                            "email":bundle.email[i]
+                        }
+                        // console.log("data", data);
+                        sendEmail(data);
+                    }
+                    
                 }
             })
         });
@@ -43,10 +55,10 @@ function sendEmail(data){
         type: "POST",
         data: data,
         success: function (e) {
-            alert("Success: " + e);
+            console.log("Success: " + e);
         },
         error: function (e) {
-            alert("Error: " + e);
+            console.log("Error: " + e);
         }
     });
 }
