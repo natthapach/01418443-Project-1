@@ -2,6 +2,7 @@ var attendant;
 var now = new Date();
 
 function showProfile(attendant) {
+    console.log(attendant);
     var birth = attendant.birth_date.split("-");
     var old =parseInt(now.getFullYear()-birth[0]);
     console.log(birth[0]);
@@ -36,7 +37,7 @@ function loadProfile(){
             //     if(attendants.id == user.id){
             //         showProfile(attendants[i], i)
             //     }
-                
+
             // }
         }
     };
