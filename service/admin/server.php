@@ -88,6 +88,7 @@
                 $gender = $_POST['gender'];
                 $password = password_hash($password_1, PASSWORD_BCRYPT); //encrypt passqword before save in 
                 $birth =  $_POST['birth'].' 00:00:00';
+               
 
         
                 $query = "INSERT INTO account (user_name, password, role_id, status)  VALUES('$username', '$password', 'A','Active')";
