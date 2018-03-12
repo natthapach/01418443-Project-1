@@ -5,6 +5,8 @@
         "root",
         ""
     );
+
+
     $user = $_POST['id'];
     if ($_POST['action'] && $_POST['id']) {
         if ($_POST['action'] == 'Changestatus') {
@@ -13,16 +15,27 @@
                 $statement = $connection->prepare($sql);
                 $statement->execute();
                 header("Location: ../../web/admin/userList.php");
-            }else{
+            }
+           else{
                 $sql = "UPDATE account SET status ='Inactive' WHERE user_name = '$user' ";
                 $statement = $connection->prepare($sql);
                 $statement->execute();
                 header("Location: ../../web/admin/userList.php");
             }
+        }
+        if ($_POST['action'] == 'View') {
+            if($_POST['position'=='A']){
+                $sql = "SELECT * FROM attendants  WHERE user_name = '$user' ";
+                $statement = $connection->prepare($sql);
+     
+            }
+
 
         }
             
+            
       }
+
     
 
 ?>

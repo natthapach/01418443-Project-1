@@ -6,17 +6,13 @@
         <link rel="stylesheet" href="../app.css">
     </head>
     <body class="background-dark">
-        <div class="container background-light">
+        <div class="container event-detail">
           <div id="header">
 
           </div>
 
             <!-- content start here -->
-
-            <!-- <div class="container event-detail" > -->
-              <div class="container" >
-
-            <div class="row">
+            <div class="row event-detail">
               <!-- <h3 style="align:center;">Buying Event</h3> -->
                 <h1 class="table-head">Buying Event</h1>
 
@@ -57,15 +53,22 @@
     </div>
   </div>
 </div>
-                </div>
-              </div>
-
-
-
+</div>
           </tbody>
           </table>
-    </div>
 
+
+    <footer class="primary-light">
+<h3> contact us </h3>
+
+<a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+<a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+<a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+      <div class="footer-copyright primary">
+          <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+      </div>
+  </footer>
+    </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="style.css">
  
 </head>
@@ -63,8 +63,8 @@
         <form method="post" action="register.php">
                 <div class="input-group">
                     <label>Register for</label>
-                    <input type="radio" name="position" value="O" >Organizer
-                    <input type="radio" name="position" value="A" checked/>Attendant
+                    <input type="radio" name="position" value="Organizer" >Organizer
+                    <input type="radio" name="position" value="Attendant" checked/>Attendant
                 </div>
 
                 <div class="input-group">

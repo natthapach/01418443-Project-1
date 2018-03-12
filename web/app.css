@@ -1,9 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Itim|Oswald');
 @import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css');
+/* @import "bootstrap-social.less"; */
 .banner{
     height: 180px;
     font-size: 3em;
+    width: 100%;
     background-image: url("banner.jpg");
     background-repeat: no-repeat;
     background-size:  cover;
@@ -71,8 +73,8 @@ nav-item{
 }
 
 .event-detail{
-    background-color: #ffcccc;
-    width:100%;
+    background-color: #ffebea;
+    /* width:100%; */
 
 }
 .event-detail-info{
@@ -144,7 +146,7 @@ nav-item{
 .table-head{
   margin: 0% AUTO;
   padding: 10px;
-  font-family: 'Itim'
+  font-family: 'Itim';
 }
 .form-horizontal{
   width: 500px;
@@ -154,16 +156,30 @@ nav-item{
 }
 .divtable{
   width: 100%;
-}#nameimg{
+}
+#nameimg{
   font-size: 20px;
   padding: 10px;
   color: white;
+}
+
+footer{
+  width:100%;
+  font-family: 'Itim';
+  text-align: center;
+}
+#iconfooter{
+  margin: 0% 2% 1% 2%;
+}
+.footer-copyright{
+  width: 100%;
+  font-size: 20px;
 }
 .cannot-buy {
     display:block;
     border-radius: 20px;
     border: 2px solid #ff0066;
     text-align: center;
-    padding: 20px; 
+    padding: 20px;
     width: 100%;
 }

@@ -30,3 +30,20 @@ function onClickEvent(id){
     console.log(id);
     window.location.href = "eventDetail.php?event="+id;
 }
+
+function onClickExport(){
+    // var doc = new jsPDF()
+    
+    // doc.text('Hello world!', 10, 10)
+    // doc.save('a4.pdf')
+    var doc = new jsPDF();
+    // doc.addImage(imgData, "PNG", 10, 10);
+    doc.text("<table><thead><td>id</td><td>name</td></thead><tr><td>1</td><td>eiei</td></tr></table>");
+    doc.save("event-table.pdf");
+    // html2canvas($("#event-table"), {
+    //     onrendered : function(canvas){
+    //         var imgData = canvas.toDataURL('image/png');
+            
+    //     }
+    // })
+}

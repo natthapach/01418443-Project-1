@@ -57,30 +57,51 @@
     
 
         <div class="row">
-            <div><p>User List</p></div>
+            <div><p>User List</p>
+            </div>
+            <div>
+                <p></p>
+                Find: <input type="text" id="input">
+            </div
                 <div class="user-table">
                     <table class="table table-hover">
-                        <tr>
-                            <th>Username</th>
-                            <th>Position</th>
-                            <th>Status</th> 
-                            <th>Action</th>  
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Position</th>
+                                <th>Status</th> 
+                                <th>Action</th>  
 
-                        </tr>
+                            </tr>
+                        </thead>
                         <?php foreach ($people as $user): ?>
-                        <tr>
-                            <td><?= $user->user_name;?></td>
-                            <td><?= $user->role_id?></td>
-                            <td><?= $user->status;?></td>
-                            <td>
-                                <form method="post" action="../../service/admin/deleteUser.php">
-                                <input type="submit" name="action" value="Edit"/>
-                                    <input type="submit" name="action" value="Changestatus"/>
-                                    <input type="hidden" name="id" value="<?= $user->user_name;?>"/>
-                                    <input type="hidden" name="status" value="<?= $user->status;?>"/>
-                                </form>
-                            </td>
-                        </tr>
+                        <tbody id="userTable">
+                            <tr>
+                                <td><?= $user->user_name;?></td>
+                                <?php 
+                                    $position = $user->role_id;
+                                    if($position =='Ad'){
+                                        $position = 'Admin';
+                                    }
+                                    if($position =='A'){
+                                        $position = 'Attendant';
+                                    }
+                                    if($position =='O'){
+                                        $position = 'Organize';
+                                    }
+                                ?>
+                                <td><?= $position?></td>
+                                <td><?= $user->status;?></td>
+                                <td>
+                                    <form method="post" action="../../service/admin/deleteUser.php">
+                                        <input type="submit" name="action" value="View"/>
+                                        <input type="submit" name="action" value="Changestatus"/>
+                                        <input type="hidden" name="id" value="<?= $user->user_name;?>"/>
+                                        <input type="hidden" name="status" value="<?= $user->status;?>"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
                         <?php endforeach; ?>
                     </table>
                 </div>
@@ -88,6 +109,15 @@
         </div>
     </div> 
 
+
+    <script>
+    $("#input").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+                    $("#userTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+    </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
