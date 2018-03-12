@@ -4,6 +4,11 @@ function onClickViewProof(path){
     myWindow.document.write("<img width='500px'src='" + "../../service/slip/" + path + "'>");
 }
 
+function onClickViewProof2(path){
+    console.log(path);
+
+}
+
 function onClickConfirm(event_id, attendant_id){
     $.ajax({
         url:"../../service/organizer/confirmAttendant.php",
