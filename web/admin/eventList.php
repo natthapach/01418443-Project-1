@@ -53,7 +53,7 @@ tr:nth-child(even) {
               <ul class="navbar-nav mr-auto">
                   <!-- menu -->
                   <li class="nav-item">
-                      <a class="nav-link" href="User List">User List</a>
+                      <a class="nav-link" href="userList.php">User List</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="eventList.php">Event List</a>
@@ -138,5 +138,6 @@ tr:nth-child(even) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- import my js file -->
     <!-- <script src="app.js"></script> -->
+    <script src="../js/logout.js"></script>
 </body>
 </html>

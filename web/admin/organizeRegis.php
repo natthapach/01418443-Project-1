@@ -125,5 +125,6 @@
 
     <!-- import my js file -->
     <!-- <script src="app.js"></script> -->
+    <script src="../js/logout.js"></script>
 </body>
 </html>

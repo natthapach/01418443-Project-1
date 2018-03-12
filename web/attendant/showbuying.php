@@ -79,5 +79,6 @@
             });
         </script>
         <script src="js/buying.js"></script>
+        <script src="../js/logout.js"></script>
     </body>
     </html>

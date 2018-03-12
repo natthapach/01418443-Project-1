@@ -49,12 +49,13 @@
 
 
         <div class="row">
-            <div><p>User List</p>
+            <div><h1>User List</h1>
             </div>
             <div>
                 <p></p>
                 Find: <input type="text" id="input">
-            </div
+                </div>
+            
                 <div class="user-table">
                     <table class="table table-hover">
                         <thead>
@@ -86,7 +87,6 @@
                                 <td><?= $user->status;?></td>
                                 <td>
                                     <form method="post" action="../../service/admin/deleteUser.php">
-                                        <input type="submit" name="action" value="View"/>
                                         <input type="submit" name="action" value="Changestatus"/>
                                         <input type="hidden" name="id" value="<?= $user->user_name;?>"/>
                                         <input type="hidden" name="status" value="<?= $user->status;?>"/>
@@ -120,13 +120,14 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-    </script>
+                </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>
 
