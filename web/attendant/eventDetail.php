@@ -125,10 +125,8 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
-<<<<<<< HEAD
-             var_dump($event);
-=======
->>>>>>> be725afba8374bc0b639dbdc93842fe4f0f3b1c6
+            //  var_dump($event);
+
 
         ?>
 
