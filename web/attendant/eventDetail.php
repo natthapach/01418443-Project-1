@@ -73,9 +73,35 @@
                 $event->status = $status;
             }
 
-           
+            $stmt = $conn->prepare("SELECT birth_date FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
+            $stmt->execute();
+            $birth = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($birth !== false) {
+                $event->birth = $birth;
+            }
+
+            // $stmt = $conn->prepare("SELECT e.*, count(at.event_id) as attendants
+            //     from event as e
+            //     join organizer as o
+            //     ON o.id = e.organizer_id
+            //     left join attendences as at
+            //     ON at.event_id = e.id
+            //     where a.user_name=:username
+            //     GROUP BY e.d            
             
-            //svar_dump($event);
+            // ");
+
+            // $stmt->execute();
+            // $count_attendant = $stmt->fetchAll(PDO::FETCH_OBJ);
+            // // if ($count_attendant !== false) {
+            // //     $event->count_attendant = $count_attendant;
+            // // }
+            // $event->count_attendants = array();
+            // if ($count_attendants !== false) {
+            //     $event->count_attendants = $count_attendants;
+            // }
+
+             var_dump($event);
               
         ?>
 
@@ -95,14 +121,22 @@
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
                         <p><?php echo $event->place ?></p>
                         <?php 
-                        $is_w = $event->status->status_id;
-                        $max = $event->max_attendants;
-                        
-                        if ($is_w != "W"){
-                            echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                        $now_year = date("Y");
+                        $birth = explode(" ",$event->birth->birth_date);
+                        $year = explode("-", $birth[0]);
+                        $old = $now_year - $year[0];
+                        if ( $old > $event->max_age || $old < $event->min_age){
+                            echo "<h3 id='cannot-buy'>อายุคุณไม่อยู่ในเกณฑ์ของ event นี้</h3>";
                         }else{
-                            echo "<button class='w3-button w3-black w3-margin-bottom ' disabled >You have get ticket already.</button>";
-                        }
+                            if ($status === false){
+                                echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                            }else{
+                                
+                                echo "<button class='w3-button w3-black w3-margin-bottom ' disabled >You have get ticket already.</button>";
+                            }
+                        } 
+                        
+                    
 
                         ?>
                         <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Get Ticket</button> -->
