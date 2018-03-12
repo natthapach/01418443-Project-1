@@ -36,6 +36,8 @@
         $surname = mysqli_real_escape_string($db, $_POST['surname']);
         $address = mysqli_real_escape_string($db, $_POST['address']);
         $phone = mysqli_real_escape_string($db, $_POST['phone']);
+        $birth =  $_POST['birth'].' 00:00:00';
+               
 
         if(empty($username)){
             array_push($errors, "Username is required");
@@ -87,8 +89,7 @@
             else{
                 $gender = $_POST['gender'];
                 $password = password_hash($password_1, PASSWORD_BCRYPT); //encrypt passqword before save in 
-                $birth =  $_POST['birth'].' 00:00:00';
-               
+
 
         
                 $query = "INSERT INTO account (user_name, password, role_id, status)  VALUES('$username', '$password', 'A','Active')";
