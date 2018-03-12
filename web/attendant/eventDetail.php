@@ -73,12 +73,36 @@
                 $event->status = $status;
             }
 
-            $stmt = $conn->prepare("SELECT birth_date FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
+            $stmt = $conn->prepare("SELECT birth_date, id FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
             $stmt->execute();
             $birth = $stmt->fetch(PDO::FETCH_OBJ);
             if ($birth !== false) {
                 $event->birth = $birth;
+                $aid = $birth->id;
             }
+
+            $stmt = $conn->prepare("SELECT pre_event_id FROM pre_condition_event JOIN event ON pre_condition_event.event_id = event.id WHERE pre_condition_event.event_id =" .$_GET['event']);
+            $stmt->execute();
+            $pre_events = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $event->pre_events = array();
+            $notPassEvents = array();
+            $isNotPass = FALSE;
+            if ($pre_events !== false) {
+                foreach ($pre_events as $pre_event) {
+                    $stmt = $conn->prepare("SELECT name FROM event WHERE id=".$pre_event->pre_event_id);
+                    $stmt->execute();
+                    $name = $stmt->fetch(PDO::FETCH_OBJ)->name;
+
+                    $stmt = $conn->prepare("SELECT * FROM attendences WHERE event_id=".$pre_event->pre_event_id." AND attendant_id=".$aid." AND status_id='C'");
+                    $stmt->execute();
+                    $result = $stmt->fetch(PDO::FETCH_OBJ);
+                    if ($result === FALSE) {
+                        $isNotPass = TRUE;
+                        $notPassEvents[] = $name;
+                    }
+                }
+            }
+            echo $isNotPass ? "TRUE" : "FALSE";
 
             // $stmt = $conn->prepare("SELECT e.*, count(at.event_id) as attendants
             //     from event as e
@@ -126,13 +150,15 @@
                         $year = explode("-", $birth[0]);
                         $old = $now_year - $year[0];
                         if ( $old > $event->max_age || $old < $event->min_age){
-                            echo "<h3 id='cannot-buy'>อายุคุณไม่อยู่ในเกณฑ์ของ event นี้</h3>";
-                        }else{
-                            if ($status === false){
-                                echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                            echo "<h3 class='cannot-buy'>อายุคุณไม่อยู่ในเกณฑ์ของ event นี้</h3>";
+                        } else if ( $isNotPass ){
+                            echo "<h3 class='cannot-buy'>คุณต้องเข้าร่วม event เหล่านี้ก่อน: [".join(", ", $notPassEvents)."]</h3>";
+                        } else {
+                            if ($event->status->status_id != "W"){
+                                echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
                             }else{
                                 
-                                echo "<button class='w3-button w3-black w3-margin-bottom ' disabled >You have get ticket already.</button>";
+                                echo "<h3 id='cannot-buy'>You have already get this ticket.</h3>";
                             }
                         } 
                         
@@ -183,7 +209,14 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
-            
+            <div id="map" style="width:100%;height:400px"></div>
+
+            <?php
+                var_dump($event->google_map_link);
+                $lat = preg_split("/ /", $event->google_map_link)[0];
+                $lng = preg_split("/ /", $event->google_map_link)[1];
+                
+            ?>
         
                
         </div>
@@ -272,10 +305,25 @@
                 xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
             }
 
-      
+
+            function initMap() {
+                var position = {lat: <?php echo $lat;?>, lng: <?php echo $lng;?>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                                                zoom: 15,
+                                                center: position
+                                            });
+                var marker = new google.maps.Marker({
+                                                        position: position,
+                                                        map: map
+                                                    });
+            }
 
       
         </script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQfdc8WProuGLQ9XDI3FarNXrmxB3ARjA&callback=initMap">
+    </script>
          
 
     </div>
