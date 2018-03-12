@@ -16,7 +16,7 @@
 <body class="background-dark">
     <div class="container background-light">
         <div class="banner">
-    
+
         </div>
         <nav class="row navbar navbar-expand-lg navbar-light primary">
             <!-- web name -->
@@ -56,7 +56,7 @@
                 <div class="nav-item">
                 <a style="color:black" class="nav-link" href="profile.html">Profile</a>
                 </div>
-                
+
                 <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
             </div>
         </nav>
@@ -291,7 +291,16 @@
             }
 
         </script>
+        <footer class="primary-light">
+      <h3> contact us </h3>
 
+      <a href="#" class="twitter"><img src="../iconfooter/twitter.png" id="iconfooter"></img></a>
+      <a href="#" class="facebook"><img src="../iconfooter/facebook.png" id="iconfooter"></img></a>
+      <a href="#" class="instagram"><img src="../iconfooter/instagram.png" id="iconfooter"></img></a>
+          <div class="footer-copyright primary">
+              <div>© 2018 อกไก่ปั่น. All rights reserved.</div>
+          </div>
+      </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
