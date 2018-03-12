@@ -1,0 +1,45 @@
+# Event Push - Web Application
+
+## Get Started
+___
+1. clone project
+    ```bash
+    git clone https://github.com/natthapach/01418443-Project-1.git
+    ```
+2. create database named **webtech1** in your database system
+3. import [webtech1.sql](https://github.com/natthapach/01418443-Project-1/blob/master/service/webtech1.sql) to your database
+4. start page at ```{project-path}/web/admin/```
+
+## Project Structure
+___
+This project separate code structure into two sides - service side and web side - and divide into three subsystem includes admin subsystem, organizer subsystem and attendant subsystem
+* service
+    this folder contain *php file* for receive request from web-side and connect to database
+    * admin
+        this folder contain *php file* for recieve request from admin-subsystem such as "login service", "register service" etc.
+    * organizer
+        this folder contain *php file* for recieve request from organizer-subsysten such as "create event service", "checkin service" etc.
+    * attendant
+        this folder contain *php file* for recieve request from attendant-subsystem such as "show event", "join event", "buy event" etc.
+    * pictures
+        this folder contain pictures of each event
+    * slip
+        this folder contain slip's picture
+    * profile
+        this folder contain user's profile picture
+* web
+    this folder contain *web page file*
+    * admin
+        this folder contain web page for admin-subsystem (html or php)
+    * attendant
+        this folder contain web page for attendant-subsytem (html or php)
+        * js
+            this folder contain javascript file for control behavior and send/recieve data (to service-side) for attendant-web
+        * css
+            this folder contain cascade style sheet file for model webpage
+    * organizer
+        this folder contain web page for organizer-subsytem (html or php)
+        * js
+            this folder contain javascript file for control behavior and send/receive data (to service-side) for attendant-web
+        * css
+            this folder contain cascade style sheet file for model webpage
