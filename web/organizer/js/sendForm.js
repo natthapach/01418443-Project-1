@@ -50,7 +50,7 @@ $(document).ready(function (e) {
 function sendEmail(data){
      // POST to Google App Scripts
      $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbwetsM68Ca1L30lwBmDtq6iqzQXQ4UivqiGR4uyNQNu0WaR82Y/exec",
+        url: "../../service/organizer/sendEmail.php",
         dataType: "JSONP",
         type: "POST",
         data: data,
