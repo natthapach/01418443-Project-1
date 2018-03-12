@@ -100,7 +100,7 @@
                 $statement->execute();
                 $_SESSION['success'] = "You are now logged in";
                 $_SESSION["current_username"] = $username;
-                header("Location: profile.php"); //direct to profile
+                header("Location: ../../organizer/home.html "); ///direct to organizer home
                 }
 
             }
