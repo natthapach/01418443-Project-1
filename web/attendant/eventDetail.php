@@ -125,13 +125,8 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
-<<<<<<< HEAD
-            //  va`r_dump($event);
-              
-=======
-             var_dump($event);
+             //var_dump($event);
 
->>>>>>> 33ef6b1a2fdf9b79e705b9f1694d15046f4344e2
         ?>
 
 
@@ -159,8 +154,11 @@
                         } else if ( $isNotPass ){
                             echo "<h3 class='cannot-buy'>คุณต้องเข้าร่วม event เหล่านี้ก่อน: [".join(", ", $notPassEvents)."]</h3>";
                         } else {
-                            if ($event->status->status_id != "W"){
+                            if ($status === false){
                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                            }
+                            else if($event->status->status_id != "W") {
+                                echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
                             }else{
 
                                 echo "<h3 id='cannot-buy'>You have already get this ticket.</h3>";
