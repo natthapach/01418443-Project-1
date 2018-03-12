@@ -31,13 +31,8 @@
 </head>
 <body class="background-dark">
     <div class="container background-light">
-        <div class="row banner primary-dark">
-            <div class="col-12">
-                <b>
-                    Kitty Event~~
-                </b>
-            </div>
-            
+        <div class="banner">
+    
         </div>
         <nav class="row navbar navbar-expand-lg navbar-light primary">
             <!-- web name -->

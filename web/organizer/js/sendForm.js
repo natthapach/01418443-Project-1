@@ -8,33 +8,48 @@ $(document).ready(function (e) {
         $(document).on("click", '#google-form-btn', function (event) {
             event.preventDefault();
             alert("button press eiei");
+            console.log(event_id);
 
 
             // Get Event Name, Google Form Link, Attendants's Emails
 
-            let data = {
-                eventName: "",
-                formLink: "",
-                email: {
+            // let data = {
+            //     eventName: "",
+            //     formLink: "",
+            //     email: {
                     
-                }
-            };
-            // POST to Google App Scripts
+            //     }
+            // };
             $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbwetsM68Ca1L30lwBmDtq6iqzQXQ4UivqiGR4uyNQNu0WaR82Y/exec",
-                dataType: "JSON",
-                type: "POST",
-                data: data,
-                success: function (e) {
-                    alert("Success: " + e);
+                url:"../../service/organizer/getFormBundle.php",
+                type:"get",
+                data:{
+                    event_id:event_id
                 },
-                error: function (e) {
-                    alert("Error: " + e);
+                success:function(data){
+                    console.log("bundle", data);
+                    sendEmail(data);
                 }
-            });
+            })
         });
     });
 });
+
+function sendEmail(data){
+     // POST to Google App Scripts
+     $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbwetsM68Ca1L30lwBmDtq6iqzQXQ4UivqiGR4uyNQNu0WaR82Y/exec",
+        dataType: "JSONP",
+        type: "POST",
+        data: data,
+        success: function (e) {
+            alert("Success: " + e);
+        },
+        error: function (e) {
+            alert("Error: " + e);
+        }
+    });
+}
 
 
 
