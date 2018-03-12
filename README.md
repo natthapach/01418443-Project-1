@@ -1,7 +1,6 @@
 # Event Push - Web Application
 
 ## Get Started
-___
 1. clone project
     ```bash
     git clone https://github.com/natthapach/01418443-Project-1.git
@@ -11,7 +10,6 @@ ___
 4. start page at ```{project-path}/web/admin/```
 
 ## Project Structure
-___
 This project separate code structure into two sides - service side and web side - and divide into three subsystem includes admin subsystem, organizer subsystem and attendant subsystem
 * service
     this folder contain *php file* for receive request from web-side and connect to database
