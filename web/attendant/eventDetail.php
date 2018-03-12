@@ -23,7 +23,7 @@
         <?php
             session_start();
             // $_SESSION["current_user"] = "user2";
-            $username = $_SESSION["current_user"];
+            $username = $_SESSION["current_username"];
             $conn = new PDO(
                 "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
                 "root",
@@ -66,14 +66,14 @@
             if ($organizer_profile !== false) {
                 $event->organizer_profile = $organizer_profile;
             }
-            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id WHERE attendants.user_name='".$_SESSION['current_user']."' AND attendences.event_id=".$_GET['event']);
+            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id WHERE attendants.user_name='".$_SESSION['current_username']."' AND attendences.event_id=".$_GET['event']);
             $stmt->execute();
             $status = $stmt->fetch(PDO::FETCH_OBJ);
             if ($status !== false) {
                 $event->status = $status;
             }
 
-            $stmt = $conn->prepare("SELECT birth_date, id FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
+            $stmt = $conn->prepare("SELECT birth_date, id FROM attendants WHERE user_name='".$_SESSION['current_username']."'");
             $stmt->execute();
             $birth = $stmt->fetch(PDO::FETCH_OBJ);
             if ($birth !== false) {
@@ -315,7 +315,7 @@
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 // xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
-                xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
+                xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_username'] ?>");
             }
 
 
