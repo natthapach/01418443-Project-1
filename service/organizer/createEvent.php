@@ -3,7 +3,7 @@
     include("../pictureUploader.php");
     session_start();
     // dummy username
-    $_SESSION["current_username"] = "organizer01";
+    // $_SESSION["current_username"] = "organizer01";
     //
     $username = $_SESSION["current_username"];
     

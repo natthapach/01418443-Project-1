@@ -2,7 +2,7 @@
     include("../connection.php");
     session_start();
     // fake user name
-    $_SESSION["current_username"] = "organizer01";
+    // $_SESSION["current_username"] = "organizer01";
 
     $username = $_SESSION["current_username"];
     
