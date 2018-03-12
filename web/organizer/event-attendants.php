@@ -32,7 +32,6 @@
 <body class="background-dark">
     <div class="container background-light">
     <div class="banner">
-<<<<<<< HEAD
         </div>
         <nav class="row navbar navbar-expand-lg navbar-light primary">
             <!-- web name -->
@@ -76,52 +75,6 @@
                 <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
             </div>
         </nav>
-=======
-
-    </div>
-    <nav class="row navbar navbar-expand-lg navbar-light primary">
-        <!-- web name -->
-        <a class="navbar-brand" href="home.html">EVENT PUSH</a>
-        <!-- hamberger icon menu (3 line icon, show when small screen) -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!-- menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href="checkin.html">Check in</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="createEvent.html">Create Event</a>
-                </li>
-                <!-- <li clss="nav-item">
-                    <a class="nav-link" href="#">Log out</a>
-                </li> -->
-
-                <!-- dropdown menu -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> -->
-            </ul>
-            <div class="nav-item">
-            <a style="color:black" class="nav-link" href="profile.html">Profile</a>
-            </div>
-
-            <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
-        </div>
-    </nav>
->>>>>>> cc0346d4e1557fbbd07644e74e626c1bad719891
         <!-- content start here -->
         <style>
             .img-container {
@@ -237,7 +190,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- import my js file -->
     <script src="js/event-attendants.js"></script>
-    <script src="js/logout.js"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>
 

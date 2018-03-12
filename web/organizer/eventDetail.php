@@ -321,6 +321,6 @@
             echo "let event_id = '$event_id';";
         ?>
     </script>
-    <script src="js/sendForm.js"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>
