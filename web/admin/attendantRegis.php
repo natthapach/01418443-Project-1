@@ -108,7 +108,7 @@ tr:nth-child(even) {
 
                 <div class="input-group">
                     <label>Birthday</label>
-                    <input type="date" name="birth" value=" <?php echo $birth; ?>">
+                    <input type="date" name="birth" value="<?date('d/m/Y');?>">
 
 
                 </div>

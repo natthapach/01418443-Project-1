@@ -87,8 +87,8 @@
             else{
                 $gender = $_POST['gender'];
                 $password = password_hash($password_1, PASSWORD_BCRYPT); //encrypt passqword before save in 
-                $birth = date('Y-m-d H:i:s', strtotime($birth."T00:00"));
-                echo $birth;
+                $birth = = $_POST['birth'];
+
         
                 $query = "INSERT INTO account (user_name, password, role_id, status)  VALUES('$username', '$password', 'A','Active')";
                 $statement = $db->prepare($query);
