@@ -4,7 +4,6 @@
     // fake user name
     $_SESSION["current_username"] = "organizer01";
     $username = $_SESSION["current_username"];
-
     $attendant_id = $_POST["attendant_id"];
     $event_id = $_POST["event_id"];
     $affectedRow = $connection->exec(

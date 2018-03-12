@@ -10,63 +10,16 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/comment.css">
 </head>
 
 <body class="background-dark">
     <div class="container background-light">
-        <div class="row banner primary-dark">
-            <div class="col-12">
-                <b>
-                            Kitty Event~~
-                        </b>
-                <button type="button" class="btn btn-danger log-out">Logout</button>
-            </div>
+        <div id="header">
 
         </div>
-        <nav class="row navbar navbar-expand-lg navbar-light primary">
-            <!-- web name -->
-            <a class="navbar-brand" href="#">Kitty</a>
-            <!-- hamberger icon menu (3 line icon, show when small screen) -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                                Category
-                                </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="home.html">All event</a>
-                            <a class="dropdown-item" href="#">Medical</a>
-                            <a class="dropdown-item" href="#">Computer</a>
-                            <a class="dropdown-item" href="#">Music</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile.html">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Buying</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Joined</a>
-                    </li>
-                    <li clss="nav-item">
-                        <a class="nav-link" href="#">Ticket-list</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-
         <!-- content start here -->
         
-
         <?php
             session_start();
             $_SESSION["current_user"] = "user2";
@@ -113,9 +66,42 @@
             if ($organizer_profile !== false) {
                 $event->organizer_profile = $organizer_profile;
             }
-           
+            $stmt = $conn->prepare("SELECT status_id FROM attendences JOIN attendants ON attendences.attendant_id = attendants.id WHERE attendants.user_name='".$_SESSION['current_user']."' AND attendences.event_id=".$_GET['event']);
+            $stmt->execute();
+            $status = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($status !== false) {
+                $event->status = $status;
+            }
+
+            $stmt = $conn->prepare("SELECT birth_date FROM attendants WHERE user_name='".$_SESSION['current_user']."'");
+            $stmt->execute();
+            $birth = $stmt->fetch(PDO::FETCH_OBJ);
+            if ($birth !== false) {
+                $event->birth = $birth;
+            }
+
+            // $stmt = $conn->prepare("SELECT e.*, count(at.event_id) as attendants
+            //     from event as e
+            //     join organizer as o
+            //     ON o.id = e.organizer_id
+            //     left join attendences as at
+            //     ON at.event_id = e.id
+            //     where a.user_name=:username
+            //     GROUP BY e.d            
             
-            //svar_dump($event);
+            // ");
+
+            // $stmt->execute();
+            // $count_attendant = $stmt->fetchAll(PDO::FETCH_OBJ);
+            // // if ($count_attendant !== false) {
+            // //     $event->count_attendant = $count_attendant;
+            // // }
+            // $event->count_attendants = array();
+            // if ($count_attendants !== false) {
+            //     $event->count_attendants = $count_attendants;
+            // }
+
+             var_dump($event);
               
         ?>
 
@@ -133,14 +119,33 @@
                     <div class='w3-container w3-white'>
                         <p><b><?php echo $event->name ?></b></p>
                         <p class='w3-opacity'><?php echo $event->event_start_date ?></p>
-                        <p><?php echo $event->information ?></p>
-                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Ticket</button>
+                        <p><?php echo $event->place ?></p>
+                        <?php 
+                        $now_year = date("Y");
+                        $birth = explode(" ",$event->birth->birth_date);
+                        $year = explode("-", $birth[0]);
+                        $old = $now_year - $year[0];
+                        if ( $old > $event->max_age || $old < $event->min_age){
+                            echo "<h3 id='cannot-buy'>อายุคุณไม่อยู่ในเกณฑ์ของ event นี้</h3>";
+                        }else{
+                            if ($status === false){
+                                echo '<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
+                            }else{
+                                
+                                echo "<button class='w3-button w3-black w3-margin-bottom ' disabled >You have get ticket already.</button>";
+                            }
+                        } 
+                        
+                    
+
+                        ?>
+                        <!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Get Ticket</button> -->
                     </div>
                 </div>
             </div>
                     
             <!-- Ticket Modal -->
-            <div id='ticketModal' class='w3-modal'>
+              <div id='ticketModal' class='w3-modal'>
                 <div class='w3-modal-content w3-animate-top w3-card-4'>
                     <header class='w3-container w3-teal w3-center w3-padding-32'>
                         <span onclick="document.getElementById('ticketModal').style.display='none'" class='w3-button w3-teal w3-xlarge w3-display-topright'>×</span>
@@ -169,7 +174,6 @@
 
 
         <div class='event-detail-info w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-           
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's Name : </span><?php echo $event->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Category : </span><?php echo $event->category->name?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Starting Date : </span><?php echo $event->event_start_date?></p><br>
@@ -179,7 +183,8 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
-
+            
+        
                
         </div>
         <!-- The Contact Section -->
@@ -204,9 +209,12 @@
         <div class='w3-container w3-content w3-padding-64' style='max-width:800px' id='contact'>
             <h2 class='w3-wide w3-center'>COMMENT</h2>
             <p class='w3-opacity w3-center'><i>Fan? Drop a note!</i></p>
-           
+                    
         </div>
-        
+        <?php
+            include("comment.php");
+
+        ?>
     </div>  
 
         
@@ -242,10 +250,9 @@
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
-                    console.log('test');
                 } else if (event.target == resultModal) {
                     resultModal.style.display = 'none';
-                    console.log('test2');
+                
                 }
             }
             
@@ -256,6 +263,7 @@
                         console.log(this.responseText)
                         document.getElementById('ticketModal').style.display='none';
                         document.getElementById('resultModal').style.display='block';
+                        
                     }
                 };
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);
@@ -263,9 +271,12 @@
                 // xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
                 xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
             }
- 
 
+      
+
+      
         </script>
+         
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -275,5 +286,16 @@
         crossorigin="anonymous"></script>
     <!-- import my js file -->
     <script src="js/home.js"></script>
+    <script src="js/comment.js"></script>
+    <script>
+        <?php
+            echo "start('" . $event_id . "')";
+        ?>
+    </script>
+       <script>
+        $(function () {
+            $("#header").load("header.html");
+        });
+    </script>
 </body>
 </html>
