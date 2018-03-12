@@ -3,7 +3,7 @@
     include("../pictureUploader.php");
     session_start();
     // dummy username
-    $_SESSION["current_username"] = "organizer01";
+    // $_SESSION["current_username"] = "organizer01";
     //
     $username = $_SESSION["current_username"];
     
@@ -53,7 +53,8 @@
             
             $statement = "INSERT INTO `event`(organizer_id, `name`, information, place, google_map_link, event_start_date, event_finish_date, price, close_date, google_form, max_attendents, category_id, max_age, min_age) ".
             "VALUES('$eventOrgNO', '$eventName', '$eventInfo', '$eventPlace', '$eventMap', '$eventStartDate', '$eventEndDate', '$eventPrice', '$eventCloseDate', '$eventForm', '$eventMaxAttendent', '$eventCategoryId', '$eventMaxAge', '$eventMinAge')";
-
+            
+            echo $statement; 
             $connection->exec($statement);
 
             $event_id = $connection->lastInsertId();

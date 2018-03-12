@@ -28,7 +28,7 @@ function showEvent(event, order) {
                 <h5 class="card-title">`+event.place+`</h5>
                 <p class="card-text">`+event.event_start_date+`</p>
                 <form action="eventDetail.php?event=`+event.id+`" method="post">
-                <label class="btn buy-btn buy-btn:hover" for="submit-btn`+event.id+`">Buy ticket</label><input hidden type="submit" name="submit-btn`+event.id+`" id="submit-btn`+event.id+`" class="btn buy-btn buy-btn:hover">
+                <label class="btn buy-btn buy-btn:hover"     for="submit-btn`+event.id+`">Buy ticket</label><input hidden type="submit" name="submit-btn`+event.id+`" id="submit-btn`+event.id+`" class="btn buy-btn buy-btn:hover">
                 </form>
             </div>
         </div>

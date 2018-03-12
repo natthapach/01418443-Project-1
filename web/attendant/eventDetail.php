@@ -102,7 +102,7 @@
                     }
                 }
             }
-            echo $isNotPass ? "TRUE" : "FALSE";
+            // echo $isNotPass ? "TRUE" : "FALSE";
 
             // $stmt = $conn->prepare("SELECT e.*, count(at.event_id) as attendants
             //     from event as e
@@ -125,7 +125,7 @@
             //     $event->count_attendants = $count_attendants;
             // }
 
-             var_dump($event);
+            //  va`r_dump($event);
               
         ?>
 
@@ -178,7 +178,7 @@
                         <h2 class='w3-wide'><i class='fa fa-suitcase w3-margin-right'></i>Tickets</h2>
                     </header>
                     <div class='w3-container'>
-                        <p><label><i class='fa fa-shopping-cart'></i> Tickets,<?php echo $event->price ?> per person</label></p>
+                        <p><label><i class='fa fa-shopping-cart'></i> Tickets,<?php echo $event->price ?> baht per person</label></p>
                         <button class='w3-button w3-block w3-teal w3-padding-16 w3-section w3-right' id="buy-ticket" onclick="buyTicket()">Buy ticket<i class='fa fa-check'></i></button>
                         <button class='w3-button w3-red w3-section' onclick="document.getElementById('ticketModal').style.display='none'">Close <i class='fa fa-remove'></i></button>
                     </div>
@@ -212,7 +212,7 @@
             <div id="map" style="width:100%;height:400px"></div>
 
             <?php
-                var_dump($event->google_map_link);
+                // var_dump($event->google_map_link);
                 $lat = preg_split("/ /", $event->google_map_link)[0];
                 $lng = preg_split("/ /", $event->google_map_link)[1];
                 
