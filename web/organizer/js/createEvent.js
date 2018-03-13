@@ -81,6 +81,7 @@ $(document).ready(function (e) {
                             alert("Event already exists.");
                         } else {
                             alert('"' + eventName + '"' + ' event created. ');
+                            window.location.href = "home.html";
                         }
                     },
                     error: function (error) {

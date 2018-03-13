@@ -157,9 +157,12 @@
                         } else {
                             if ($status === false){
                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
-                            }
-                            else if($event->status->status_id != "W") {
-                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
+                            
+                            // else if($event->status->status_id != "W") {
+                            //      echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
+                            // }
+                            // else if ($event->status->status_id == "P"){
+                            //     echo "<h3 class='cannot-buy'>You have already get this ticket.</h3>";
                             }else{
 
                                 echo "<h3 class='cannot-buy'>You have already get this ticket.</h3>";
@@ -309,7 +312,7 @@
                         console.log(this.responseText)
                         document.getElementById('ticketModal').style.display='none';
                         document.getElementById('resultModal').style.display='block';
-
+                        location.reload(true);
                     }
                 };
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);

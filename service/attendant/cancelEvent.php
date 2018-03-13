@@ -12,7 +12,7 @@
 			$result = $statement->fetch();
 			$attendantID = $result[0];
 
-     $sql = "UPDATE attendences SET status_id = 'R' WHERE attendant_id = '$attendantID' AND event_id='$eventid' ";
+     $sql = "DELETE FROM `attendences`  WHERE attendant_id = '$attendantID' AND event_id='$eventid' ";
 
      // Prepare statement
      $stmt = $connection->prepare($sql);
