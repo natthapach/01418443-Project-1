@@ -41,3 +41,13 @@ This project separate code structure into two sides (service side and web side) 
             this folder contain javascript file for control behavior and send/receive data (to service-side) for attendant-web
         * css  
             this folder contain cascade style sheet file for model webpage
+## Issue
+### #1 export all event to pdf
+We use tfpdf for export pdf file with support utf-8 and THSarabun font. But this library save abslute path to font file. The error may occur when move/rename project directory or receive thier tmp file from other.
+#### Solve
+1. go to directory
+    ```bash
+        {project-path}/service/organizer
+    ```
+2. Please delete ```thsarabun.cw.dat```, ```thsarabun.cw127.php```, ```thsarabun.mtx.php```
+3. Restart project again
