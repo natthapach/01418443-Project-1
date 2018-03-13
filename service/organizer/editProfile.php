@@ -48,5 +48,5 @@
             echo "File is not an image.";
         }
     }
-    // header('location:../../web/organizer/profile.html');
+    header('location:../../web/organizer/profile.html');
 ?>
