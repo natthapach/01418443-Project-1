@@ -47,7 +47,7 @@ We use tfpdf for export pdf file with support utf-8 and THSarabun font. But this
 #### Solution
 1. go to directory
     ```bash
-        {project-path}/service/organizer
+        {project-path}/service/organizer/tfpdf/font/unifont
     ```
 2. Please delete ```thsarabun.cw.dat```, ```thsarabun.cw127.php```, ```thsarabun.mtx.php```
 3. Restart project again
