@@ -54,10 +54,57 @@ function checkin(code){
                 snackbar.removeClass("show");
                 scanFlag = 1;
             }, 1500);
+
+            sendEmail(token[0], token[1]);
         }
     })
 }
 
 function alertCodeError(){
 
+}
+
+function sendEmail(attendant_id, event_id){
+    $.ajax({
+        url:"../../service/organizer/getSingleFormBundle.php",
+        type:"post",
+        dataType:"json",
+        data:{
+            attendant_id : attendant_id,
+            event_id : event_id
+        },
+        success:function(response){
+            console.log("getSingleFormBundle success");
+            console.log(response);
+            sendFormEmail(response);
+        },
+        error:function(e){
+            console.log("getSingleFormBundle error");
+            console.log(e);
+        }
+    })
+}
+
+function sendFormEmail(bundle){
+    let data = {
+        eventName:bundle.event_name,
+        organizer:bundle.organizer_name,
+        attendant:bundle.first_name + " " + bundle.last_name,
+        formLink:bundle.google_form,
+        email:bundle.email
+    };
+    console.log("data", data)
+    $.ajax({
+        url:"../../service/organizer/sendEmail.php",
+        data:data,
+        type:"post",
+        success:function(response){
+            console.log("send email success");
+            console.log(response);
+        },
+        event:function(e){
+            console.log("send email error");
+            console.log(e);
+        }
+    })
 }
