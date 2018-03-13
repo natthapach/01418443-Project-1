@@ -35,7 +35,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="createEvent.html">Create Event</a>
-                    </li>
                     <!-- <li clss="nav-item">
                         <a class="nav-link" href="#">Log out</a>
                     </li> -->
