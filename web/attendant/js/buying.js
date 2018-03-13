@@ -26,8 +26,7 @@ for (i = 0; i<res.length;i++){
   }else{
     $status='ยกเลิกแล้ว';
   }
-    $str+= '<tr><td>'+res[i]['name']+
-    '</td><td>'+res[i]['place']+'</td><td>'
+    $str+= '<tr><td><a href="eventDetail.php?event='+res[i]['id']+'">'+res[i]['name']+'</a></td><td>'+res[i]['place']+'</td><td>'
     +$date + '<br>' + $time +
     '</td><td>'+res[i]['price']+
     '</td><td>'+$status+'</td></tr>';

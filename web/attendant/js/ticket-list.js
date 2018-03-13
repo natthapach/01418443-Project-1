@@ -16,7 +16,7 @@ function createTable(res){
     $time = $dateandtime[1].split(":");
     $time = $time[0]+':'+$time[1];
     if(res[i]['is_checkin']=='0'){
-      $strcoming+= '<tr><td>'+res[i]['name']+'</td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
+      $strcoming+= '<tr><td><a href="eventDetail.php?event='+res[i]['id']+'">'+res[i]['name']+'</a></td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
       $time +'</td><td>'+
       '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'--'+res[i]['attentded_code']+
       '" width="50" height="50" data-target="#myModal">'+
@@ -24,7 +24,7 @@ function createTable(res){
       '<div id="nameimg"></div><img class="modal-content" id="img01"><div id="caption"></div></div>'+'</td></tr>';
     }
     if (res[i]['is_checkin']=='1'){
-      $strjoined+= '<tr><td>'+res[i]['name']+'</td><td>'+res[i]['place']+'</td><td>'+$date + '<br>' +
+      $strjoined+= '<tr><td><a href="eventDetail.php?event='+res[i]['id']+'">'+res[i]['name']+'</a></td><td>'+$date + '<br>' +
       $time +'</td><td>'+
       '<img id="myImg" src="../../service/attendant/generate.php?text='+res[i]['attentded_code']+'"  alt="'+res[i]['name']+'--'+res[i]['attentded_code']+
       '" width="50" height="50" data-target="#myModal">'+
