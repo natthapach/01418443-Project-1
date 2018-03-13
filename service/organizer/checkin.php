@@ -36,6 +36,8 @@
         ]);
         $row = $statement->fetchAll(PDO::FETCH_OBJ);
         echo json_encode($row[0]);
+        
+        // include("sendMailCheckin.php");
     }else{
         echo 0;
     }

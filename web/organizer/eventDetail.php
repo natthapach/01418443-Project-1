@@ -322,5 +322,6 @@
         ?>
     </script>
     <script src="../js/logout.js"></script>
+    <<script src="js/sendForm.js"></script>
 </body>
 </html>
