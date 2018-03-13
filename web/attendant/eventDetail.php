@@ -215,7 +215,7 @@
             <p class='w3-justify'><span class='w3-justify bold-font'> Number of attendants : </span><?php echo $event->max_attendents?> persons</p><br>
             <p class='w3-justify'><span class='w3-justify bold-font'> Event's information : </span><?php echo $event->information?></p><br>
             <p class='w3-justify'><span class='w3-justify bold-red-font'> Age : <?php echo $event->min_age?>-<?php echo $event->max_age?> years old</span></p><br>
-            <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><?php echo $event->place?></p>
+            <p class='w3-justify'><span class='w3-justify bold-font'><i class='fa fa-map-marker'  style='width:30px'></i>Location : </span><span id="location"><?php echo $event->place?></span></p>
             <div id="map" style="width:100%;height:400px"></div>
 
             <?php
@@ -332,8 +332,18 @@
                                                         position: position,
                                                         map: map
                                                     });
+                var geocoder = new google.maps.Geocoder;
+                getGeocodeFromLatLng(geocoder, position, "location");
             }
-
+            function getGeocodeFromLatLng(geocoder, latlng, domID) {
+                geocoder.geocode({location: latlng}, (results, status)=>{
+                    if (status === 'OK') {
+                        if (results[0]) {
+                            document.getElementById(domID).innerHTML = results[0].formatted_address
+                        }
+                    }
+                })
+            }
 
         </script>
 

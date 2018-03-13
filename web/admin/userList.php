@@ -20,7 +20,7 @@
       </div>
       <nav class="row navbar navbar-expand-lg navbar-light primary">
           <!-- web name -->
-          <a class="navbar-brand" href="index.php">EVENT PUSH</a>
+          <a class="navbar-brand" href="eventList.php">EVENT PUSH</a>
           <!-- hamberger icon menu (3 line icon, show when small screen) -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
@@ -38,9 +38,9 @@
                   </li>
 
               </ul>
-              <div class="nav-item">
+              <!-- <div class="nav-item">
                   <a style="color:black" class="nav-link" href="profile.html">Profile</a>
-              </div>
+              </div> -->
 
               <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
           </div>
@@ -49,12 +49,13 @@
 
 
         <div class="row">
-            <div><h1>User List</h1>
+            <div class="col-12">
+                <h1>User List</h1>
             </div>
-            <div>
-                <p></p>
+            <div class="col-12">
+                
                 Find: <input type="text" id="input">
-                </div>
+            </div>
             
                 <div class="user-table">
                     <table class="table table-hover">

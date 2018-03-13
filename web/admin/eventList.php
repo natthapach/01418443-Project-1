@@ -42,7 +42,7 @@ tr:nth-child(even) {
       </div>
       <nav class="row navbar navbar-expand-lg navbar-light primary">
           <!-- web name -->
-          <a class="navbar-brand" href="index.php">EVENT PUSH</a>
+          <a class="navbar-brand" href="eventList.php">EVENT PUSH</a>
           <!-- hamberger icon menu (3 line icon, show when small screen) -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
@@ -60,9 +60,9 @@ tr:nth-child(even) {
                   </li>
 
               </ul>
-              <div class="nav-item">
-                  <a style="color:black" class="nav-link" href="profile.html">Profile</a>
-              </div>
+              <!-- <div class="nav-item">
+                  <a style="color:black" class="nav-link" href="profile.php">Profile</a>
+              </div> -->
 
               <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
           </div>
@@ -71,7 +71,7 @@ tr:nth-child(even) {
     <div class="content">
         <h1>Event List</h1>
         <form method="get" action="../../service/admin/fpdf181/makePDF.php">
-            <button type="submit">Report PDF</button>
+            <button style="float:right" type="submit" class="btn">Report PDF</button>
         </form>
 
         Search: <input type="text" id="myInput">
