@@ -159,7 +159,7 @@
                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';
                             }
                             else if($event->status->status_id != "W") {
-                                echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
+                                 echo '<button class="btn w3-margin-bottom buy2-btn buy2-btn:hover" onclick="document.getElementById('."'ticketModal'".").style.display='block'".'">Get Ticket</button>';    
                             }else{
 
                                 echo "<h3 class='cannot-buy'>You have already get this ticket.</h3>";

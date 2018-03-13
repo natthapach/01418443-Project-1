@@ -2,7 +2,7 @@
 session_start();
 var_dump($_POST);
 // $_SESSION["current_user"] = "user2";
-if ($_POST['user'] != $_SESSION["current_user"]) die("don't hack me dude.");
+if ($_POST['user'] != $_SESSION["current_username"]) die("don't hack me dude.");
 $servername = "localhost";
 $username = "root";
 $password = "";

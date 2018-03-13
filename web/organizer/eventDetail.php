@@ -66,8 +66,8 @@
 
         <?php
             session_start();
-            $_SESSION["current_user"] = "user2";
-            $username = $_SESSION["current_user"];
+            
+            $username = $_SESSION["current_username"];
             $conn = new PDO(
                 "mysql:host=localhost;dbname=webtech1;charset=utf8mb4",
                 "root",
@@ -287,7 +287,7 @@
                 xmlhttp.open("POST", "../../service/attendant/changeStatus.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 // xmlhttp.overrideMimeType('application/javascript; charset=utf-8')
-                xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_user'] ?>");
+                xmlhttp.send("event="+"<?php echo $event->id ?>"+"&user="+"<?php echo $_SESSION['current_username'] ?>");
             }
 
         </script>
