@@ -20,7 +20,7 @@
       </div>
       <nav class="row navbar navbar-expand-lg navbar-light primary">
           <!-- web name -->
-          <a class="navbar-brand" href="home.html">EVENT PUSH</a>
+          <a class="navbar-brand" href="index.php">EVENT PUSH</a>
           <!-- hamberger icon menu (3 line icon, show when small screen) -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">

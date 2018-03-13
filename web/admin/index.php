@@ -26,7 +26,7 @@
       </div>
       <nav class="row navbar navbar-expand-lg navbar-light primary">
           <!-- web name -->
-          <a class="navbar-brand" href="home.html">EVENT PUSH</a>
+          <a class="navbar-brand" href="index.php">EVENT PUSH</a>
           <!-- hamberger icon menu (3 line icon, show when small screen) -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
@@ -35,20 +35,20 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                  <!-- menu -->
+                  <!-- menu
                   <li class="nav-item">
                       <a class="nav-link" href="checkin.html">Check in</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="createEvent.html">Create Event</a>
-                  </li>
+                  </li> -->
 
               </ul>
-              <div class="nav-item">
+              <!-- <div class="nav-item">
                   <a style="color:black" class="nav-link" href="profile.html">Profile</a>
-              </div>
+              </div> -->
 
-              <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button>
+              <!-- <button id="logout-btn" type="button" class="btn btn-danger" style="font-size:15px;">Logout</button> -->
           </div>
       </nav>
 
